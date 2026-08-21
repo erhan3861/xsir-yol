@@ -1,8 +1,10 @@
 <!DOCTYPE html>
 <html lang="tr">
+
 <head>
   <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover">
+  <meta name="viewport"
+    content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover">
   <meta name="theme-color" content="#07211B">
   <meta name="apple-mobile-web-app-capable" content="yes">
   <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
@@ -12,7 +14,9 @@
   <!-- Google Fonts: Plus Jakarta Sans & Playfair Display & Amiri -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Amiri:ital,wght@0,400;0,700;1,400&family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&family=Outfit:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link
+    href="https://fonts.googleapis.com/css2?family=Amiri:ital,wght@0,400;0,700;1,400&family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&family=Outfit:wght@400;500;600;700;800&display=swap"
+    rel="stylesheet">
 
   <style>
     /* ==========================================================================
@@ -23,7 +27,7 @@
       --primary: #0D382E;
       --primary-light: #165647;
       --primary-soft: #E9F4F0;
-      
+
       --accent-gold: #D4AF37;
       --accent-gold-light: #F4E7BE;
       --accent-amber: #E79B3A;
@@ -32,12 +36,12 @@
       --accent-indigo: #4F46E5;
       --accent-emerald: #10B981;
       --accent-cyan: #0891B2;
-      
+
       --akademi-bg: #0F172A;
       --akademi-card: #1E293B;
       --akademi-accent: #38BDF8;
       --akademi-purple: #818CF8;
-      
+
       --bg-canvas: #0B1412;
       --app-bg: #F8F9FA;
       --app-card: #FFFFFF;
@@ -46,12 +50,12 @@
       --text-light: #8E9E9B;
       --border-subtle: #E8ECEB;
       --border-focus: #CBD5E1;
-      
+
       --radius-phone: 50px;
       --radius-card: 20px;
       --radius-sm: 12px;
       --radius-pill: 9999px;
-      
+
       --shadow-phone: 0 25px 60px -15px rgba(0, 0, 0, 0.7), 0 0 0 12px #1E2927, 0 0 0 14px #2F3E3B, 0 35px 80px rgba(13, 56, 46, 0.35);
       --shadow-card: 0 4px 20px -2px rgba(13, 56, 46, 0.06), 0 2px 6px -1px rgba(0, 0, 0, 0.04);
       --shadow-card-hover: 0 10px 25px -4px rgba(13, 56, 46, 0.12);
@@ -88,6 +92,7 @@
       z-index: 0;
       overflow: hidden;
     }
+
     .glow-blob {
       position: absolute;
       border-radius: 50%;
@@ -95,6 +100,7 @@
       opacity: 0.25;
       animation: floatGlow 14s ease-in-out infinite alternate;
     }
+
     .glow-1 {
       width: 600px;
       height: 600px;
@@ -102,6 +108,7 @@
       top: -150px;
       left: 5%;
     }
+
     .glow-2 {
       width: 500px;
       height: 500px;
@@ -112,9 +119,17 @@
     }
 
     @keyframes floatGlow {
-      0% { transform: translate(0, 0) scale(1); }
-      50% { transform: translate(40px, 30px) scale(1.08); }
-      100% { transform: translate(-30px, -20px) scale(0.95); }
+      0% {
+        transform: translate(0, 0) scale(1);
+      }
+
+      50% {
+        transform: translate(40px, 30px) scale(1.08);
+      }
+
+      100% {
+        transform: translate(-30px, -20px) scale(0.95);
+      }
     }
 
     /* ==========================================================================
@@ -167,6 +182,7 @@
       border-bottom: 1px solid rgba(255, 255, 255, 0.12);
       padding-bottom: 12px;
     }
+
     .desktop-badge {
       display: inline-flex;
       align-items: center;
@@ -181,6 +197,7 @@
       color: #A7F3D0;
       margin-bottom: 6px;
     }
+
     .desktop-badge::before {
       content: "";
       width: 6px;
@@ -189,12 +206,14 @@
       border-radius: 50%;
       box-shadow: 0 0 8px #34D399;
     }
+
     .panel-title {
       font-size: 17px;
       font-weight: 800;
       color: #FFFFFF;
       letter-spacing: -0.3px;
     }
+
     .panel-subtitle {
       font-size: 11px;
       color: rgba(255, 255, 255, 0.65);
@@ -232,23 +251,28 @@
       text-align: left;
       transition: all 0.2s cubic-bezier(0.34, 1.56, 0.64, 1);
     }
+
     .side-notif-btn:hover {
       background: rgba(212, 175, 55, 0.25);
       border-color: #FCD34D;
       transform: translateX(4px);
     }
+
     .side-notif-btn:active {
       transform: scale(0.97);
     }
+
     .snb-icon {
       font-size: 20px;
       flex-shrink: 0;
     }
+
     .snb-text {
       display: flex;
       flex-direction: column;
       min-width: 0;
     }
+
     .snb-text strong {
       font-size: 11.5px;
       font-weight: 700;
@@ -257,6 +281,7 @@
       overflow: hidden;
       text-overflow: ellipsis;
     }
+
     .snb-text span {
       font-size: 10px;
       color: rgba(255, 255, 255, 0.7);
@@ -270,6 +295,7 @@
       flex-wrap: wrap;
       gap: 6px;
     }
+
     .side-quick-btn {
       background: rgba(255, 255, 255, 0.1);
       border: 1px solid rgba(255, 255, 255, 0.18);
@@ -281,6 +307,7 @@
       cursor: pointer;
       transition: all 0.15s ease;
     }
+
     .side-quick-btn:hover {
       background: var(--primary-light);
       color: #FFFFFF;
@@ -327,6 +354,7 @@
       cursor: pointer;
       box-shadow: 0 4px 15px rgba(0, 0, 0, 0.4);
     }
+
     .dynamic-island-container.expanded {
       width: 340px;
       height: 64px;
@@ -335,6 +363,7 @@
       justify-content: flex-start;
       gap: 12px;
     }
+
     .island-cam {
       width: 10px;
       height: 10px;
@@ -342,12 +371,14 @@
       border: 1px solid #1E293B;
       border-radius: 50%;
     }
+
     .island-speaker {
       width: 38px;
       height: 4px;
       background: #111827;
       border-radius: 4px;
     }
+
     .island-dot {
       width: 6px;
       height: 6px;
@@ -356,16 +387,19 @@
       opacity: 0.8;
       box-shadow: 0 0 6px #10B981;
     }
+
     .island-expanded-content {
       display: none;
       color: #FFFFFF;
       flex: 1;
     }
+
     .dynamic-island-container.expanded .island-expanded-content {
       display: flex;
       align-items: center;
       justify-content: space-between;
     }
+
     .dynamic-island-container.expanded .island-cam,
     .dynamic-island-container.expanded .island-speaker {
       display: none;
@@ -393,10 +427,12 @@
       opacity: 0;
       transition: all 0.4s cubic-bezier(0.34, 1.4, 0.64, 1);
     }
+
     .push-notification-banner.show {
       transform: translateY(0);
       opacity: 1;
     }
+
     .push-app-icon {
       width: 38px;
       height: 38px;
@@ -410,16 +446,19 @@
       flex-shrink: 0;
       box-shadow: 0 4px 10px rgba(7, 33, 27, 0.25);
     }
+
     .push-body {
       flex: 1;
       min-width: 0;
     }
+
     .push-top-row {
       display: flex;
       justify-content: space-between;
       align-items: center;
       margin-bottom: 2px;
     }
+
     .push-app-name {
       font-size: 10px;
       font-weight: 800;
@@ -427,10 +466,12 @@
       color: var(--primary);
       text-transform: uppercase;
     }
+
     .push-time {
       font-size: 9.5px;
       color: var(--text-light);
     }
+
     .push-title {
       font-size: 12px;
       font-weight: 700;
@@ -440,6 +481,7 @@
       overflow: hidden;
       text-overflow: ellipsis;
     }
+
     .push-snippet {
       font-size: 11px;
       color: var(--text-muted);
@@ -464,14 +506,17 @@
       z-index: 90;
       background: transparent;
     }
+
     .status-bar.dark-mode-header {
       color: #FFFFFF;
     }
+
     .status-bar .icons {
       display: flex;
       align-items: center;
       gap: 6px;
     }
+
     .status-bar svg {
       width: 15px;
       height: 15px;
@@ -487,6 +532,7 @@
       padding-bottom: 95px;
       scroll-behavior: smooth;
     }
+
     .phone-content::-webkit-scrollbar {
       width: 0px;
       background: transparent;
@@ -505,6 +551,7 @@
       z-index: 120;
       pointer-events: none;
     }
+
     .home-indicator.light {
       background: rgba(255, 255, 255, 0.7);
     }
@@ -526,10 +573,12 @@
       align-items: center;
       z-index: 110;
     }
+
     .bottom-nav.akademi-nav {
       background: rgba(15, 23, 42, 0.96);
       border-top: 1px solid rgba(255, 255, 255, 0.1);
     }
+
     .nav-tab-btn {
       background: none;
       border: none;
@@ -545,33 +594,41 @@
       transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
       position: relative;
     }
+
     .bottom-nav.akademi-nav .nav-tab-btn {
       color: #64748B;
     }
+
     .nav-tab-btn svg {
       width: 22px;
       height: 22px;
       stroke-width: 2.2;
       transition: transform 0.2s ease, stroke 0.2s ease;
     }
+
     .nav-tab-btn span {
       font-size: 10px;
       font-weight: 600;
       letter-spacing: -0.2px;
     }
+
     .nav-tab-btn.active {
       color: var(--primary);
     }
+
     .bottom-nav.akademi-nav .nav-tab-btn.active {
       color: var(--akademi-accent);
     }
+
     .nav-tab-btn.active svg {
       transform: scale(1.12);
       stroke: var(--primary);
     }
+
     .bottom-nav.akademi-nav .nav-tab-btn.active svg {
       stroke: var(--akademi-accent);
     }
+
     .nav-tab-btn.active::after {
       content: "";
       position: absolute;
@@ -581,6 +638,7 @@
       background: var(--accent-gold);
       border-radius: 3px;
     }
+
     .bottom-nav.akademi-nav .nav-tab-btn.active::after {
       background: var(--akademi-accent);
     }
@@ -590,12 +648,21 @@
       display: none;
       animation: fadeIn 0.28s ease-out;
     }
+
     .tab-view.active {
       display: block;
     }
+
     @keyframes fadeIn {
-      from { opacity: 0; transform: translateY(6px); }
-      to { opacity: 1; transform: translateY(0); }
+      from {
+        opacity: 0;
+        transform: translateY(6px);
+      }
+
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
     }
 
     /* ==========================================================================
@@ -608,6 +675,7 @@
       justify-content: space-between;
       align-items: center;
     }
+
     .user-greeting-box h1 {
       font-size: 18px;
       font-weight: 800;
@@ -617,17 +685,20 @@
       align-items: center;
       gap: 6px;
     }
+
     .user-greeting-box .date-str {
       font-size: 11px;
       color: var(--text-muted);
       font-weight: 500;
       margin-top: 2px;
     }
+
     .header-actions {
       display: flex;
       align-items: center;
       gap: 8px;
     }
+
     .action-icon-btn {
       width: 40px;
       height: 40px;
@@ -643,13 +714,16 @@
       position: relative;
       transition: all 0.2s cubic-bezier(0.34, 1.56, 0.64, 1);
     }
+
     .action-icon-btn:hover {
       transform: scale(1.08);
       border-color: var(--primary);
     }
+
     .action-icon-btn:active {
       transform: scale(0.92);
     }
+
     .badge-count {
       position: absolute;
       top: -3px;
@@ -669,9 +743,17 @@
       box-shadow: 0 2px 8px rgba(239, 68, 68, 0.6);
       animation: pulseBadge 2.5s infinite;
     }
+
     @keyframes pulseBadge {
-      0%, 100% { transform: scale(1); }
-      50% { transform: scale(1.15); }
+
+      0%,
+      100% {
+        transform: scale(1);
+      }
+
+      50% {
+        transform: scale(1.15);
+      }
     }
 
     .history-highlight-banner {
@@ -686,26 +768,32 @@
       cursor: pointer;
       transition: transform 0.15s ease;
     }
+
     .history-highlight-banner:hover {
       transform: translateY(-1px);
     }
+
     .hh-left {
       display: flex;
       align-items: center;
       gap: 10px;
     }
+
     .hh-icon {
       font-size: 20px;
     }
+
     .hh-text h4 {
       font-size: 11.5px;
       font-weight: 800;
       color: #92400E;
     }
+
     .hh-text p {
       font-size: 10px;
       color: #78350F;
     }
+
     .hh-arrow {
       font-size: 11px;
       font-weight: 700;
@@ -722,6 +810,7 @@
       overflow: hidden;
       box-shadow: 0 10px 24px -4px rgba(7, 33, 27, 0.3);
     }
+
     .prayer-hero-card::after {
       content: "🕌";
       position: absolute;
@@ -731,11 +820,13 @@
       opacity: 0.12;
       pointer-events: none;
     }
+
     .prayer-hero-top {
       display: flex;
       justify-content: space-between;
       align-items: flex-start;
     }
+
     .prayer-next-label {
       font-size: 11px;
       text-transform: uppercase;
@@ -743,12 +834,14 @@
       color: var(--accent-gold-light);
       font-weight: 700;
     }
+
     .prayer-next-name {
       font-size: 22px;
       font-weight: 800;
       letter-spacing: -0.5px;
       margin-top: 2px;
     }
+
     .prayer-countdown-badge {
       background: rgba(212, 175, 55, 0.2);
       border: 1px solid rgba(212, 175, 55, 0.4);
@@ -756,12 +849,14 @@
       border-radius: 12px;
       text-align: right;
     }
+
     .countdown-val {
       font-size: 17px;
       font-weight: 800;
       color: #FFE699;
       font-variant-numeric: tabular-nums;
     }
+
     .countdown-sub {
       font-size: 9.5px;
       color: rgba(255, 255, 255, 0.7);
@@ -775,6 +870,7 @@
       padding-top: 14px;
       border-top: 1px solid rgba(255, 255, 255, 0.12);
     }
+
     .prayer-col {
       display: flex;
       flex-direction: column;
@@ -785,20 +881,24 @@
       border-radius: 8px;
       transition: background 0.15s;
     }
+
     .prayer-col:hover {
       background: rgba(255, 255, 255, 0.08);
     }
+
     .prayer-col .p-name {
       font-size: 10.5px;
       color: rgba(255, 255, 255, 0.7);
       font-weight: 500;
       margin-bottom: 2px;
     }
+
     .prayer-col .p-time {
       font-size: 11px;
       font-weight: 700;
       margin-bottom: 6px;
     }
+
     .prayer-check-circle {
       width: 26px;
       height: 26px;
@@ -809,18 +909,22 @@
       justify-content: center;
       transition: all 0.2s cubic-bezier(0.34, 1.56, 0.64, 1);
     }
+
     .prayer-col.completed .prayer-check-circle {
       background: #10B981;
       border-color: #10B981;
       box-shadow: 0 0 10px rgba(16, 185, 129, 0.5);
     }
+
     .prayer-col.current {
       position: relative;
     }
+
     .prayer-col.current .p-name {
       color: var(--accent-gold-light);
       font-weight: 700;
     }
+
     .prayer-col.current .prayer-check-circle {
       border-color: var(--accent-gold);
       border-width: 2px;
@@ -832,6 +936,7 @@
       gap: 10px;
       margin: 0 18px 14px 18px;
     }
+
     .quick-btn-card {
       background: var(--app-card);
       border-radius: 14px;
@@ -844,13 +949,16 @@
       cursor: pointer;
       transition: all 0.15s ease;
     }
+
     .quick-btn-card:hover {
       transform: translateY(-2px);
       box-shadow: var(--shadow-card-hover);
     }
+
     .quick-btn-card:active {
       transform: scale(0.96);
     }
+
     .quick-icon {
       width: 34px;
       height: 34px;
@@ -861,10 +969,27 @@
       font-size: 16px;
       flex-shrink: 0;
     }
-    .quick-qibla .quick-icon { background: #FEF3C7; color: #92400E; }
-    .quick-dhikr .quick-icon { background: #E0E7FF; color: #3730A3; }
-    .quick-info h4 { font-size: 12px; font-weight: 700; color: var(--text-main); }
-    .quick-info p { font-size: 10px; color: var(--text-muted); }
+
+    .quick-qibla .quick-icon {
+      background: #FEF3C7;
+      color: #92400E;
+    }
+
+    .quick-dhikr .quick-icon {
+      background: #E0E7FF;
+      color: #3730A3;
+    }
+
+    .quick-info h4 {
+      font-size: 12px;
+      font-weight: 700;
+      color: var(--text-main);
+    }
+
+    .quick-info p {
+      font-size: 10px;
+      color: var(--text-muted);
+    }
 
     .section-title-row {
       display: flex;
@@ -872,12 +997,14 @@
       align-items: center;
       padding: 0 18px 10px 18px;
     }
+
     .section-title-row h2 {
       font-size: 15px;
       font-weight: 800;
       color: var(--primary-dark);
       letter-spacing: -0.3px;
     }
+
     .section-link {
       font-size: 11.5px;
       font-weight: 700;
@@ -889,6 +1016,7 @@
       border-radius: 6px;
       transition: all 0.15s;
     }
+
     .section-link:hover {
       background: var(--primary);
       color: #FFFFFF;
@@ -901,6 +1029,7 @@
       gap: 10px;
       margin: 0 18px 14px 18px;
     }
+
     .bento-card {
       background: var(--app-card);
       border-radius: var(--radius-card);
@@ -915,10 +1044,12 @@
       overflow: hidden;
       transition: all 0.2s cubic-bezier(0.34, 1.56, 0.64, 1);
     }
+
     .bento-card:hover {
       transform: translateY(-3px);
       box-shadow: var(--shadow-card-hover);
     }
+
     .bento-card:active {
       transform: scale(0.97);
     }
@@ -928,11 +1059,13 @@
       background: linear-gradient(135deg, #ECFDF5 0%, #D1FAE5 100%);
       border: 1px solid #A7F3D0;
     }
+
     .bento-namaz .card-header-line {
       display: flex;
       justify-content: space-between;
       align-items: center;
     }
+
     .bento-namaz .tag-badge {
       background: #065F46;
       color: #FFFFFF;
@@ -941,17 +1074,20 @@
       padding: 3px 8px;
       border-radius: 999px;
     }
+
     .bento-namaz h3 {
       font-size: 15px;
       font-weight: 800;
       color: #064E3B;
       margin-top: 4px;
     }
+
     .bento-namaz p {
       font-size: 11.5px;
       color: #047857;
       font-weight: 500;
     }
+
     .mini-progress-bar-wrap {
       margin-top: 10px;
       background: rgba(6, 95, 70, 0.15);
@@ -959,6 +1095,7 @@
       height: 6px;
       overflow: hidden;
     }
+
     .mini-progress-bar-fill {
       height: 100%;
       background: #059669;
@@ -971,6 +1108,7 @@
       background: linear-gradient(145deg, #FFF7ED 0%, #FFEDD5 100%);
       border: 1px solid #FED7AA;
     }
+
     .bento-library .icon-box {
       width: 32px;
       height: 32px;
@@ -983,8 +1121,19 @@
       font-size: 15px;
       margin-bottom: 6px;
     }
-    .bento-library h3 { font-size: 13.5px; font-weight: 800; color: #7C2D12; }
-    .bento-library p { font-size: 10.5px; color: #9A3412; font-weight: 500; }
+
+    .bento-library h3 {
+      font-size: 13.5px;
+      font-weight: 800;
+      color: #7C2D12;
+    }
+
+    .bento-library p {
+      font-size: 10.5px;
+      color: #9A3412;
+      font-weight: 500;
+    }
+
     .bento-library .badge-pill {
       font-size: 9px;
       font-weight: 700;
@@ -1000,6 +1149,7 @@
       background: linear-gradient(145deg, #F0FDF4 0%, #E0E7FF 100%);
       border: 1px solid #C7D2FE;
     }
+
     .bento-ai .icon-box {
       width: 32px;
       height: 32px;
@@ -1012,8 +1162,19 @@
       font-size: 15px;
       margin-bottom: 6px;
     }
-    .bento-ai h3 { font-size: 13.5px; font-weight: 800; color: #312E81; }
-    .bento-ai p { font-size: 10.5px; color: #4338CA; font-weight: 500; }
+
+    .bento-ai h3 {
+      font-size: 13.5px;
+      font-weight: 800;
+      color: #312E81;
+    }
+
+    .bento-ai p {
+      font-size: 10.5px;
+      color: #4338CA;
+      font-weight: 500;
+    }
+
     .bento-ai .sparkle-tag {
       font-size: 9px;
       font-weight: 700;
@@ -1025,20 +1186,60 @@
       margin-top: 6px;
     }
 
-    .bento-journey { background: #FFFFFF; border: 1px solid #E2E8F0; }
-    .bento-journey h3 { font-size: 13px; font-weight: 800; color: var(--primary-dark); }
-    .bento-journey p { font-size: 10px; color: var(--text-muted); margin-top: 2px; }
-    .journey-stat-ring { display: flex; align-items: center; gap: 6px; margin-top: 8px; }
-    .stat-circle-num { font-size: 18px; font-weight: 800; color: var(--primary); }
-    .stat-circle-lbl { font-size: 9px; color: var(--text-muted); line-height: 1.1; }
+    .bento-journey {
+      background: #FFFFFF;
+      border: 1px solid #E2E8F0;
+    }
+
+    .bento-journey h3 {
+      font-size: 13px;
+      font-weight: 800;
+      color: var(--primary-dark);
+    }
+
+    .bento-journey p {
+      font-size: 10px;
+      color: var(--text-muted);
+      margin-top: 2px;
+    }
+
+    .journey-stat-ring {
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      margin-top: 8px;
+    }
+
+    .stat-circle-num {
+      font-size: 18px;
+      font-weight: 800;
+      color: var(--primary);
+    }
+
+    .stat-circle-lbl {
+      font-size: 9px;
+      color: var(--text-muted);
+      line-height: 1.1;
+    }
 
     .bento-service {
       background: linear-gradient(145deg, #0F172A 0%, #1E293B 100%);
       color: #FFFFFF;
       border: 1px solid #334155;
     }
-    .bento-service h3 { font-size: 13px; font-weight: 800; color: #38BDF8; }
-    .bento-service p { font-size: 10px; color: #94A3B8; margin-top: 2px; }
+
+    .bento-service h3 {
+      font-size: 13px;
+      font-weight: 800;
+      color: #38BDF8;
+    }
+
+    .bento-service p {
+      font-size: 10px;
+      color: #94A3B8;
+      margin-top: 2px;
+    }
+
     .service-badge-pill {
       font-size: 9px;
       font-weight: 700;
@@ -1062,9 +1263,11 @@
       cursor: pointer;
       transition: transform 0.15s;
     }
+
     .daily-verse-card:hover {
       transform: translateY(-2px);
     }
+
     .daily-verse-card .verse-tag {
       display: inline-flex;
       align-items: center;
@@ -1077,6 +1280,7 @@
       border-radius: 6px;
       margin-bottom: 8px;
     }
+
     .verse-arabic {
       font-family: 'Amiri', serif;
       font-size: 17px;
@@ -1086,12 +1290,14 @@
       line-height: 1.6;
       margin-bottom: 6px;
     }
+
     .verse-turkish {
       font-size: 12px;
       color: var(--text-main);
       font-style: italic;
       line-height: 1.45;
     }
+
     .verse-ref {
       font-size: 10.5px;
       color: var(--text-muted);
@@ -1112,7 +1318,10 @@
       color: var(--primary-dark);
       font-weight: 600;
     }
-    .daily-summary-strip .dot-sep { color: #9CA3AF; }
+
+    .daily-summary-strip .dot-sep {
+      color: #9CA3AF;
+    }
 
     /* ==========================================================================
        KEŞFET (TAB 2) & FILTER CHIPS
@@ -1120,10 +1329,12 @@
     .explore-header {
       padding: 12px 18px 10px 18px;
     }
+
     .search-input-wrap {
       position: relative;
       margin-bottom: 12px;
     }
+
     .search-input-wrap input {
       width: 100%;
       height: 44px;
@@ -1137,9 +1348,11 @@
       outline: none;
       box-shadow: 0 2px 8px rgba(0, 0, 0, 0.03);
     }
+
     .search-input-wrap input:focus {
       border-color: var(--primary);
     }
+
     .search-input-wrap svg {
       position: absolute;
       left: 14px;
@@ -1156,9 +1369,11 @@
       overflow-x: auto;
       padding-bottom: 4px;
     }
+
     .filter-pills-row::-webkit-scrollbar {
       display: none;
     }
+
     .filter-pill {
       background: #FFFFFF;
       border: 1px solid var(--border-subtle);
@@ -1171,11 +1386,13 @@
       cursor: pointer;
       transition: all 0.15s ease;
     }
+
     .filter-pill:hover {
       border-color: var(--primary);
       color: var(--primary);
       transform: translateY(-1px);
     }
+
     .filter-pill.active {
       background: var(--primary);
       color: #FFFFFF;
@@ -1195,9 +1412,11 @@
       overflow: hidden;
       transition: transform 0.2s ease;
     }
+
     .ai-banner-card:hover {
       transform: translateY(-2px);
     }
+
     .ai-banner-card::after {
       content: "✨";
       position: absolute;
@@ -1206,6 +1425,7 @@
       font-size: 48px;
       opacity: 0.2;
     }
+
     .ai-badge {
       display: inline-flex;
       align-items: center;
@@ -1218,8 +1438,20 @@
       color: #E0E7FF;
       margin-bottom: 6px;
     }
-    .ai-banner-card h3 { font-size: 16px; font-weight: 800; margin-bottom: 4px; }
-    .ai-banner-card p { font-size: 11px; color: #C7D2FE; line-height: 1.4; max-width: 80%; }
+
+    .ai-banner-card h3 {
+      font-size: 16px;
+      font-weight: 800;
+      margin-bottom: 4px;
+    }
+
+    .ai-banner-card p {
+      font-size: 11px;
+      color: #C7D2FE;
+      line-height: 1.4;
+      max-width: 80%;
+    }
+
     .ai-source-note {
       font-size: 9.5px;
       color: #A5B4FC;
@@ -1235,9 +1467,11 @@
       overflow-x: auto;
       padding: 0 18px 16px 18px;
     }
+
     .books-scroll-row::-webkit-scrollbar {
       display: none;
     }
+
     .book-card {
       flex: 0 0 130px;
       background: #FFFFFF;
@@ -1248,10 +1482,12 @@
       cursor: pointer;
       transition: all 0.2s ease;
     }
+
     .book-card:hover {
       transform: translateY(-3px);
       box-shadow: var(--shadow-card-hover);
     }
+
     .book-cover {
       height: 125px;
       display: flex;
@@ -1263,17 +1499,59 @@
       color: #FFFFFF;
       position: relative;
     }
-    .book-cover.quran { background: linear-gradient(135deg, #064E3B 0%, #047857 100%); }
-    .book-cover.riyaz { background: linear-gradient(135deg, #7C2D12 0%, #B45309 100%); }
-    .book-cover.risale { background: linear-gradient(135deg, #1E3A8A 0%, #2563EB 100%); }
-    .book-cover.cevsen { background: linear-gradient(135deg, #4C1D95 0%, #7C3AED 100%); }
-    .book-cover.hadis { background: linear-gradient(135deg, #831843 0%, #DB2777 100%); }
-    .book-cover.sozluk { background: linear-gradient(135deg, #0F766E 0%, #0D9488 100%); }
-    .book-cover .icon-lg { font-size: 26px; margin-bottom: 4px; }
-    .book-cover h4 { font-size: 11px; font-weight: 700; line-height: 1.2; }
-    .book-info { padding: 8px 10px; }
-    .book-info .book-title { font-size: 11.5px; font-weight: 700; color: var(--text-main); white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
-    .book-info .book-author { font-size: 9.5px; color: var(--text-muted); }
+
+    .book-cover.quran {
+      background: linear-gradient(135deg, #064E3B 0%, #047857 100%);
+    }
+
+    .book-cover.riyaz {
+      background: linear-gradient(135deg, #7C2D12 0%, #B45309 100%);
+    }
+
+    .book-cover.risale {
+      background: linear-gradient(135deg, #1E3A8A 0%, #2563EB 100%);
+    }
+
+    .book-cover.cevsen {
+      background: linear-gradient(135deg, #4C1D95 0%, #7C3AED 100%);
+    }
+
+    .book-cover.hadis {
+      background: linear-gradient(135deg, #831843 0%, #DB2777 100%);
+    }
+
+    .book-cover.sozluk {
+      background: linear-gradient(135deg, #0F766E 0%, #0D9488 100%);
+    }
+
+    .book-cover .icon-lg {
+      font-size: 26px;
+      margin-bottom: 4px;
+    }
+
+    .book-cover h4 {
+      font-size: 11px;
+      font-weight: 700;
+      line-height: 1.2;
+    }
+
+    .book-info {
+      padding: 8px 10px;
+    }
+
+    .book-info .book-title {
+      font-size: 11.5px;
+      font-weight: 700;
+      color: var(--text-main);
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+    }
+
+    .book-info .book-author {
+      font-size: 9.5px;
+      color: var(--text-muted);
+    }
 
     .content-feed-list {
       padding: 0 18px 20px 18px;
@@ -1281,6 +1559,7 @@
       flex-direction: column;
       gap: 10px;
     }
+
     .feed-card {
       background: #FFFFFF;
       border-radius: 14px;
@@ -1292,10 +1571,12 @@
       cursor: pointer;
       transition: all 0.15s ease;
     }
+
     .feed-card:hover {
       transform: translateY(-2px);
       box-shadow: var(--shadow-card-hover);
     }
+
     .feed-thumb {
       width: 70px;
       height: 70px;
@@ -1308,6 +1589,7 @@
       flex-shrink: 0;
       position: relative;
     }
+
     .feed-thumb .play-tag {
       position: absolute;
       width: 22px;
@@ -1320,17 +1602,20 @@
       color: #FFFFFF;
       font-size: 10px;
     }
+
     .feed-body {
       flex: 1;
       display: flex;
       flex-direction: column;
       justify-content: space-between;
     }
+
     .feed-badge-row {
       display: flex;
       justify-content: space-between;
       align-items: center;
     }
+
     .feed-source-tag {
       font-size: 9.5px;
       font-weight: 700;
@@ -1339,14 +1624,32 @@
       padding: 2px 6px;
       border-radius: 4px;
     }
-    .feed-time { font-size: 9.5px; color: var(--text-light); }
-    .feed-body h4 { font-size: 12.5px; font-weight: 700; color: var(--text-main); line-height: 1.3; margin: 3px 0; }
-    .feed-body p { font-size: 10px; color: var(--text-muted); }
+
+    .feed-time {
+      font-size: 9.5px;
+      color: var(--text-light);
+    }
+
+    .feed-body h4 {
+      font-size: 12.5px;
+      font-weight: 700;
+      color: var(--text-main);
+      line-height: 1.3;
+      margin: 3px 0;
+    }
+
+    .feed-body p {
+      font-size: 10px;
+      color: var(--text-muted);
+    }
 
     /* ==========================================================================
        YOLCULUK (TAB 3)
        ========================================================================== */
-    .journey-view-container { padding: 14px 18px 20px 18px; }
+    .journey-view-container {
+      padding: 14px 18px 20px 18px;
+    }
+
     .stats-overview-box {
       background: linear-gradient(135deg, #07211B 0%, #0D382E 100%);
       border-radius: var(--radius-card);
@@ -1355,8 +1658,21 @@
       margin-bottom: 16px;
       box-shadow: 0 10px 24px -4px rgba(7, 33, 27, 0.35);
     }
-    .stats-overview-title { font-size: 12px; color: var(--accent-gold-light); font-weight: 700; text-transform: uppercase; letter-spacing: 0.6px; }
-    .stats-overview-head { font-size: 20px; font-weight: 800; margin: 2px 0 14px 0; }
+
+    .stats-overview-title {
+      font-size: 12px;
+      color: var(--accent-gold-light);
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.6px;
+    }
+
+    .stats-overview-head {
+      font-size: 20px;
+      font-weight: 800;
+      margin: 2px 0 14px 0;
+    }
+
     .stats-metrics-grid {
       display: grid;
       grid-template-columns: repeat(3, 1fr);
@@ -1365,8 +1681,18 @@
       border-top: 1px solid rgba(255, 255, 255, 0.15);
       text-align: center;
     }
-    .metric-col .val { font-size: 19px; font-weight: 800; color: #FCD34D; }
-    .metric-col .lbl { font-size: 10px; color: rgba(255, 255, 255, 0.7); margin-top: 2px; }
+
+    .metric-col .val {
+      font-size: 19px;
+      font-weight: 800;
+      color: #FCD34D;
+    }
+
+    .metric-col .lbl {
+      font-size: 10px;
+      color: rgba(255, 255, 255, 0.7);
+      margin-top: 2px;
+    }
 
     .chart-card {
       background: #FFFFFF;
@@ -1376,8 +1702,20 @@
       box-shadow: var(--shadow-card);
       margin-bottom: 16px;
     }
-    .chart-header { display: flex; justify-content: space-between; align-items: center; margin-bottom: 14px; }
-    .chart-header h3 { font-size: 14px; font-weight: 800; color: var(--primary-dark); }
+
+    .chart-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 14px;
+    }
+
+    .chart-header h3 {
+      font-size: 14px;
+      font-weight: 800;
+      color: var(--primary-dark);
+    }
+
     .chart-header .filter-select {
       font-size: 11px;
       font-weight: 600;
@@ -1387,6 +1725,7 @@
       border-radius: 6px;
       cursor: pointer;
     }
+
     .bar-chart-container {
       display: flex;
       justify-content: space-between;
@@ -1395,7 +1734,15 @@
       padding: 0 6px 6px 6px;
       border-bottom: 1px solid #E2E8F0;
     }
-    .bar-col { display: flex; flex-direction: column; align-items: center; gap: 6px; flex: 1; }
+
+    .bar-col {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 6px;
+      flex: 1;
+    }
+
     .bar-col .bar-track {
       width: 14px;
       height: 80px;
@@ -1405,15 +1752,28 @@
       align-items: flex-end;
       overflow: hidden;
     }
+
     .bar-col .bar-fill {
       width: 100%;
       background: linear-gradient(180deg, #10B981 0%, #059669 100%);
       border-radius: 8px;
       transition: height 0.5s ease;
     }
-    .bar-col.today .bar-fill { background: linear-gradient(180deg, #F59E0B 0%, #D97706 100%); }
-    .bar-col .day-label { font-size: 10px; font-weight: 600; color: var(--text-muted); }
-    .bar-col.today .day-label { color: var(--primary); font-weight: 800; }
+
+    .bar-col.today .bar-fill {
+      background: linear-gradient(180deg, #F59E0B 0%, #D97706 100%);
+    }
+
+    .bar-col .day-label {
+      font-size: 10px;
+      font-weight: 600;
+      color: var(--text-muted);
+    }
+
+    .bar-col.today .day-label {
+      color: var(--primary);
+      font-weight: 800;
+    }
 
     .badges-grid {
       display: grid;
@@ -1421,6 +1781,7 @@
       gap: 10px;
       margin-bottom: 16px;
     }
+
     .badge-item-card {
       background: #FFFFFF;
       border-radius: 14px;
@@ -1432,7 +1793,12 @@
       gap: 10px;
       cursor: pointer;
     }
-    .badge-item-card.locked { opacity: 0.55; background: #F8FAFC; }
+
+    .badge-item-card.locked {
+      opacity: 0.55;
+      background: #F8FAFC;
+    }
+
     .badge-icon-box {
       width: 38px;
       height: 38px;
@@ -1444,11 +1810,30 @@
       font-size: 18px;
       flex-shrink: 0;
     }
-    .badge-item-card.locked .badge-icon-box { background: #E2E8F0; filter: grayscale(1); }
-    .badge-meta h4 { font-size: 11.5px; font-weight: 700; color: var(--text-main); }
-    .badge-meta p { font-size: 9.5px; color: var(--text-muted); margin-top: 1px; }
 
-    .history-list { display: flex; flex-direction: column; gap: 8px; }
+    .badge-item-card.locked .badge-icon-box {
+      background: #E2E8F0;
+      filter: grayscale(1);
+    }
+
+    .badge-meta h4 {
+      font-size: 11.5px;
+      font-weight: 700;
+      color: var(--text-main);
+    }
+
+    .badge-meta p {
+      font-size: 9.5px;
+      color: var(--text-muted);
+      margin-top: 1px;
+    }
+
+    .history-list {
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+    }
+
     .history-row {
       background: #FFFFFF;
       border-radius: 12px;
@@ -1458,9 +1843,26 @@
       justify-content: space-between;
       align-items: center;
     }
-    .history-date { font-size: 11.5px; font-weight: 700; color: var(--text-main); }
-    .history-desc { font-size: 10px; color: var(--text-muted); }
-    .history-score { font-size: 11.5px; font-weight: 800; color: #059669; background: #ECFDF5; padding: 3px 8px; border-radius: 6px; }
+
+    .history-date {
+      font-size: 11.5px;
+      font-weight: 700;
+      color: var(--text-main);
+    }
+
+    .history-desc {
+      font-size: 10px;
+      color: var(--text-muted);
+    }
+
+    .history-score {
+      font-size: 11.5px;
+      font-weight: 800;
+      color: #059669;
+      background: #ECFDF5;
+      padding: 3px 8px;
+      border-radius: 6px;
+    }
 
     /* ==========================================================================
        TOPLULUK & HİZMET (TAB 4)
@@ -1471,8 +1873,20 @@
       min-height: 100%;
       padding: 12px 18px 24px 18px;
     }
-    .akademi-header { display: flex; justify-content: space-between; align-items: center; margin-bottom: 14px; }
-    .akademi-logo-box { display: flex; align-items: center; gap: 8px; }
+
+    .akademi-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 14px;
+    }
+
+    .akademi-logo-box {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+
     .akademi-logo-circle {
       width: 32px;
       height: 32px;
@@ -1486,8 +1900,19 @@
       color: #FFFFFF;
       box-shadow: 0 0 12px rgba(56, 189, 248, 0.5);
     }
-    .akademi-title-group h1 { font-size: 16px; font-weight: 800; color: #FFFFFF; letter-spacing: -0.3px; }
-    .akademi-title-group p { font-size: 10px; color: #94A3B8; }
+
+    .akademi-title-group h1 {
+      font-size: 16px;
+      font-weight: 800;
+      color: #FFFFFF;
+      letter-spacing: -0.3px;
+    }
+
+    .akademi-title-group p {
+      font-size: 10px;
+      color: #94A3B8;
+    }
+
     .volunteer-level-badge {
       background: rgba(56, 189, 248, 0.15);
       border: 1px solid rgba(56, 189, 248, 0.3);
@@ -1506,9 +1931,25 @@
       margin-bottom: 16px;
       box-shadow: 0 10px 25px -4px rgba(0, 0, 0, 0.4);
     }
-    .service-hours-row { display: flex; justify-content: space-between; align-items: center; margin-bottom: 12px; }
-    .service-hours-num { font-size: 26px; font-weight: 800; color: #38BDF8; }
-    .service-hours-lbl { font-size: 11px; color: #94A3B8; }
+
+    .service-hours-row {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 12px;
+    }
+
+    .service-hours-num {
+      font-size: 26px;
+      font-weight: 800;
+      color: #38BDF8;
+    }
+
+    .service-hours-lbl {
+      font-size: 11px;
+      color: #94A3B8;
+    }
+
     .service-goal-btn {
       background: #0284C7;
       color: #FFFFFF;
@@ -1519,12 +1960,41 @@
       font-weight: 700;
       cursor: pointer;
     }
-    .service-progress-wrap { background: rgba(255, 255, 255, 0.1); height: 8px; border-radius: 999px; overflow: hidden; margin-bottom: 6px; }
-    .service-progress-fill { height: 100%; background: linear-gradient(90deg, #0284C7 0%, #38BDF8 100%); width: 74%; border-radius: 999px; }
-    .service-progress-note { font-size: 9.5px; color: #64748B; text-align: right; }
 
-    .tasks-header { display: flex; justify-content: space-between; align-items: center; margin-bottom: 10px; }
-    .tasks-header h3 { font-size: 13.5px; font-weight: 700; color: #E2E8F0; }
+    .service-progress-wrap {
+      background: rgba(255, 255, 255, 0.1);
+      height: 8px;
+      border-radius: 999px;
+      overflow: hidden;
+      margin-bottom: 6px;
+    }
+
+    .service-progress-fill {
+      height: 100%;
+      background: linear-gradient(90deg, #0284C7 0%, #38BDF8 100%);
+      width: 74%;
+      border-radius: 999px;
+    }
+
+    .service-progress-note {
+      font-size: 9.5px;
+      color: #64748B;
+      text-align: right;
+    }
+
+    .tasks-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 10px;
+    }
+
+    .tasks-header h3 {
+      font-size: 13.5px;
+      font-weight: 700;
+      color: #E2E8F0;
+    }
+
     .task-item-row {
       background: #1E293B;
       border: 1px solid rgba(255, 255, 255, 0.05);
@@ -1537,8 +2007,17 @@
       cursor: pointer;
       transition: all 0.15s ease;
     }
-    .task-item-row:hover { background: #273549; }
-    .task-left { display: flex; align-items: center; gap: 10px; }
+
+    .task-item-row:hover {
+      background: #273549;
+    }
+
+    .task-left {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+
     .task-check-box {
       width: 20px;
       height: 20px;
@@ -1549,16 +2028,54 @@
       justify-content: center;
       transition: all 0.2s;
     }
-    .task-item-row.completed .task-check-box { background: #10B981; border-color: #10B981; }
-    .task-meta h4 { font-size: 11.5px; font-weight: 600; color: #F8FAFC; }
-    .task-item-row.completed .task-meta h4 { text-decoration: line-through; color: #64748B; }
-    .task-meta p { font-size: 9.5px; color: #94A3B8; }
-    .task-tag { font-size: 9px; font-weight: 700; padding: 3px 6px; border-radius: 4px; }
-    .tag-kitap { background: rgba(234, 88, 12, 0.2); color: #FB923C; }
-    .tag-seminer { background: rgba(14, 165, 233, 0.2); color: #38BDF8; }
-    .tag-medya { background: rgba(168, 85, 247, 0.2); color: #C084FC; }
 
-    .forum-feed { margin-top: 16px; }
+    .task-item-row.completed .task-check-box {
+      background: #10B981;
+      border-color: #10B981;
+    }
+
+    .task-meta h4 {
+      font-size: 11.5px;
+      font-weight: 600;
+      color: #F8FAFC;
+    }
+
+    .task-item-row.completed .task-meta h4 {
+      text-decoration: line-through;
+      color: #64748B;
+    }
+
+    .task-meta p {
+      font-size: 9.5px;
+      color: #94A3B8;
+    }
+
+    .task-tag {
+      font-size: 9px;
+      font-weight: 700;
+      padding: 3px 6px;
+      border-radius: 4px;
+    }
+
+    .tag-kitap {
+      background: rgba(234, 88, 12, 0.2);
+      color: #FB923C;
+    }
+
+    .tag-seminer {
+      background: rgba(14, 165, 233, 0.2);
+      color: #38BDF8;
+    }
+
+    .tag-medya {
+      background: rgba(168, 85, 247, 0.2);
+      color: #C084FC;
+    }
+
+    .forum-feed {
+      margin-top: 16px;
+    }
+
     .forum-item {
       background: #1E293B;
       border-radius: 12px;
@@ -1567,13 +2084,28 @@
       border-left: 3px solid #38BDF8;
       cursor: pointer;
     }
-    .forum-item h4 { font-size: 12px; font-weight: 700; color: #FFFFFF; margin-bottom: 4px; }
-    .forum-item-foot { display: flex; justify-content: space-between; font-size: 9.5px; color: #94A3B8; }
+
+    .forum-item h4 {
+      font-size: 12px;
+      font-weight: 700;
+      color: #FFFFFF;
+      margin-bottom: 4px;
+    }
+
+    .forum-item-foot {
+      display: flex;
+      justify-content: space-between;
+      font-size: 9.5px;
+      color: #94A3B8;
+    }
 
     /* ==========================================================================
        BEN (TAB 5)
        ========================================================================== */
-    .profile-container { padding: 14px 18px 20px 18px; }
+    .profile-container {
+      padding: 14px 18px 20px 18px;
+    }
+
     .profile-card-top {
       background: #FFFFFF;
       border-radius: var(--radius-card);
@@ -1585,6 +2117,7 @@
       gap: 14px;
       margin-bottom: 16px;
     }
+
     .profile-avatar-wrap {
       width: 58px;
       height: 58px;
@@ -1599,8 +2132,19 @@
       border: 2px solid var(--accent-gold);
       flex-shrink: 0;
     }
-    .profile-name-box h2 { font-size: 16px; font-weight: 800; color: var(--primary-dark); }
-    .profile-name-box p { font-size: 11px; color: var(--text-muted); margin-top: 1px; }
+
+    .profile-name-box h2 {
+      font-size: 16px;
+      font-weight: 800;
+      color: var(--primary-dark);
+    }
+
+    .profile-name-box p {
+      font-size: 11px;
+      color: var(--text-muted);
+      margin-top: 1px;
+    }
+
     .profile-role-badge {
       display: inline-flex;
       align-items: center;
@@ -1622,6 +2166,7 @@
       box-shadow: var(--shadow-card);
       margin-bottom: 14px;
     }
+
     .settings-group-title {
       font-size: 11px;
       font-weight: 700;
@@ -1630,6 +2175,7 @@
       letter-spacing: 0.5px;
       padding: 12px 16px 6px 16px;
     }
+
     .settings-row {
       display: flex;
       align-items: center;
@@ -1639,9 +2185,21 @@
       cursor: pointer;
       transition: background 0.15s;
     }
-    .settings-row:last-child { border-bottom: none; }
-    .settings-row:hover { background: #F8FAFC; }
-    .settings-left { display: flex; align-items: center; gap: 12px; }
+
+    .settings-row:last-child {
+      border-bottom: none;
+    }
+
+    .settings-row:hover {
+      background: #F8FAFC;
+    }
+
+    .settings-left {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+
     .settings-icon {
       width: 32px;
       height: 32px;
@@ -1653,8 +2211,20 @@
       font-size: 15px;
       color: var(--primary);
     }
-    .settings-title { font-size: 12.5px; font-weight: 600; color: var(--text-main); }
-    .settings-right { display: flex; align-items: center; gap: 6px; font-size: 11.5px; color: var(--text-light); }
+
+    .settings-title {
+      font-size: 12.5px;
+      font-weight: 600;
+      color: var(--text-main);
+    }
+
+    .settings-right {
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      font-size: 11.5px;
+      color: var(--text-light);
+    }
 
     /* ==========================================================================
        MODALS & OVERLAYS (ALL NESTED INSIDE PHONE SIMULATOR FOR NATIVE FEEL)
@@ -1674,10 +2244,12 @@
       opacity: 0;
       transition: opacity 0.25s ease;
     }
+
     .modal-overlay.active {
       display: flex;
       opacity: 1;
     }
+
     .modal-sheet {
       width: 100%;
       background: #FFFFFF;
@@ -1689,9 +2261,11 @@
       transition: transform 0.3s cubic-bezier(0.32, 1.25, 0.32, 1);
       box-shadow: 0 -10px 30px rgba(0, 0, 0, 0.25);
     }
+
     .modal-overlay.active .modal-sheet {
       transform: translateY(0);
     }
+
     .modal-handle {
       width: 40px;
       height: 4px;
@@ -1699,17 +2273,20 @@
       border-radius: 999px;
       margin: 0 auto 16px auto;
     }
+
     .modal-head {
       display: flex;
       justify-content: space-between;
       align-items: center;
       margin-bottom: 14px;
     }
+
     .modal-head h3 {
       font-size: 16px;
       font-weight: 800;
       color: var(--primary-dark);
     }
+
     .modal-close-btn {
       background: #F1F5F9;
       border: none;
@@ -1731,6 +2308,7 @@
       gap: 12px;
       padding: 10px 0 20px 0;
     }
+
     .all-book-item {
       background: #FFFFFF;
       border: 1px solid var(--border-subtle);
@@ -1742,10 +2320,12 @@
       flex-direction: column;
       transition: all 0.2s ease;
     }
+
     .all-book-item:hover {
       transform: translateY(-2px);
       box-shadow: var(--shadow-card-hover);
     }
+
     .all-book-cover {
       height: 90px;
       display: flex;
@@ -1758,6 +2338,7 @@
       font-size: 11px;
       font-weight: 700;
     }
+
     .all-book-body {
       padding: 8px 10px;
       flex: 1;
@@ -1765,16 +2346,19 @@
       flex-direction: column;
       justify-content: space-between;
     }
+
     .all-book-body h4 {
       font-size: 11.5px;
       font-weight: 700;
       color: var(--text-main);
       margin-bottom: 2px;
     }
+
     .all-book-body p {
       font-size: 9.5px;
       color: var(--text-muted);
     }
+
     .all-book-foot {
       display: flex;
       justify-content: space-between;
@@ -1783,11 +2367,13 @@
       padding-top: 6px;
       border-top: 1px dashed var(--border-subtle);
     }
+
     .all-book-pages {
       font-size: 9px;
       font-weight: 700;
       color: var(--primary);
     }
+
     .all-book-read-btn {
       background: var(--primary-soft);
       color: var(--primary);
@@ -1805,6 +2391,7 @@
       display: flex;
       flex-direction: column;
     }
+
     .notif-tabs-filter {
       display: flex;
       gap: 6px;
@@ -1813,7 +2400,11 @@
       border-bottom: 1px solid var(--border-subtle);
       margin-bottom: 12px;
     }
-    .notif-tabs-filter::-webkit-scrollbar { display: none; }
+
+    .notif-tabs-filter::-webkit-scrollbar {
+      display: none;
+    }
+
     .notif-tab-chip {
       background: #F1F5F9;
       color: var(--text-muted);
@@ -1826,7 +2417,12 @@
       cursor: pointer;
       transition: all 0.15s;
     }
-    .notif-tab-chip.active { background: var(--primary); color: #FFFFFF; }
+
+    .notif-tab-chip.active {
+      background: var(--primary);
+      color: #FFFFFF;
+    }
+
     .notif-list-box {
       flex: 1;
       overflow-y: auto;
@@ -1835,6 +2431,7 @@
       gap: 10px;
       padding-right: 2px;
     }
+
     .notif-card-item {
       background: #FFFFFF;
       border: 1px solid var(--border-subtle);
@@ -1845,9 +2442,24 @@
       position: relative;
       transition: all 0.2s ease;
     }
-    .notif-card-item.unread { background: #F4FAF8; border-color: #A7F3D0; }
-    .notif-card-item:hover { transform: translateY(-2px); box-shadow: var(--shadow-card-hover); }
-    .notif-card-header { display: flex; justify-content: space-between; align-items: center; margin-bottom: 6px; }
+
+    .notif-card-item.unread {
+      background: #F4FAF8;
+      border-color: #A7F3D0;
+    }
+
+    .notif-card-item:hover {
+      transform: translateY(-2px);
+      box-shadow: var(--shadow-card-hover);
+    }
+
+    .notif-card-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 6px;
+    }
+
     .notif-category-tag {
       font-size: 9.5px;
       font-weight: 800;
@@ -1859,16 +2471,56 @@
       text-transform: uppercase;
       letter-spacing: 0.3px;
     }
-    .tag-tarih { background: #FEF3C7; color: #92400E; }
-    .tag-ayet { background: #ECFDF5; color: #065F46; }
-    .tag-hadis { background: #EFF6FF; color: #1E40AF; }
-    .tag-risale { background: #F5F3FF; color: #5B21B6; }
-    .tag-alim { background: #FFF7ED; color: #9A3412; }
-    .tag-dua { background: #FDF2F8; color: #9D174D; }
 
-    .notif-time-ago { font-size: 10px; color: var(--text-light); }
-    .notif-card-title { font-size: 13px; font-weight: 800; color: var(--primary-dark); margin-bottom: 4px; line-height: 1.3; }
-    .notif-card-body { font-size: 11.5px; color: var(--text-main); line-height: 1.45; }
+    .tag-tarih {
+      background: #FEF3C7;
+      color: #92400E;
+    }
+
+    .tag-ayet {
+      background: #ECFDF5;
+      color: #065F46;
+    }
+
+    .tag-hadis {
+      background: #EFF6FF;
+      color: #1E40AF;
+    }
+
+    .tag-risale {
+      background: #F5F3FF;
+      color: #5B21B6;
+    }
+
+    .tag-alim {
+      background: #FFF7ED;
+      color: #9A3412;
+    }
+
+    .tag-dua {
+      background: #FDF2F8;
+      color: #9D174D;
+    }
+
+    .notif-time-ago {
+      font-size: 10px;
+      color: var(--text-light);
+    }
+
+    .notif-card-title {
+      font-size: 13px;
+      font-weight: 800;
+      color: var(--primary-dark);
+      margin-bottom: 4px;
+      line-height: 1.3;
+    }
+
+    .notif-card-body {
+      font-size: 11.5px;
+      color: var(--text-main);
+      line-height: 1.45;
+    }
+
     .notif-card-arabic {
       font-family: 'Amiri', serif;
       font-size: 16px;
@@ -1878,6 +2530,7 @@
       margin: 6px 0;
       line-height: 1.5;
     }
+
     .notif-card-footer {
       display: flex;
       justify-content: space-between;
@@ -1886,8 +2539,18 @@
       padding-top: 8px;
       border-top: 1px dashed var(--border-subtle);
     }
-    .notif-source-badge { font-size: 10px; color: var(--text-muted); font-weight: 600; }
-    .notif-action-btns { display: flex; gap: 6px; }
+
+    .notif-source-badge {
+      font-size: 10px;
+      color: var(--text-muted);
+      font-weight: 600;
+    }
+
+    .notif-action-btns {
+      display: flex;
+      gap: 6px;
+    }
+
     .notif-act-btn {
       background: #F1F5F9;
       border: none;
@@ -1899,12 +2562,31 @@
       cursor: pointer;
       transition: background 0.15s;
     }
-    .notif-act-btn:hover { background: var(--primary-soft); }
+
+    .notif-act-btn:hover {
+      background: var(--primary-soft);
+    }
 
     /* Zikirmatik Modal */
-    .dhikr-container { text-align: center; padding: 10px 0; }
-    .dhikr-title { font-size: 14px; font-weight: 700; color: var(--primary); }
-    .dhikr-counter-display { font-size: 56px; font-weight: 800; color: var(--primary-dark); margin: 14px 0; font-variant-numeric: tabular-nums; }
+    .dhikr-container {
+      text-align: center;
+      padding: 10px 0;
+    }
+
+    .dhikr-title {
+      font-size: 14px;
+      font-weight: 700;
+      color: var(--primary);
+    }
+
+    .dhikr-counter-display {
+      font-size: 56px;
+      font-weight: 800;
+      color: var(--primary-dark);
+      margin: 14px 0;
+      font-variant-numeric: tabular-nums;
+    }
+
     .dhikr-tap-button {
       width: 120px;
       height: 120px;
@@ -1922,10 +2604,17 @@
       cursor: pointer;
       transition: transform 0.1s ease;
     }
-    .dhikr-tap-button:active { transform: scale(0.92); }
+
+    .dhikr-tap-button:active {
+      transform: scale(0.92);
+    }
 
     /* Qibla Modal */
-    .qibla-compass-wrap { text-align: center; padding: 14px 0; }
+    .qibla-compass-wrap {
+      text-align: center;
+      padding: 14px 0;
+    }
+
     .compass-dial {
       width: 170px;
       height: 170px;
@@ -1938,6 +2627,7 @@
       justify-content: center;
       background: #F8FAFC;
     }
+
     .compass-needle {
       position: absolute;
       width: 4px;
@@ -1945,20 +2635,82 @@
       background: linear-gradient(to bottom, #EF4444 50%, #3B82F6 50%);
       transform: rotate(142deg);
       border-radius: 4px;
-      box-shadow: 0 2px 8px rgba(0,0,0,0.2);
+      box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
       transition: transform 1s cubic-bezier(0.34, 1.56, 0.64, 1);
     }
-    .qibla-kaaba-icon { font-size: 24px; z-index: 2; }
+
+    .qibla-kaaba-icon {
+      font-size: 24px;
+      z-index: 2;
+    }
 
     /* AI Chat Modal */
-    .ai-chat-sheet { height: 80%; display: flex; flex-direction: column; }
-    .chat-messages-box { flex: 1; overflow-y: auto; display: flex; flex-direction: column; gap: 10px; padding-bottom: 10px; }
-    .chat-msg { max-width: 85%; padding: 10px 14px; border-radius: 16px; font-size: 12px; line-height: 1.45; }
-    .chat-msg.bot { background: #F1F5F9; color: #1E293B; align-self: flex-start; border-bottom-left-radius: 4px; }
-    .chat-msg.user { background: var(--primary); color: #FFFFFF; align-self: flex-end; border-bottom-right-radius: 4px; }
-    .chat-input-row { display: flex; gap: 8px; padding-top: 10px; border-top: 1px solid var(--border-subtle); }
-    .chat-input-row input { flex: 1; height: 40px; border: 1px solid var(--border-subtle); border-radius: 12px; padding: 0 12px; font-size: 12px; outline: none; }
-    .chat-send-btn { width: 40px; height: 40px; background: var(--primary); color: #FFFFFF; border: none; border-radius: 12px; cursor: pointer; display: flex; align-items: center; justify-content: center; }
+    .ai-chat-sheet {
+      height: 80%;
+      display: flex;
+      flex-direction: column;
+    }
+
+    .chat-messages-box {
+      flex: 1;
+      overflow-y: auto;
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+      padding-bottom: 10px;
+    }
+
+    .chat-msg {
+      max-width: 85%;
+      padding: 10px 14px;
+      border-radius: 16px;
+      font-size: 12px;
+      line-height: 1.45;
+    }
+
+    .chat-msg.bot {
+      background: #F1F5F9;
+      color: #1E293B;
+      align-self: flex-start;
+      border-bottom-left-radius: 4px;
+    }
+
+    .chat-msg.user {
+      background: var(--primary);
+      color: #FFFFFF;
+      align-self: flex-end;
+      border-bottom-right-radius: 4px;
+    }
+
+    .chat-input-row {
+      display: flex;
+      gap: 8px;
+      padding-top: 10px;
+      border-top: 1px solid var(--border-subtle);
+    }
+
+    .chat-input-row input {
+      flex: 1;
+      height: 40px;
+      border: 1px solid var(--border-subtle);
+      border-radius: 12px;
+      padding: 0 12px;
+      font-size: 12px;
+      outline: none;
+    }
+
+    .chat-send-btn {
+      width: 40px;
+      height: 40px;
+      background: var(--primary);
+      color: #FFFFFF;
+      border: none;
+      border-radius: 12px;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
 
     /* Toast Message */
     .toast-msg {
@@ -1978,7 +2730,11 @@
       pointer-events: none;
       transition: all 0.3s ease;
     }
-    .toast-msg.show { opacity: 1; transform: translateX(-50%) translateY(0); }
+
+    .toast-msg.show {
+      opacity: 1;
+      transform: translateX(-50%) translateY(0);
+    }
 
     /* Responsive Adaptation for smaller screens */
     @media (max-width: 1180px) {
@@ -1988,6 +2744,7 @@
         padding: 30px 10px;
         min-height: auto;
       }
+
       .right-demo-panel {
         position: static;
         transform: none;
@@ -1998,13 +2755,32 @@
     }
 
     @media (max-width: 440px) {
-      body { padding: 0; background: var(--app-bg); }
-      .main-layout-wrapper { padding: 0; }
-      .phone-simulator { width: 100vw; height: 100vh; max-height: 100vh; border-radius: 0; border: none; box-shadow: none; }
-      .desktop-decor, .right-demo-panel { display: none; }
+      body {
+        padding: 0;
+        background: var(--app-bg);
+      }
+
+      .main-layout-wrapper {
+        padding: 0;
+      }
+
+      .phone-simulator {
+        width: 100vw;
+        height: 100vh;
+        max-height: 100vh;
+        border-radius: 0;
+        border: none;
+        box-shadow: none;
+      }
+
+      .desktop-decor,
+      .right-demo-panel {
+        display: none;
+      }
     }
   </style>
 </head>
+
 <body>
 
   <!-- Ambient Glow -->
@@ -2021,7 +2797,8 @@
       <div class="phone-simulator" id="phoneContainer">
 
         <!-- Dynamic Island -->
-        <div class="dynamic-island-container" id="dynamicIsland" onclick="toggleDynamicIsland()" title="Dynamic Island: Tıkla ve genişlet">
+        <div class="dynamic-island-container" id="dynamicIsland" onclick="toggleDynamicIsland()"
+          title="Dynamic Island: Tıkla ve genişlet">
           <div class="island-cam"></div>
           <div class="island-speaker"></div>
           <div class="island-dot"></div>
@@ -2033,7 +2810,8 @@
                 <div style="font-size: 9px; color: #34D399;">02:44:12 kaldı</div>
               </div>
             </div>
-            <div style="font-size: 10px; background: rgba(255,255,255,0.2); padding: 3px 8px; border-radius: 6px; font-weight: 700;">
+            <div
+              style="font-size: 10px; background: rgba(255,255,255,0.2); padding: 3px 8px; border-radius: 6px; font-weight: 700;">
               İstanbul
             </div>
           </div>
@@ -2048,7 +2826,8 @@
               <span class="push-time">Şimdi</span>
             </div>
             <div class="push-title" id="pushTitle">Malazgirt Zaferi & Safer Ayı Hatırası</div>
-            <div class="push-snippet" id="pushSnippet">Sultan Alparslan'ın Cuma namazı sonrası beyaz kefeni kuşanarak İslam ordusuyla yaptığı tarihi dua ve zafer...</div>
+            <div class="push-snippet" id="pushSnippet">Sultan Alparslan'ın Cuma namazı sonrası beyaz kefeni kuşanarak
+              İslam ordusuyla yaptığı tarihi dua ve zafer...</div>
           </div>
         </div>
 
@@ -2056,9 +2835,18 @@
         <div class="status-bar" id="statusBar">
           <span id="liveTime">13:45</span>
           <div class="icons">
-            <svg viewBox="0 0 24 24"><path d="M12 3c-4.97 0-9 4.03-9 9 0 2.12.74 4.07 1.97 5.61L4.35 18.25c-.22.28-.18.69.1.91.28.22.69.18.91-.1l.66-.82C7.57 19.34 9.68 20 12 20s4.43-.66 5.98-1.76l.66.82c.22.28.63.32.91.1.28-.22.32-.63.1-.91l-.62-.64C20.26 16.07 21 14.12 21 12c0-4.97-4.03-9-9-9z"/></svg>
-            <svg viewBox="0 0 24 24"><path d="M12 4C7.31 4 3.07 5.9 0 8.98L12 21 24 8.98C20.93 5.9 16.69 4 12 4zm0 3.5c3.78 0 7.22 1.5 9.76 3.93L12 19.12 2.24 11.43C4.78 9 8.22 7.5 12 7.5z"/></svg>
-            <svg viewBox="0 0 24 24"><path d="M17 6H7c-1.1 0-2 .9-2 2v8c0 1.1.9 2 2 2h10c1.1 0 2-.9 2-2V8c0-1.1-.9-2-2-2zm-1 9H8V9h8v6zm4-5h1v4h-1v-4z"/></svg>
+            <svg viewBox="0 0 24 24">
+              <path
+                d="M12 3c-4.97 0-9 4.03-9 9 0 2.12.74 4.07 1.97 5.61L4.35 18.25c-.22.28-.18.69.1.91.28.22.69.18.91-.1l.66-.82C7.57 19.34 9.68 20 12 20s4.43-.66 5.98-1.76l.66.82c.22.28.63.32.91.1.28-.22.32-.63.1-.91l-.62-.64C20.26 16.07 21 14.12 21 12c0-4.97-4.03-9-9-9z" />
+            </svg>
+            <svg viewBox="0 0 24 24">
+              <path
+                d="M12 4C7.31 4 3.07 5.9 0 8.98L12 21 24 8.98C20.93 5.9 16.69 4 12 4zm0 3.5c3.78 0 7.22 1.5 9.76 3.93L12 19.12 2.24 11.43C4.78 9 8.22 7.5 12 7.5z" />
+            </svg>
+            <svg viewBox="0 0 24 24">
+              <path
+                d="M17 6H7c-1.1 0-2 .9-2 2v8c0 1.1.9 2 2 2h10c1.1 0 2-.9 2-2V8c0-1.1-.9-2-2-2zm-1 9H8V9h8v6zm4-5h1v4h-1v-4z" />
+            </svg>
           </div>
         </div>
 
@@ -2072,7 +2860,7 @@
                TAB 1: BUGÜN
                ==================================================================== -->
           <div class="tab-view active" id="tab-today">
-            
+
             <div class="header-top">
               <div class="user-greeting-box">
                 <h1>Esselamü aleyküm, Furkan 🌿</h1>
@@ -2080,8 +2868,12 @@
               </div>
               <div class="header-actions">
                 <!-- Bildirim Zili Butonu: Tıklandığında telefonun içinde bildirim merkezi açılır -->
-                <button class="action-icon-btn" onclick="openNotificationCenter()" title="Manevi Bildirim Merkezi (Tıkla)">
-                  <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M18 8A6 6 0 0 0 6 8c0 7-3 9-3 9h18s-3-2-3-9"></path><path d="M13.73 21a2 2 0 0 1-3.46 0"></path></svg>
+                <button class="action-icon-btn" onclick="openNotificationCenter()"
+                  title="Manevi Bildirim Merkezi (Tıkla)">
+                  <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2">
+                    <path d="M18 8A6 6 0 0 0 6 8c0 7-3 9-3 9h18s-3-2-3-9"></path>
+                    <path d="M13.73 21a2 2 0 0 1-3.46 0"></path>
+                  </svg>
                   <div class="badge-count" id="notifBadgeCount">6</div>
                 </button>
               </div>
@@ -2214,7 +3006,8 @@
 
               <div class="bento-card bento-service" onclick="switchTab('tab-community')">
                 <div>
-                  <span style="font-size: 9px; font-weight: 700; color: #38BDF8; letter-spacing: 0.5px;">XSİR AKADEMİ</span>
+                  <span style="font-size: 9px; font-weight: 700; color: #38BDF8; letter-spacing: 0.5px;">XSİR
+                    AKADEMİ</span>
                   <h3>Hizmet & Gönüllü</h3>
                   <p>2 Açık Görev Seni Bekliyor</p>
                 </div>
@@ -2244,11 +3037,15 @@
                TAB 2: KEŞFET
                ==================================================================== -->
           <div class="tab-view" id="tab-explore">
-            
+
             <div class="explore-header">
               <div class="search-input-wrap">
-                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="8"></circle><line x1="21" y1="21" x2="16.65" y2="16.65"></line></svg>
-                <input type="text" id="exploreSearchInput" placeholder="Ayet, Hadis, Risale veya konu ara…" oninput="filterBySearch(this.value)">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                  <circle cx="11" cy="11" r="8"></circle>
+                  <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
+                </svg>
+                <input type="text" id="exploreSearchInput" placeholder="Ayet, Hadis, Risale veya konu ara…"
+                  oninput="filterBySearch(this.value)">
               </div>
 
               <div class="filter-pills-row" id="exploreFilterChips">
@@ -2272,11 +3069,13 @@
 
             <div class="section-title-row" style="margin-top: 6px;">
               <h2>Manevi Kütüphane</h2>
-              <span class="section-link" id="btnAllBooks" onclick="openAllBooksModal()" style="background: var(--primary-soft); color: var(--primary); font-weight: 800;">Tümü (18) ❯</span>
+              <span class="section-link" id="btnAllBooks" onclick="openAllBooksModal()"
+                style="background: var(--primary-soft); color: var(--primary); font-weight: 800;">Tümü (18) ❯</span>
             </div>
 
             <div class="books-scroll-row" id="exploreBooksRow">
-              <div class="book-card" data-category="quran" onclick="openBookModal('Kur\'an-ı Kerim', 'Hafız Osman Hattı · Mealli', 'quran')">
+              <div class="book-card" data-category="quran"
+                onclick="openBookModal('Kur\'an-ı Kerim', 'Hafız Osman Hattı · Mealli', 'quran')">
                 <div class="book-cover quran">
                   <div class="icon-lg">📖</div>
                   <h4>Kur'an-ı<br>Kerim</h4>
@@ -2287,7 +3086,8 @@
                 </div>
               </div>
 
-              <div class="book-card" data-category="risale" onclick="openBookModal('Sözler', 'Bediüzzaman Said Nursi', 'risale')">
+              <div class="book-card" data-category="risale"
+                onclick="openBookModal('Sözler', 'Bediüzzaman Said Nursi', 'risale')">
                 <div class="book-cover risale">
                   <div class="icon-lg">📘</div>
                   <h4>Risale-i Nur<br>Külliyatı</h4>
@@ -2298,7 +3098,8 @@
                 </div>
               </div>
 
-              <div class="book-card" data-category="risale" onclick="openBookModal('Lem\'alar', 'Bediüzzaman Said Nursi', 'risale')">
+              <div class="book-card" data-category="risale"
+                onclick="openBookModal('Lem\'alar', 'Bediüzzaman Said Nursi', 'risale')">
                 <div class="book-cover risale" style="background: linear-gradient(135deg, #1E40AF 0%, #3B82F6 100%);">
                   <div class="icon-lg">✨</div>
                   <h4>Lem'alar<br>Mecmuası</h4>
@@ -2309,7 +3110,8 @@
                 </div>
               </div>
 
-              <div class="book-card" data-category="hadis" onclick="openBookModal('Riyazü\'s Salihin', 'İmam Nevevi', 'riyaz')">
+              <div class="book-card" data-category="hadis"
+                onclick="openBookModal('Riyazü\'s Salihin', 'İmam Nevevi', 'riyaz')">
                 <div class="book-cover riyaz">
                   <div class="icon-lg">📜</div>
                   <h4>Riyazü's<br>Salihin</h4>
@@ -2320,7 +3122,8 @@
                 </div>
               </div>
 
-              <div class="book-card" data-category="hadis" onclick="openBookModal('Sahih-i Buhârî Muhtasarı', 'İmam Buhari & Zebidi', 'hadis')">
+              <div class="book-card" data-category="hadis"
+                onclick="openBookModal('Sahih-i Buhârî Muhtasarı', 'İmam Buhari & Zebidi', 'hadis')">
                 <div class="book-cover hadis">
                   <div class="icon-lg">📚</div>
                   <h4>Sahih-i<br>Buhârî</h4>
@@ -2331,7 +3134,8 @@
                 </div>
               </div>
 
-              <div class="book-card" data-category="cevsen" onclick="openBookModal('Cevşen-ül Kebir', 'Büyük Zikir Mecmuası', 'cevsen')">
+              <div class="book-card" data-category="cevsen"
+                onclick="openBookModal('Cevşen-ül Kebir', 'Büyük Zikir Mecmuası', 'cevsen')">
                 <div class="book-cover cevsen">
                   <div class="icon-lg">📿</div>
                   <h4>Cevşen-ül<br>Kebir</h4>
@@ -2349,7 +3153,8 @@
             </div>
 
             <div class="content-feed-list" id="exploreFeedList">
-              <div class="feed-card" data-category="sohbet" onclick="showToast('Sohbet kaydı başlatılıyor: Vesveseden Kurtuluş')">
+              <div class="feed-card" data-category="sohbet"
+                onclick="showToast('Sohbet kaydı başlatılıyor: Vesveseden Kurtuluş')">
                 <div class="feed-thumb" style="background: #FEF3C7;">
                   🎙️
                   <div class="play-tag">▶</div>
@@ -2364,7 +3169,8 @@
                 </div>
               </div>
 
-              <div class="feed-card" data-category="risale" onclick="openBookModal('23. Söz Tahlili', 'Bediüzzaman Said Nursi', 'risale')">
+              <div class="feed-card" data-category="risale"
+                onclick="openBookModal('23. Söz Tahlili', 'Bediüzzaman Said Nursi', 'risale')">
                 <div class="feed-thumb" style="background: #E0E7FF;">
                   📚
                   <div class="play-tag">📄</div>
@@ -2379,7 +3185,8 @@
                 </div>
               </div>
 
-              <div class="feed-card" data-category="sohbet" onclick="showToast('Video ders başlatılıyor: Gençlik Rehberi')">
+              <div class="feed-card" data-category="sohbet"
+                onclick="showToast('Video ders başlatılıyor: Gençlik Rehberi')">
                 <div class="feed-thumb" style="background: #DCFCE7;">
                   🎥
                   <div class="play-tag">▶</div>
@@ -2394,7 +3201,8 @@
                 </div>
               </div>
 
-              <div class="feed-card" data-category="quran" onclick="openBookModal('Yasin Suresi Tefsiri', 'Müfessir Heyeti', 'quran')">
+              <div class="feed-card" data-category="quran"
+                onclick="openBookModal('Yasin Suresi Tefsiri', 'Müfessir Heyeti', 'quran')">
                 <div class="feed-thumb" style="background: #CFFAFE;">
                   📖
                   <div class="play-tag">🎧</div>
@@ -2458,13 +3266,41 @@
                   <span class="filter-select" onclick="showToast('Haftalık filtre değiştirildi.')">Bu Hafta ▾</span>
                 </div>
                 <div class="bar-chart-container">
-                  <div class="bar-col"><div class="bar-track"><div class="bar-fill" style="height: 100%;"></div></div><span class="day-label">Pzt</span></div>
-                  <div class="bar-col"><div class="bar-track"><div class="bar-fill" style="height: 80%;"></div></div><span class="day-label">Sal</span></div>
-                  <div class="bar-col"><div class="bar-track"><div class="bar-fill" style="height: 100%;"></div></div><span class="day-label">Çar</span></div>
-                  <div class="bar-col"><div class="bar-track"><div class="bar-fill" style="height: 60%;"></div></div><span class="day-label">Per</span></div>
-                  <div class="bar-col today"><div class="bar-track"><div class="bar-fill" style="height: 60%;"></div></div><span class="day-label">Cum</span></div>
-                  <div class="bar-col"><div class="bar-track"><div class="bar-fill" style="height: 20%;"></div></div><span class="day-label">Cmt</span></div>
-                  <div class="bar-col"><div class="bar-track"><div class="bar-fill" style="height: 20%;"></div></div><span class="day-label">Paz</span></div>
+                  <div class="bar-col">
+                    <div class="bar-track">
+                      <div class="bar-fill" style="height: 100%;"></div>
+                    </div><span class="day-label">Pzt</span>
+                  </div>
+                  <div class="bar-col">
+                    <div class="bar-track">
+                      <div class="bar-fill" style="height: 80%;"></div>
+                    </div><span class="day-label">Sal</span>
+                  </div>
+                  <div class="bar-col">
+                    <div class="bar-track">
+                      <div class="bar-fill" style="height: 100%;"></div>
+                    </div><span class="day-label">Çar</span>
+                  </div>
+                  <div class="bar-col">
+                    <div class="bar-track">
+                      <div class="bar-fill" style="height: 60%;"></div>
+                    </div><span class="day-label">Per</span>
+                  </div>
+                  <div class="bar-col today">
+                    <div class="bar-track">
+                      <div class="bar-fill" style="height: 60%;"></div>
+                    </div><span class="day-label">Cum</span>
+                  </div>
+                  <div class="bar-col">
+                    <div class="bar-track">
+                      <div class="bar-fill" style="height: 20%;"></div>
+                    </div><span class="day-label">Cmt</span>
+                  </div>
+                  <div class="bar-col">
+                    <div class="bar-track">
+                      <div class="bar-fill" style="height: 20%;"></div>
+                    </div><span class="day-label">Paz</span>
+                  </div>
                 </div>
               </div>
 
@@ -2498,7 +3334,8 @@
                   </div>
                 </div>
 
-                <div class="badge-item-card locked" onclick="showToast('Bu rozet kilitli. 30 gün düzenli zikir çekmelisin.')">
+                <div class="badge-item-card locked"
+                  onclick="showToast('Bu rozet kilitli. 30 gün düzenli zikir çekmelisin.')">
                   <div class="badge-icon-box">🔒</div>
                   <div class="badge-meta">
                     <h4>Zikir Âşığı</h4>
@@ -2562,7 +3399,8 @@
                     <div class="service-hours-num">18.5 <span style="font-size: 14px; color: #94A3B8;">Saat</span></div>
                     <div class="service-hours-lbl">Bu Ay Yapılan Hizmet</div>
                   </div>
-                  <button class="service-goal-btn" onclick="showToast('Hizmet saati loglama formu açıldı.')">+ Saat Ekle</button>
+                  <button class="service-goal-btn" onclick="showToast('Hizmet saati loglama formu açıldı.')">+ Saat
+                    Ekle</button>
                 </div>
                 <div class="service-progress-wrap">
                   <div class="service-progress-fill"></div>
@@ -2572,7 +3410,8 @@
 
               <div class="tasks-header">
                 <h3>Üzerimdeki Görevler (2)</h3>
-                <span style="font-size: 11px; color: #38BDF8; cursor: pointer;" onclick="showToast('Tüm görevler listelendi.')">Tümü</span>
+                <span style="font-size: 11px; color: #38BDF8; cursor: pointer;"
+                  onclick="showToast('Tüm görevler listelendi.')">Tümü</span>
               </div>
 
               <div class="task-item-row" onclick="toggleTask(this)">
@@ -2611,7 +3450,8 @@
               <div class="forum-feed">
                 <div class="tasks-header">
                   <h3>Gönüllü İstişare & Forum</h3>
-                  <span style="font-size: 11px; color: #38BDF8; cursor: pointer;" onclick="showToast('Yeni istişare başlığı açma ekranı...')">Yeni Başlık</span>
+                  <span style="font-size: 11px; color: #38BDF8; cursor: pointer;"
+                    onclick="showToast('Yeni istişare başlığı açma ekranı...')">Yeni Başlık</span>
                 </div>
 
                 <div class="forum-item" onclick="showToast('İstişare konusu açılıyor...')">
@@ -2653,15 +3493,24 @@
               <div class="settings-group">
                 <div class="settings-group-title">Manevi Tercihler & Vakitler</div>
                 <div class="settings-row" onclick="showToast('Konum ayarlandı: İstanbul / Türkiye')">
-                  <div class="settings-left"><div class="settings-icon">📍</div><div class="settings-title">Konum & Ezan Vakti Hesabı</div></div>
+                  <div class="settings-left">
+                    <div class="settings-icon">📍</div>
+                    <div class="settings-title">Konum & Ezan Vakti Hesabı</div>
+                  </div>
                   <div class="settings-right">Diyanet ❯</div>
                 </div>
                 <div class="settings-row" onclick="openNotificationCenter()">
-                  <div class="settings-left"><div class="settings-icon">🔔</div><div class="settings-title">Manevi Hatırlatıcılar & Tarihte Bugün</div></div>
+                  <div class="settings-left">
+                    <div class="settings-icon">🔔</div>
+                    <div class="settings-title">Manevi Hatırlatıcılar & Tarihte Bugün</div>
+                  </div>
                   <div class="settings-right">6 Yeni ❯</div>
                 </div>
                 <div class="settings-row" onclick="openQiblaModal()">
-                  <div class="settings-left"><div class="settings-icon">🧭</div><div class="settings-title">Kıble Pusulası Kalibrasyonu</div></div>
+                  <div class="settings-left">
+                    <div class="settings-icon">🧭</div>
+                    <div class="settings-title">Kıble Pusulası Kalibrasyonu</div>
+                  </div>
                   <div class="settings-right">142° ❯</div>
                 </div>
               </div>
@@ -2669,15 +3518,24 @@
               <div class="settings-group">
                 <div class="settings-group-title">Xsir Akademi & Güvenlik</div>
                 <div class="settings-row" onclick="switchTab('tab-community')">
-                  <div class="settings-left"><div class="settings-icon">🎓</div><div class="settings-title">Akademi Gönüllü Kartı</div></div>
+                  <div class="settings-left">
+                    <div class="settings-icon">🎓</div>
+                    <div class="settings-title">Akademi Gönüllü Kartı</div>
+                  </div>
                   <div class="settings-right">3. Kademe ❯</div>
                 </div>
                 <div class="settings-row" onclick="showToast('Verileriniz yerel cihazınızda güvende.')">
-                  <div class="settings-left"><div class="settings-icon">☁️</div><div class="settings-title">Yedekleme & Manevi Günlük Arşivi</div></div>
+                  <div class="settings-left">
+                    <div class="settings-icon">☁️</div>
+                    <div class="settings-title">Yedekleme & Manevi Günlük Arşivi</div>
+                  </div>
                   <div class="settings-right">Güncel ❯</div>
                 </div>
                 <div class="settings-row" onclick="showToast('Uygulama Sürümü: v2.4.0 (Xsir Yol Suite)')">
-                  <div class="settings-left"><div class="settings-icon">ℹ️</div><div class="settings-title">Hakkında & Çınaraltı İletişim</div></div>
+                  <div class="settings-left">
+                    <div class="settings-icon">ℹ️</div>
+                    <div class="settings-title">Hakkında & Çınaraltı İletişim</div>
+                  </div>
                   <div class="settings-right">v2.4 ❯</div>
                 </div>
               </div>
@@ -2690,23 +3548,39 @@
         <!-- BOTTOM NAVIGATION -->
         <nav class="bottom-nav" id="bottomNav">
           <button class="nav-tab-btn active" id="btn-tab-today" onclick="switchTab('tab-today')">
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><path d="m3 9 9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"></path><polyline points="9 22 9 12 15 12 15 22"></polyline></svg>
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor">
+              <path d="m3 9 9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"></path>
+              <polyline points="9 22 9 12 15 12 15 22"></polyline>
+            </svg>
             <span>Bugün</span>
           </button>
           <button class="nav-tab-btn" id="btn-tab-explore" onclick="switchTab('tab-explore')">
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><circle cx="12" cy="12" r="10"></circle><polygon points="16.24 7.76 14.12 14.12 7.76 16.24 9.88 9.88 16.24 7.76"></polygon></svg>
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor">
+              <circle cx="12" cy="12" r="10"></circle>
+              <polygon points="16.24 7.76 14.12 14.12 7.76 16.24 9.88 9.88 16.24 7.76"></polygon>
+            </svg>
             <span>Keşfet</span>
           </button>
           <button class="nav-tab-btn" id="btn-tab-journey" onclick="switchTab('tab-journey')">
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><path d="M12 20v-6M6 20V10M18 20V4"></path></svg>
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor">
+              <path d="M12 20v-6M6 20V10M18 20V4"></path>
+            </svg>
             <span>Yolculuk</span>
           </button>
           <button class="nav-tab-btn" id="btn-tab-community" onclick="switchTab('tab-community')">
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"></path><circle cx="9" cy="7" r="4"></circle><path d="M23 21v-2a4 4 0 0 0-3-3.87"></path><path d="M16 3.13a4 4 0 0 1 0 7.75"></path></svg>
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor">
+              <path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"></path>
+              <circle cx="9" cy="7" r="4"></circle>
+              <path d="M23 21v-2a4 4 0 0 0-3-3.87"></path>
+              <path d="M16 3.13a4 4 0 0 1 0 7.75"></path>
+            </svg>
             <span>Hizmet</span>
           </button>
           <button class="nav-tab-btn" id="btn-tab-profile" onclick="switchTab('tab-profile')">
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"></path><circle cx="12" cy="7" r="4"></circle></svg>
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor">
+              <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"></path>
+              <circle cx="12" cy="7" r="4"></circle>
+            </svg>
             <span>Ben</span>
           </button>
         </nav>
@@ -2745,7 +3619,7 @@
 
             <!-- Tüm Bildirim Kartları Listesi -->
             <div class="notif-list-box" id="notifListBox">
-              
+
               <!-- 1. Tarihte Bugün -->
               <div class="notif-card-item unread" data-cat="tarih" onclick="triggerNotificationDemo('tarih')">
                 <div class="notif-card-header">
@@ -2754,13 +3628,18 @@
                 </div>
                 <div class="notif-card-title">Malazgirt Zaferi & Safer Ayının Manevi Hazırlığı</div>
                 <div class="notif-card-body">
-                  Sultan Alparslan, 26 Ağustos 1071 Cuma günü ordusuyla birlikte gözyaşları içinde namaz kılmış, "Ya Rabbi! Seni kendime vekil yapıyorum..." diyerek beyaz kefenini kuşanmış ve Anadolu'nun kapılarını İslam'a açan kutlu zaferi kazanmıştır.
+                  Sultan Alparslan, 26 Ağustos 1071 Cuma günü ordusuyla birlikte gözyaşları içinde namaz kılmış, "Ya
+                  Rabbi! Seni kendime vekil yapıyorum..." diyerek beyaz kefenini kuşanmış ve Anadolu'nun kapılarını
+                  İslam'a açan kutlu zaferi kazanmıştır.
                 </div>
                 <div class="notif-card-footer">
                   <span class="notif-source-badge">İslam Tarihi Ansiklopedisi</span>
                   <div class="notif-action-btns">
-                    <button class="notif-act-btn" onclick="event.stopPropagation(); copyText('Malazgirt Zaferi: Sultan Alparslan Cuma namazı sonrası beyaz kefeni kuşanarak Anadolu kapılarını İslamiyete açmıştır.')">📋 Kopyala</button>
-                    <button class="notif-act-btn" onclick="event.stopPropagation(); showToast('Tarihi hatıra paylaşıldı.')">↗ Paylaş</button>
+                    <button class="notif-act-btn"
+                      onclick="event.stopPropagation(); copyText('Malazgirt Zaferi: Sultan Alparslan Cuma namazı sonrası beyaz kefeni kuşanarak Anadolu kapılarını İslamiyete açmıştır.')">📋
+                      Kopyala</button>
+                    <button class="notif-act-btn"
+                      onclick="event.stopPropagation(); showToast('Tarihi hatıra paylaşıldı.')">↗ Paylaş</button>
                   </div>
                 </div>
               </div>
@@ -2779,8 +3658,11 @@
                 <div class="notif-card-footer">
                   <span class="notif-source-badge">Mushaf-ı Şerif</span>
                   <div class="notif-action-btns">
-                    <button class="notif-act-btn" onclick="event.stopPropagation(); copyText('Bakara 152: Öyleyse yalnız beni anın ki ben de sizi anayım. Bana şükredin, sakın nankörlük etmeyin.')">📋 Kopyala</button>
-                    <button class="notif-act-btn" onclick="event.stopPropagation(); showToast('Ayet panoya kopyalandı.')">❤️ Kaydet</button>
+                    <button class="notif-act-btn"
+                      onclick="event.stopPropagation(); copyText('Bakara 152: Öyleyse yalnız beni anın ki ben de sizi anayım. Bana şükredin, sakın nankörlük etmeyin.')">📋
+                      Kopyala</button>
+                    <button class="notif-act-btn"
+                      onclick="event.stopPropagation(); showToast('Ayet panoya kopyalandı.')">❤️ Kaydet</button>
                   </div>
                 </div>
               </div>
@@ -2793,13 +3675,17 @@
                 </div>
                 <div class="notif-card-title">İki Büyük Nimet: Sıhhat ve Boş Vakit</div>
                 <div class="notif-card-body">
-                  Resûlullah (sallallahu aleyhi ve sellem) şöyle buyurdu: "İki nimet vardır ki, insanların pek çoğu bu ikisinde aldanmış, zarara uğramıştır: Sağlık ve boş vakit."
+                  Resûlullah (sallallahu aleyhi ve sellem) şöyle buyurdu: "İki nimet vardır ki, insanların pek çoğu bu
+                  ikisinde aldanmış, zarara uğramıştır: Sağlık ve boş vakit."
                 </div>
                 <div class="notif-card-footer">
                   <span class="notif-source-badge">Sahih-i Buhârî, Rikâk 1</span>
                   <div class="notif-action-btns">
-                    <button class="notif-act-btn" onclick="event.stopPropagation(); copyText('Hadis: İki nimet vardır ki insanların çoğu bunda aldanmıştır: Sağlık ve boş vakit. (Buhari)')">📋 Kopyala</button>
-                    <button class="notif-act-btn" onclick="event.stopPropagation(); showToast('Hadis-i Şerif paylaşıldı.')">↗ Paylaş</button>
+                    <button class="notif-act-btn"
+                      onclick="event.stopPropagation(); copyText('Hadis: İki nimet vardır ki insanların çoğu bunda aldanmıştır: Sağlık ve boş vakit. (Buhari)')">📋
+                      Kopyala</button>
+                    <button class="notif-act-btn"
+                      onclick="event.stopPropagation(); showToast('Hadis-i Şerif paylaşıldı.')">↗ Paylaş</button>
                   </div>
                 </div>
               </div>
@@ -2812,13 +3698,18 @@
                 </div>
                 <div class="notif-card-title">23. Söz: İmanın Hakiki Kuvveti</div>
                 <div class="notif-card-body">
-                  "İman hem nurdur, hem kuvvettir. Evet, hakikî imanı elde eden adam, kâinata meydan okuyabilir ve imanın kuvvetine göre, hâdisatın tazyikatından kurtulabilir."
+                  "İman hem nurdur, hem kuvvettir. Evet, hakikî imanı elde eden adam, kâinata meydan okuyabilir ve
+                  imanın kuvvetine göre, hâdisatın tazyikatından kurtulabilir."
                 </div>
                 <div class="notif-card-footer">
                   <span class="notif-source-badge">Bediüzzaman Said Nursi · Sözler</span>
                   <div class="notif-action-btns">
-                    <button class="notif-act-btn" onclick="event.stopPropagation(); copyText('İman hem nurdur, hem kuvvettir. Hakiki imanı elde eden adam kâinata meydan okuyabilir. (Sözler)')">📋 Kopyala</button>
-                    <button class="notif-act-btn" onclick="event.stopPropagation(); openBookModal('Sözler', 'Bediüzzaman Said Nursi', 'risale')">📖 Kitapta Aç</button>
+                    <button class="notif-act-btn"
+                      onclick="event.stopPropagation(); copyText('İman hem nurdur, hem kuvvettir. Hakiki imanı elde eden adam kâinata meydan okuyabilir. (Sözler)')">📋
+                      Kopyala</button>
+                    <button class="notif-act-btn"
+                      onclick="event.stopPropagation(); openBookModal('Sözler', 'Bediüzzaman Said Nursi', 'risale')">📖
+                      Kitapta Aç</button>
                   </div>
                 </div>
               </div>
@@ -2831,13 +3722,17 @@
                 </div>
                 <div class="notif-card-title">İmam Gazâlî (r.a.) · Kalbin Cilası</div>
                 <div class="notif-card-body">
-                  "Kalp bir ayna gibidir. Günahlar ve dünya sevgisi o aynayı paslandırıp karartır. Allah'ın zikri, tövbe ve ihlaslı ibadet ise o aynayı parlatarak hakikat nurlarının yansımasını sağlar."
+                  "Kalp bir ayna gibidir. Günahlar ve dünya sevgisi o aynayı paslandırıp karartır. Allah'ın zikri, tövbe
+                  ve ihlaslı ibadet ise o aynayı parlatarak hakikat nurlarının yansımasını sağlar."
                 </div>
                 <div class="notif-card-footer">
                   <span class="notif-source-badge">İhyâu Ulûmi'd-Dîn</span>
                   <div class="notif-action-btns">
-                    <button class="notif-act-btn" onclick="event.stopPropagation(); copyText('İmam Gazali: Kalp bir ayna gibidir; günahlar karartır, zikir parlatır.')">📋 Kopyala</button>
-                    <button class="notif-act-btn" onclick="event.stopPropagation(); showToast('Hikmetli söz kaydedildi.')">❤️ Kaydet</button>
+                    <button class="notif-act-btn"
+                      onclick="event.stopPropagation(); copyText('İmam Gazali: Kalp bir ayna gibidir; günahlar karartır, zikir parlatır.')">📋
+                      Kopyala</button>
+                    <button class="notif-act-btn"
+                      onclick="event.stopPropagation(); showToast('Hikmetli söz kaydedildi.')">❤️ Kaydet</button>
                   </div>
                 </div>
               </div>
@@ -2856,8 +3751,11 @@
                 <div class="notif-card-footer">
                   <span class="notif-source-badge">Ebû Dâvûd, Vitir 26</span>
                   <div class="notif-action-btns">
-                    <button class="notif-act-btn" onclick="event.stopPropagation(); copyText('Dua: Allahümme einnî alâ zikrike ve şükrike ve husni ibâdetik.')">📋 Kopyala</button>
-                    <button class="notif-act-btn" onclick="event.stopPropagation(); openDhikrModal()">📿 Zikre Başla</button>
+                    <button class="notif-act-btn"
+                      onclick="event.stopPropagation(); copyText('Dua: Allahümme einnî alâ zikrike ve şükrike ve husni ibâdetik.')">📋
+                      Kopyala</button>
+                    <button class="notif-act-btn" onclick="event.stopPropagation(); openDhikrModal()">📿 Zikre
+                      Başla</button>
                   </div>
                 </div>
               </div>
@@ -2865,7 +3763,9 @@
             </div>
 
             <div style="margin-top: 14px; text-align: center;">
-              <button style="background: #F1F5F9; border: none; padding: 8px 16px; border-radius: 10px; font-size: 11px; font-weight: 700; color: var(--text-muted); cursor: pointer;" onclick="markAllNotificationsRead()">
+              <button
+                style="background: #F1F5F9; border: none; padding: 8px 16px; border-radius: 10px; font-size: 11px; font-weight: 700; color: var(--text-muted); cursor: pointer;"
+                onclick="markAllNotificationsRead()">
                 Tümünü Okundu İşaretle ✓
               </button>
             </div>
@@ -2881,19 +3781,22 @@
                 <span style="font-size: 22px;">📚</span>
                 <div>
                   <h3>Manevi Kütüphane (18 Eser)</h3>
-                  <div style="font-size: 10px; color: var(--text-muted);">Kur'an, Hadis, Risale-i Nur ve Dua Mecmuaları</div>
+                  <div style="font-size: 10px; color: var(--text-muted);">Kur'an, Hadis, Risale-i Nur ve Dua Mecmuaları
+                  </div>
                 </div>
               </div>
               <button class="modal-close-btn" onclick="closeAllModals()">✕</button>
             </div>
 
             <div class="all-books-grid" id="allBooksGridContainer">
-              <div class="all-book-item" onclick="openBookModal('Kur\'an-ı Kerim', 'Hafız Osman Hattı · Mealli', 'quran')">
+              <div class="all-book-item"
+                onclick="openBookModal('Kur\'an-ı Kerim', 'Hafız Osman Hattı · Mealli', 'quran')">
                 <div class="all-book-cover quran">📖 Kur'an-ı Kerim</div>
                 <div class="all-book-body">
                   <h4>Mushaf-ı Şerif</h4>
                   <p>Arapça Metin & Türkçe Meal</p>
-                  <div class="all-book-foot"><span class="all-book-pages">604 Sayfa</span><button class="all-book-read-btn">Oku →</button></div>
+                  <div class="all-book-foot"><span class="all-book-pages">604 Sayfa</span><button
+                      class="all-book-read-btn">Oku →</button></div>
                 </div>
               </div>
 
@@ -2902,106 +3805,133 @@
                 <div class="all-book-body">
                   <h4>Sözler Mecmuası</h4>
                   <p>Bediüzzaman Said Nursi</p>
-                  <div class="all-book-foot"><span class="all-book-pages">780 Sayfa · sf. 45</span><button class="all-book-read-btn">Oku →</button></div>
+                  <div class="all-book-foot"><span class="all-book-pages">780 Sayfa · sf. 45</span><button
+                      class="all-book-read-btn">Oku →</button></div>
                 </div>
               </div>
 
               <div class="all-book-item" onclick="openBookModal('Mektubat', 'Bediüzzaman Said Nursi', 'risale')">
-                <div class="all-book-cover risale" style="background: linear-gradient(135deg, #1D4ED8 0%, #3B82F6 100%);">✉️ Mektubat</div>
+                <div class="all-book-cover risale"
+                  style="background: linear-gradient(135deg, #1D4ED8 0%, #3B82F6 100%);">✉️ Mektubat</div>
                 <div class="all-book-body">
                   <h4>Mektubat</h4>
                   <p>Hakikat Mektupları</p>
-                  <div class="all-book-foot"><span class="all-book-pages">540 Sayfa</span><button class="all-book-read-btn">Oku →</button></div>
+                  <div class="all-book-foot"><span class="all-book-pages">540 Sayfa</span><button
+                      class="all-book-read-btn">Oku →</button></div>
                 </div>
               </div>
 
               <div class="all-book-item" onclick="openBookModal('Lem\'alar', 'Bediüzzaman Said Nursi', 'risale')">
-                <div class="all-book-cover risale" style="background: linear-gradient(135deg, #0369A1 0%, #0EA5E9 100%);">✨ Lem'alar</div>
+                <div class="all-book-cover risale"
+                  style="background: linear-gradient(135deg, #0369A1 0%, #0EA5E9 100%);">✨ Lem'alar</div>
                 <div class="all-book-body">
                   <h4>Lem'alar</h4>
                   <p>İhlas, Uhuvvet & İnayet</p>
-                  <div class="all-book-foot"><span class="all-book-pages">460 Sayfa</span><button class="all-book-read-btn">Oku →</button></div>
+                  <div class="all-book-foot"><span class="all-book-pages">460 Sayfa</span><button
+                      class="all-book-read-btn">Oku →</button></div>
                 </div>
               </div>
 
               <div class="all-book-item" onclick="openBookModal('Şualar', 'Bediüzzaman Said Nursi', 'risale')">
-                <div class="all-book-cover risale" style="background: linear-gradient(135deg, #4338CA 0%, #6366F1 100%);">⚡ Şualar</div>
+                <div class="all-book-cover risale"
+                  style="background: linear-gradient(135deg, #4338CA 0%, #6366F1 100%);">⚡ Şualar</div>
                 <div class="all-book-body">
                   <h4>Şualar</h4>
                   <p>Ayetü'l-Kübra & Meyve Risalesi</p>
-                  <div class="all-book-foot"><span class="all-book-pages">690 Sayfa</span><button class="all-book-read-btn">Oku →</button></div>
+                  <div class="all-book-foot"><span class="all-book-pages">690 Sayfa</span><button
+                      class="all-book-read-btn">Oku →</button></div>
                 </div>
               </div>
 
               <div class="all-book-item" onclick="openBookModal('Asa-yı Musa', 'Bediüzzaman Said Nursi', 'risale')">
-                <div class="all-book-cover risale" style="background: linear-gradient(135deg, #6D28D9 0%, #8B5CF6 100%);">🪄 Asa-yı Musa</div>
+                <div class="all-book-cover risale"
+                  style="background: linear-gradient(135deg, #6D28D9 0%, #8B5CF6 100%);">🪄 Asa-yı Musa</div>
                 <div class="all-book-body">
                   <h4>Asa-yı Musa</h4>
                   <p>İman ve Hüccet Delilleri</p>
-                  <div class="all-book-foot"><span class="all-book-pages">280 Sayfa</span><button class="all-book-read-btn">Oku →</button></div>
+                  <div class="all-book-foot"><span class="all-book-pages">280 Sayfa</span><button
+                      class="all-book-read-btn">Oku →</button></div>
                 </div>
               </div>
 
               <div class="all-book-item" onclick="openBookModal('Tarihçe-i Hayat', 'Bediüzzaman Said Nursi', 'risale')">
-                <div class="all-book-cover risale" style="background: linear-gradient(135deg, #0F766E 0%, #14B8A6 100%);">⏳ Tarihçe-i Hayat</div>
+                <div class="all-book-cover risale"
+                  style="background: linear-gradient(135deg, #0F766E 0%, #14B8A6 100%);">⏳ Tarihçe-i Hayat</div>
                 <div class="all-book-body">
                   <h4>Tarihçe-i Hayat</h4>
                   <p>Manevi Mücadele & Biyografi</p>
-                  <div class="all-book-foot"><span class="all-book-pages">720 Sayfa</span><button class="all-book-read-btn">Oku →</button></div>
+                  <div class="all-book-foot"><span class="all-book-pages">720 Sayfa</span><button
+                      class="all-book-read-btn">Oku →</button></div>
                 </div>
               </div>
 
-              <div class="all-book-item" onclick="openBookModal('Mesnevi-i Nuriye', 'Bediüzzaman Said Nursi', 'risale')">
-                <div class="all-book-cover risale" style="background: linear-gradient(135deg, #047857 0%, #10B981 100%);">🌱 Mesnevi-i Nuriye</div>
+              <div class="all-book-item"
+                onclick="openBookModal('Mesnevi-i Nuriye', 'Bediüzzaman Said Nursi', 'risale')">
+                <div class="all-book-cover risale"
+                  style="background: linear-gradient(135deg, #047857 0%, #10B981 100%);">🌱 Mesnevi-i Nuriye</div>
                 <div class="all-book-body">
                   <h4>Mesnevi-i Nuriye</h4>
                   <p>Arapça Fidanlık Eseri</p>
-                  <div class="all-book-foot"><span class="all-book-pages">310 Sayfa</span><button class="all-book-read-btn">Oku →</button></div>
+                  <div class="all-book-foot"><span class="all-book-pages">310 Sayfa</span><button
+                      class="all-book-read-btn">Oku →</button></div>
                 </div>
               </div>
 
-              <div class="all-book-item" onclick="openBookModal('İşaratü\'l-İ\'caz', 'Bediüzzaman Said Nursi', 'risale')">
+              <div class="all-book-item"
+                onclick="openBookModal('İşaratü\'l-İ\'caz', 'Bediüzzaman Said Nursi', 'risale')">
                 <div class="all-book-cover quran">🌟 İşaratü'l-İ'caz</div>
                 <div class="all-book-body">
                   <h4>İşaratü'l-İ'caz</h4>
                   <p>Kur'an'ın İ'cazı ve Tefsiri</p>
-                  <div class="all-book-foot"><span class="all-book-pages">290 Sayfa</span><button class="all-book-read-btn">Oku →</button></div>
+                  <div class="all-book-foot"><span class="all-book-pages">290 Sayfa</span><button
+                      class="all-book-read-btn">Oku →</button></div>
                 </div>
               </div>
 
-              <div class="all-book-item" onclick="openBookModal('Sikke-i Tasdik-i Gaybi', 'Bediüzzaman Said Nursi', 'risale')">
-                <div class="all-book-cover risale" style="background: linear-gradient(135deg, #B45309 0%, #F59E0B 100%);">🏷️ Sikke-i Tasdik</div>
+              <div class="all-book-item"
+                onclick="openBookModal('Sikke-i Tasdik-i Gaybi', 'Bediüzzaman Said Nursi', 'risale')">
+                <div class="all-book-cover risale"
+                  style="background: linear-gradient(135deg, #B45309 0%, #F59E0B 100%);">🏷️ Sikke-i Tasdik</div>
                 <div class="all-book-body">
                   <h4>Sikke-i Tasdik-i Gaybi</h4>
                   <p>Gaybi İşaretler & Müjdeler</p>
-                  <div class="all-book-foot"><span class="all-book-pages">320 Sayfa</span><button class="all-book-read-btn">Oku →</button></div>
+                  <div class="all-book-foot"><span class="all-book-pages">320 Sayfa</span><button
+                      class="all-book-read-btn">Oku →</button></div>
                 </div>
               </div>
 
               <div class="all-book-item" onclick="openBookModal('Barla Lahikası', 'Bediüzzaman Said Nursi', 'risale')">
-                <div class="all-book-cover risale" style="background: linear-gradient(135deg, #0284C7 0%, #38BDF8 100%);">🏡 Barla Lahikası</div>
+                <div class="all-book-cover risale"
+                  style="background: linear-gradient(135deg, #0284C7 0%, #38BDF8 100%);">🏡 Barla Lahikası</div>
                 <div class="all-book-body">
                   <h4>Barla Lahikası</h4>
                   <p>İlk Talebeler & Mektuplar</p>
-                  <div class="all-book-foot"><span class="all-book-pages">410 Sayfa</span><button class="all-book-read-btn">Oku →</button></div>
+                  <div class="all-book-foot"><span class="all-book-pages">410 Sayfa</span><button
+                      class="all-book-read-btn">Oku →</button></div>
                 </div>
               </div>
 
-              <div class="all-book-item" onclick="openBookModal('Kastamonu Lahikası', 'Bediüzzaman Said Nursi', 'risale')">
-                <div class="all-book-cover risale" style="background: linear-gradient(135deg, #374151 0%, #6B7280 100%);">🌲 Kastamonu</div>
+              <div class="all-book-item"
+                onclick="openBookModal('Kastamonu Lahikası', 'Bediüzzaman Said Nursi', 'risale')">
+                <div class="all-book-cover risale"
+                  style="background: linear-gradient(135deg, #374151 0%, #6B7280 100%);">🌲 Kastamonu</div>
                 <div class="all-book-body">
                   <h4>Kastamonu Lahikası</h4>
                   <p>Hizmet Rehberi ve İrşad</p>
-                  <div class="all-book-foot"><span class="all-book-pages">350 Sayfa</span><button class="all-book-read-btn">Oku →</button></div>
+                  <div class="all-book-foot"><span class="all-book-pages">350 Sayfa</span><button
+                      class="all-book-read-btn">Oku →</button></div>
                 </div>
               </div>
 
-              <div class="all-book-item" onclick="openBookModal('Emirdağ Lahikası', 'Bediüzzaman Said Nursi', 'risale')">
-                <div class="all-book-cover risale" style="background: linear-gradient(135deg, #78350F 0%, #B45309 100%);">📜 Emirdağ Lahikası</div>
+              <div class="all-book-item"
+                onclick="openBookModal('Emirdağ Lahikası', 'Bediüzzaman Said Nursi', 'risale')">
+                <div class="all-book-cover risale"
+                  style="background: linear-gradient(135deg, #78350F 0%, #B45309 100%);">📜 Emirdağ Lahikası</div>
                 <div class="all-book-body">
                   <h4>Emirdağ Lahikası</h4>
                   <p>Son Dönem Mektupları</p>
-                  <div class="all-book-foot"><span class="all-book-pages">480 Sayfa</span><button class="all-book-read-btn">Oku →</button></div>
+                  <div class="all-book-foot"><span class="all-book-pages">480 Sayfa</span><button
+                      class="all-book-read-btn">Oku →</button></div>
                 </div>
               </div>
 
@@ -3010,7 +3940,8 @@
                 <div class="all-book-body">
                   <h4>Riyazü's Salihin</h4>
                   <p>İmam Nevevi Hadis Külliyatı</p>
-                  <div class="all-book-foot"><span class="all-book-pages">850 Sayfa</span><button class="all-book-read-btn">Oku →</button></div>
+                  <div class="all-book-foot"><span class="all-book-pages">850 Sayfa</span><button
+                      class="all-book-read-btn">Oku →</button></div>
                 </div>
               </div>
 
@@ -3019,16 +3950,19 @@
                 <div class="all-book-body">
                   <h4>Sahih-i Buhârî</h4>
                   <p>En Sahih Hadis Külliyatı</p>
-                  <div class="all-book-foot"><span class="all-book-pages">1,200 Sayfa</span><button class="all-book-read-btn">Oku →</button></div>
+                  <div class="all-book-foot"><span class="all-book-pages">1,200 Sayfa</span><button
+                      class="all-book-read-btn">Oku →</button></div>
                 </div>
               </div>
 
               <div class="all-book-item" onclick="openBookModal('Şifâ-i Şerîf', 'Kadı İyâz', 'hadis')">
-                <div class="all-book-cover hadis" style="background: linear-gradient(135deg, #9D174D 0%, #EC4899 100%);">🌹 Şifâ-i Şerîf</div>
+                <div class="all-book-cover hadis"
+                  style="background: linear-gradient(135deg, #9D174D 0%, #EC4899 100%);">🌹 Şifâ-i Şerîf</div>
                 <div class="all-book-body">
                   <h4>Şifâ-i Şerîf</h4>
                   <p>Peygamberimiz'in Şemail ve Hakları</p>
-                  <div class="all-book-foot"><span class="all-book-pages">560 Sayfa</span><button class="all-book-read-btn">Oku →</button></div>
+                  <div class="all-book-foot"><span class="all-book-pages">560 Sayfa</span><button
+                      class="all-book-read-btn">Oku →</button></div>
                 </div>
               </div>
 
@@ -3037,16 +3971,20 @@
                 <div class="all-book-body">
                   <h4>Cevşen-ül Kebir</h4>
                   <p>100 Bab Esma-i Hüsna Zikri</p>
-                  <div class="all-book-foot"><span class="all-book-pages">100 Bab</span><button class="all-book-read-btn">Oku →</button></div>
+                  <div class="all-book-foot"><span class="all-book-pages">100 Bab</span><button
+                      class="all-book-read-btn">Oku →</button></div>
                 </div>
               </div>
 
-              <div class="all-book-item" onclick="openBookModal('Hizb-ül Hakaik & Celcelutiye', 'Hz. Ali & Said Nursi', 'cevsen')">
-                <div class="all-book-cover cevsen" style="background: linear-gradient(135deg, #3B0764 0%, #7E22CE 100%);">🛡️ Hizb-ül Hakaik</div>
+              <div class="all-book-item"
+                onclick="openBookModal('Hizb-ül Hakaik & Celcelutiye', 'Hz. Ali & Said Nursi', 'cevsen')">
+                <div class="all-book-cover cevsen"
+                  style="background: linear-gradient(135deg, #3B0764 0%, #7E22CE 100%);">🛡️ Hizb-ül Hakaik</div>
                 <div class="all-book-body">
                   <h4>Hizb-ül Hakaik & Dua</h4>
                   <p>Büyük Dua ve Evrad Mecmuası</p>
-                  <div class="all-book-foot"><span class="all-book-pages">240 Sayfa</span><button class="all-book-read-btn">Oku →</button></div>
+                  <div class="all-book-foot"><span class="all-book-pages">240 Sayfa</span><button
+                      class="all-book-read-btn">Oku →</button></div>
                 </div>
               </div>
             </div>
@@ -3090,7 +4028,8 @@
                 <div class="qibla-kaaba-icon">🕋</div>
               </div>
               <div style="font-size: 16px; font-weight: 800; color: var(--primary-dark);">142° Güneydoğu</div>
-              <p style="font-size: 11.5px; color: var(--text-muted); margin-top: 4px;">Kıble açısı hassas olarak hesaplandı. Telefonu düz tutun.</p>
+              <p style="font-size: 11.5px; color: var(--text-muted); margin-top: 4px;">Kıble açısı hassas olarak
+                hesaplandı. Telefonu düz tutun.</p>
             </div>
           </div>
         </div>
@@ -3112,18 +4051,23 @@
 
             <div class="chat-messages-box" id="chatMessages">
               <div class="chat-msg bot">
-                Esselamü aleyküm Furkan kardeşim! Ben Xsir Manevi Yol Asistanıyım. Aklına takılan fıkhi, manevi veya ilmi sualleri sorabilirsin.
+                Esselamü aleyküm Furkan kardeşim! Ben Xsir Manevi Yol Asistanıyım. Aklına takılan fıkhi, manevi veya
+                ilmi sualleri sorabilirsin.
               </div>
             </div>
 
             <div style="display: flex; gap: 6px; overflow-x: auto; padding: 6px 0;">
-              <span class="filter-pill" style="font-size: 10px;" onclick="sendQuickPrompt('Namazda huşuyu nasıl artırabilirim?')">Huşu nasıl artar?</span>
-              <span class="filter-pill" style="font-size: 10px;" onclick="sendQuickPrompt('Sabah namazına kalkmanın püf noktaları nelerdir?')">Sabah namazı</span>
-              <span class="filter-pill" style="font-size: 10px;" onclick="sendQuickPrompt('Risale-i Nur nasıl okunmalı?')">Risale okuma</span>
+              <span class="filter-pill" style="font-size: 10px;"
+                onclick="sendQuickPrompt('Namazda huşuyu nasıl artırabilirim?')">Huşu nasıl artar?</span>
+              <span class="filter-pill" style="font-size: 10px;"
+                onclick="sendQuickPrompt('Sabah namazına kalkmanın püf noktaları nelerdir?')">Sabah namazı</span>
+              <span class="filter-pill" style="font-size: 10px;"
+                onclick="sendQuickPrompt('Risale-i Nur nasıl okunmalı?')">Risale okuma</span>
             </div>
 
             <div class="chat-input-row">
-              <input type="text" id="chatInput" placeholder="Sorunuzu buraya yazın..." onkeydown="if(event.key==='Enter') sendChatMessage()">
+              <input type="text" id="chatInput" placeholder="Sorunuzu buraya yazın..."
+                onkeydown="if(event.key==='Enter') sendChatMessage()">
               <button class="chat-send-btn" onclick="sendChatMessage()">➤</button>
             </div>
           </div>
@@ -3138,13 +4082,21 @@
               <button class="modal-close-btn" onclick="closeAllModals()">✕</button>
             </div>
             <div style="padding: 10px 0;">
-              <div id="modalBookAuthor" style="font-size: 12px; color: var(--text-muted); margin-bottom: 12px;">Müellif</div>
-              <div id="modalBookContent" style="background: #F8F9FA; border-radius: 14px; padding: 16px; font-size: 13px; line-height: 1.65; color: var(--text-main); font-family: 'Amiri', serif; font-size: 15px;">
-                "Bismillâhirrahmânirrahîm. Bismillah her hayrın başıdır. Biz dahi başta ona başlarız. Bil ey nefsim, şu mübarek kelime İslâm nişanı olduğu gibi, bütün mevcudatın lisan-ı haliyle vird-i zebânıdır..."
+              <div id="modalBookAuthor" style="font-size: 12px; color: var(--text-muted); margin-bottom: 12px;">Müellif
+              </div>
+              <div id="modalBookContent"
+                style="background: #F8F9FA; border-radius: 14px; padding: 16px; font-size: 13px; line-height: 1.65; color: var(--text-main); font-family: 'Amiri', serif; font-size: 15px;">
+                "Bismillâhirrahmânirrahîm. Bismillah her hayrın başıdır. Biz dahi başta ona başlarız. Bil ey nefsim, şu
+                mübarek kelime İslâm nişanı olduğu gibi, bütün mevcudatın lisan-ı haliyle vird-i zebânıdır..."
               </div>
               <div style="display: flex; gap: 10px; margin-top: 16px;">
-                <button style="flex: 1; height: 42px; background: var(--primary); color: #FFFFFF; border: none; border-radius: 12px; font-weight: 700; font-size: 12.5px; cursor: pointer;" onclick="showToast('Okuma moduna geçildi. Kaldığınız yer kaydedildi.'); closeAllModals();">Kaldığım Yerden Oku (sf. 45)</button>
-                <button style="width: 42px; height: 42px; background: #F1F5F9; border: none; border-radius: 12px; font-size: 16px; cursor: pointer;" onclick="showToast('Kitap favorilere eklendi.')">🔖</button>
+                <button
+                  style="flex: 1; height: 42px; background: var(--primary); color: #FFFFFF; border: none; border-radius: 12px; font-weight: 700; font-size: 12.5px; cursor: pointer;"
+                  onclick="showToast('Okuma moduna geçildi. Kaldığınız yer kaydedildi.'); closeAllModals();">Kaldığım
+                  Yerden Oku (sf. 45)</button>
+                <button
+                  style="width: 42px; height: 42px; background: #F1F5F9; border: none; border-radius: 12px; font-size: 16px; cursor: pointer;"
+                  onclick="showToast('Kitap favorilere eklendi.')">🔖</button>
               </div>
             </div>
           </div>
@@ -3220,17 +4172,6 @@
         </div>
       </div>
 
-      <!-- Hızlı Erişim Kısayolları -->
-      <div>
-        <div class="panel-section-title">🚀 Hızlı Modüller</div>
-        <div class="panel-quick-actions">
-          <button class="side-quick-btn" onclick="openNotificationCenter()">🔔 Bildirim Merkezi</button>
-          <button class="side-quick-btn" onclick="openAllBooksModal()">📚 18 Kitap Külliyatı</button>
-          <button class="side-quick-btn" onclick="openAIChatModal()">✨ AI Danışman</button>
-          <button class="side-quick-btn" onclick="openQiblaModal()">🧭 Kıbleyi Bul</button>
-          <button class="side-quick-btn" onclick="openDhikrModal()">📿 Zikirmatik</button>
-        </div>
-      </div>
     </aside>
 
   </div>
@@ -3391,7 +4332,7 @@
     function triggerNotificationDemo(type) {
       const data = NOTIF_DATA[type] || NOTIF_DATA.tarih;
       const banner = document.getElementById('pushNotification');
-      
+
       document.getElementById('pushIcon').textContent = data.icon;
       document.getElementById('pushCategory').textContent = data.category;
       document.getElementById('pushTitle').textContent = data.title;
@@ -3611,10 +4552,10 @@
     function openBookModal(title, author, type) {
       document.getElementById('modalBookTitle').textContent = title;
       document.getElementById('modalBookAuthor').textContent = author;
-      
+
       const content = BOOK_PREVIEWS[title] || `"Bismillâhirrahmânirrahîm. ${title} eserinden seçilmiş nurlu hikmetler ve manevi dersler. Bu kutlu ilim hazinesini okurken kalbinize inşirah, fikrinize istikamet dileriz..."`;
       document.getElementById('modalBookContent').textContent = content;
-      
+
       document.getElementById('allBooksModal').classList.remove('active');
       document.getElementById('bookModal').classList.add('active');
     }
@@ -3661,4 +4602,5 @@
     }, 1200);
   </script>
 </body>
+
 </html>
