@@ -2736,6 +2736,402 @@
       transform: translateX(-50%) translateY(0);
     }
 
+    /* ==========================================================================
+       LOGIN & AUTH SCREEN (LUXURY ISLAMIC GLASSMORPHISM)
+       ========================================================================== */
+    .auth-screen {
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      width: 100%;
+      height: 100%;
+      background: radial-gradient(circle at 50% 15%, #134B3D 0%, #08241D 45%, #03120E 100%);
+      z-index: 150;
+      display: flex;
+      flex-direction: column;
+      overflow-y: auto;
+      padding: 55px 22px 30px 22px;
+      color: #FFFFFF;
+      transition: all 0.5s cubic-bezier(0.32, 1.2, 0.32, 1);
+      box-sizing: border-box;
+    }
+
+    .auth-screen::-webkit-scrollbar {
+      display: none;
+    }
+
+    .auth-screen.hidden {
+      opacity: 0;
+      transform: translateY(100%);
+      pointer-events: none;
+    }
+
+    /* Ambient Spiritual Watermark */
+    .auth-watermark {
+      position: absolute;
+      top: -40px;
+      right: -40px;
+      width: 260px;
+      height: 260px;
+      background: radial-gradient(circle, rgba(212, 175, 55, 0.14) 0%, transparent 70%);
+      border-radius: 50%;
+      pointer-events: none;
+      filter: blur(25px);
+    }
+
+    .auth-watermark-2 {
+      position: absolute;
+      bottom: 60px;
+      left: -50px;
+      width: 220px;
+      height: 220px;
+      background: radial-gradient(circle, rgba(56, 189, 248, 0.12) 0%, transparent 70%);
+      border-radius: 50%;
+      pointer-events: none;
+      filter: blur(20px);
+    }
+
+    /* Auth Header & Branding */
+    .auth-header {
+      text-align: center;
+      margin-bottom: 18px;
+      position: relative;
+      z-index: 2;
+    }
+
+    .auth-logo-badge {
+      width: 64px;
+      height: 64px;
+      margin: 0 auto 10px auto;
+      background: linear-gradient(135deg, #165647 0%, #07211B 100%);
+      border: 2px solid rgba(212, 175, 55, 0.6);
+      border-radius: 20px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 30px;
+      box-shadow: 0 10px 25px rgba(0, 0, 0, 0.4), 0 0 25px rgba(212, 175, 55, 0.25);
+      position: relative;
+      animation: floatBadge 4s ease-in-out infinite alternate;
+    }
+
+    @keyframes floatBadge {
+      0% { transform: translateY(0); }
+      100% { transform: translateY(-4px); }
+    }
+
+    .auth-title {
+      font-size: 24px;
+      font-weight: 800;
+      letter-spacing: -0.5px;
+      background: linear-gradient(135deg, #FFFFFF 40%, #F4E7BE 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      margin-bottom: 2px;
+    }
+
+    .auth-subtitle {
+      font-size: 11px;
+      color: #94A3B8;
+      font-weight: 600;
+      letter-spacing: 0.5px;
+      text-transform: uppercase;
+    }
+
+    .auth-quote-box {
+      margin-top: 10px;
+      background: rgba(255, 255, 255, 0.05);
+      border: 1px solid rgba(255, 255, 255, 0.1);
+      border-radius: 12px;
+      padding: 8px 12px;
+      text-align: center;
+    }
+
+    .auth-quote-box .aq-arabic {
+      font-family: 'Amiri', serif;
+      font-size: 14.5px;
+      color: #FCD34D;
+      display: block;
+      line-height: 1.3;
+    }
+
+    .auth-quote-box .aq-turkish {
+      font-size: 10px;
+      color: rgba(255, 255, 255, 0.75);
+      margin-top: 2px;
+      display: block;
+    }
+
+    /* Segmented Tab Switcher */
+    .auth-switcher {
+      display: flex;
+      background: rgba(0, 0, 0, 0.35);
+      border: 1px solid rgba(255, 255, 255, 0.1);
+      border-radius: 14px;
+      padding: 4px;
+      margin-bottom: 14px;
+      position: relative;
+      z-index: 2;
+    }
+
+    .auth-switch-btn {
+      flex: 1;
+      background: none;
+      border: none;
+      padding: 8px 0;
+      color: #94A3B8;
+      font-size: 12px;
+      font-weight: 700;
+      border-radius: 10px;
+      cursor: pointer;
+      transition: all 0.25s ease;
+      font-family: inherit;
+    }
+
+    .auth-switch-btn.active {
+      background: linear-gradient(135deg, #10B981 0%, #059669 100%);
+      color: #FFFFFF;
+      box-shadow: 0 4px 12px rgba(16, 185, 129, 0.35);
+    }
+
+    /* Auth Card Form */
+    .auth-card {
+      background: rgba(255, 255, 255, 0.07);
+      backdrop-filter: blur(25px);
+      -webkit-backdrop-filter: blur(25px);
+      border: 1px solid rgba(255, 255, 255, 0.14);
+      border-radius: 20px;
+      padding: 16px 14px;
+      box-shadow: 0 20px 40px rgba(0, 0, 0, 0.45);
+      position: relative;
+      z-index: 2;
+    }
+
+    .form-group {
+      margin-bottom: 11px;
+    }
+
+    .form-label {
+      display: block;
+      font-size: 11px;
+      font-weight: 700;
+      color: #E2E8F0;
+      margin-bottom: 5px;
+    }
+
+    .input-with-icon {
+      position: relative;
+      display: flex;
+      align-items: center;
+    }
+
+    .input-icon {
+      position: absolute;
+      left: 12px;
+      font-size: 15px;
+      pointer-events: none;
+      color: #94A3B8;
+    }
+
+    .auth-input {
+      width: 100%;
+      height: 40px;
+      background: rgba(15, 23, 42, 0.6);
+      border: 1px solid rgba(255, 255, 255, 0.14);
+      border-radius: 12px;
+      padding: 0 38px 0 38px;
+      font-size: 12px;
+      color: #FFFFFF;
+      outline: none;
+      font-family: inherit;
+      transition: all 0.2s ease;
+    }
+
+    .auth-input::placeholder {
+      color: #64748B;
+    }
+
+    .auth-input:focus {
+      border-color: #34D399;
+      box-shadow: 0 0 0 3px rgba(52, 211, 153, 0.2);
+      background: rgba(15, 23, 42, 0.85);
+    }
+
+    .password-toggle-btn {
+      position: absolute;
+      right: 10px;
+      background: none;
+      border: none;
+      color: #94A3B8;
+      font-size: 14px;
+      cursor: pointer;
+      padding: 4px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .auth-options-row {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin: 4px 0 14px 0;
+      font-size: 11px;
+    }
+
+    .remember-me-label {
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      color: #CBD5E1;
+      cursor: pointer;
+    }
+
+    .remember-me-label input[type="checkbox"] {
+      accent-color: #10B981;
+      width: 14px;
+      height: 14px;
+      cursor: pointer;
+    }
+
+    .forgot-pwd-link {
+      color: #FCD34D;
+      text-decoration: none;
+      font-weight: 600;
+      cursor: pointer;
+      transition: color 0.15s;
+    }
+
+    .forgot-pwd-link:hover {
+      color: #FBBF24;
+      text-decoration: underline;
+    }
+
+    .auth-submit-btn {
+      width: 100%;
+      height: 42px;
+      background: linear-gradient(135deg, #D4AF37 0%, #E79B3A 50%, #C85A3C 100%);
+      color: #0F172A;
+      font-size: 12.5px;
+      font-weight: 800;
+      border: none;
+      border-radius: 12px;
+      cursor: pointer;
+      transition: all 0.2s cubic-bezier(0.34, 1.56, 0.64, 1);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 6px;
+      box-shadow: 0 6px 20px rgba(212, 175, 55, 0.35);
+      font-family: inherit;
+    }
+
+    .auth-submit-btn:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 10px 25px rgba(212, 175, 55, 0.5);
+    }
+
+    .auth-submit-btn:active {
+      transform: scale(0.97);
+    }
+
+    /* Social Divider & Actions */
+    .auth-divider {
+      display: flex;
+      align-items: center;
+      text-align: center;
+      margin: 14px 0 10px 0;
+      color: #64748B;
+      font-size: 10px;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+    }
+
+    .auth-divider::before,
+    .auth-divider::after {
+      content: '';
+      flex: 1;
+      border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+    }
+
+    .auth-divider span {
+      padding: 0 8px;
+    }
+
+    .social-auth-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 8px;
+      margin-bottom: 12px;
+    }
+
+    .social-btn {
+      background: rgba(255, 255, 255, 0.08);
+      border: 1px solid rgba(255, 255, 255, 0.12);
+      border-radius: 10px;
+      padding: 7px 4px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 5px;
+      color: #FFFFFF;
+      font-size: 11px;
+      font-weight: 600;
+      cursor: pointer;
+      transition: all 0.15s ease;
+      font-family: inherit;
+    }
+
+    .social-btn:hover {
+      background: rgba(255, 255, 255, 0.16);
+      border-color: rgba(255, 255, 255, 0.25);
+      transform: translateY(-1px);
+    }
+
+    .social-btn:active {
+      transform: scale(0.95);
+    }
+
+    .guest-btn {
+      width: 100%;
+      background: transparent;
+      border: 1px dashed rgba(255, 255, 255, 0.25);
+      color: #94A3B8;
+      border-radius: 10px;
+      padding: 8px 0;
+      font-size: 11px;
+      font-weight: 700;
+      cursor: pointer;
+      transition: all 0.2s ease;
+      font-family: inherit;
+    }
+
+    .guest-btn:hover {
+      background: rgba(255, 255, 255, 0.08);
+      color: #FCD34D;
+      border-color: #FCD34D;
+    }
+
+    /* Logout Setting Button */
+    .logout-row {
+      margin-top: 10px;
+      background: rgba(239, 68, 68, 0.08) !important;
+      border: 1px solid rgba(239, 68, 68, 0.2) !important;
+      border-radius: 14px;
+    }
+
+    .logout-row:hover {
+      background: rgba(239, 68, 68, 0.15) !important;
+    }
+
+    .logout-row .settings-title {
+      color: #EF4444 !important;
+      font-weight: 700;
+    }
+
     /* Responsive Adaptation for smaller screens */
     @media (max-width: 1180px) {
       .main-layout-wrapper {
@@ -2795,6 +3191,131 @@
     <!-- CENTERED PHONE SIMULATOR -->
     <div class="phone-simulator-wrapper">
       <div class="phone-simulator" id="phoneContainer">
+
+        <!-- AUTH / LOGIN & SIGNUP FULLSCREEN OVERLAY -->
+        <div class="auth-screen" id="authScreen">
+          <div class="auth-watermark"></div>
+          <div class="auth-watermark-2"></div>
+
+          <!-- Branding & Spiritual Quote -->
+          <div class="auth-header">
+            <div class="auth-logo-badge">
+              <span class="auth-logo-icon">🌿</span>
+            </div>
+            <h2 class="auth-title">XSİR YOL</h2>
+            <div class="auth-subtitle">Manevi Takip & Hizmet Dünyası</div>
+            <div class="auth-quote-box">
+              <span class="aq-arabic">أَلَا بِذِكْرِ اللَّهِ تَطْمَئِنُّ الْقُلُوبُ</span>
+              <span class="aq-turkish">"Bilesiniz ki, kalpler ancak Allah'ı anmakla huzur bulur."</span>
+              <span class="aq-ref" style="font-size: 9px; color: #94A3B8; display: block; margin-top: 2px;">Ra'd Suresi, 28</span>
+            </div>
+          </div>
+
+          <!-- Switcher -->
+          <div class="auth-switcher">
+            <button type="button" class="auth-switch-btn active" id="btnAuthLogin" onclick="switchAuthTab('login')">Giriş Yap</button>
+            <button type="button" class="auth-switch-btn" id="btnAuthRegister" onclick="switchAuthTab('register')">Kayıt Ol</button>
+          </div>
+
+          <!-- Auth Card -->
+          <div class="auth-card">
+            <!-- Login Form -->
+            <form id="loginFormWrap" onsubmit="handleLoginSubmit(event)">
+              <div class="form-group">
+                <label class="form-label">E-Posta veya Telefon</label>
+                <div class="input-with-icon">
+                  <span class="input-icon">✉️</span>
+                  <input type="text" id="loginIdentifier" class="auth-input" placeholder="furkan@xsir.org veya 05xx..." value="furkan@xsir.org" required>
+                </div>
+              </div>
+
+              <div class="form-group">
+                <label class="form-label">Şifre</label>
+                <div class="input-with-icon">
+                  <span class="input-icon">🔒</span>
+                  <input type="password" id="loginPassword" class="auth-input" placeholder="••••••••" value="xsir1234" required>
+                  <button type="button" class="password-toggle-btn" onclick="togglePasswordVisibility('loginPassword', this)">👁️</button>
+                </div>
+              </div>
+
+              <div class="auth-options-row">
+                <label class="remember-me-label">
+                  <input type="checkbox" id="rememberMe" checked>
+                  <span>Beni Hatırla</span>
+                </label>
+                <a class="forgot-pwd-link" onclick="showToast('Şifre sıfırlama bağlantısı e-postanıza gönderildi.')">Şifremi Unuttum?</a>
+              </div>
+
+              <button type="submit" class="auth-submit-btn">
+                <span>Giriş Yap ve Yola Başla</span>
+                <span>❯</span>
+              </button>
+            </form>
+
+            <!-- Register Form -->
+            <form id="registerFormWrap" style="display: none;" onsubmit="handleRegisterSubmit(event)">
+              <div class="form-group">
+                <label class="form-label">Ad Soyad</label>
+                <div class="input-with-icon">
+                  <span class="input-icon">👤</span>
+                  <input type="text" id="regName" class="auth-input" placeholder="Örn: Ahmet Furkan">
+                </div>
+              </div>
+
+              <div class="form-group">
+                <label class="form-label">E-Posta Adresi</label>
+                <div class="input-with-icon">
+                  <span class="input-icon">✉️</span>
+                  <input type="email" id="regEmail" class="auth-input" placeholder="ornek@xsir.org">
+                </div>
+              </div>
+
+              <div class="form-group">
+                <label class="form-label">Şifre Belirleyin</label>
+                <div class="input-with-icon">
+                  <span class="input-icon">🔒</span>
+                  <input type="password" id="regPassword" class="auth-input" placeholder="En az 6 karakter">
+                  <button type="button" class="password-toggle-btn" onclick="togglePasswordVisibility('regPassword', this)">👁️</button>
+                </div>
+              </div>
+
+              <div class="form-group">
+                <label class="form-label">Akademi / Gönüllü Kodu (Opsiyonel)</label>
+                <div class="input-with-icon">
+                  <span class="input-icon">🎓</span>
+                  <input type="text" id="regCode" class="auth-input" placeholder="XSR-2026-AKAD">
+                </div>
+              </div>
+
+              <button type="submit" class="auth-submit-btn">
+                <span>Manevi Yolculuğa Katıl</span>
+                <span>❯</span>
+              </button>
+            </form>
+
+            <!-- Social Logins -->
+            <div class="auth-divider">
+              <span>veya şununla devam et</span>
+            </div>
+
+            <div class="social-auth-grid">
+              <button type="button" class="social-btn" onclick="quickSocialLogin('Apple ID')">
+                <span></span> Apple
+              </button>
+              <button type="button" class="social-btn" onclick="quickSocialLogin('Google')">
+                <span style="color: #EA4335; font-weight: 800;">G</span> Google
+              </button>
+              <button type="button" class="social-btn" onclick="quickSocialLogin('Xsir Akademi ID')">
+                <span>🎓</span> Akademi
+              </button>
+            </div>
+
+            <!-- Guest Mode -->
+            <button type="button" class="guest-btn" onclick="continueAsGuest()">
+              ✨ Misafir Olarak Hemen Keşfet →
+            </button>
+          </div>
+        </div>
 
         <!-- Dynamic Island -->
         <div class="dynamic-island-container" id="dynamicIsland" onclick="toggleDynamicIsland()"
@@ -3537,6 +4058,13 @@
                     <div class="settings-title">Hakkında & Çınaraltı İletişim</div>
                   </div>
                   <div class="settings-right">v2.4 ❯</div>
+                </div>
+                <div class="settings-row logout-row" onclick="logoutUser()">
+                  <div class="settings-left">
+                    <div class="settings-icon" style="color: #EF4444;">🚪</div>
+                    <div class="settings-title">Çıkış Yap / Giriş Ekranı</div>
+                  </div>
+                  <div class="settings-right" style="color: #EF4444; font-weight: 700;">Çıkış ❯</div>
                 </div>
               </div>
             </div>
@@ -4596,10 +5124,96 @@
       overlays.forEach(m => m.classList.remove('active'));
     }
 
+    // --------------------------------------------------------------------------
+    // 12. Auth / Login & Signup Logic
+    // --------------------------------------------------------------------------
+    function switchAuthTab(mode) {
+      const btnLogin = document.getElementById('btnAuthLogin');
+      const btnRegister = document.getElementById('btnAuthRegister');
+      const formLogin = document.getElementById('loginFormWrap');
+      const formRegister = document.getElementById('registerFormWrap');
+
+      if (mode === 'login') {
+        btnLogin.classList.add('active');
+        btnRegister.classList.remove('active');
+        formLogin.style.display = 'block';
+        formRegister.style.display = 'none';
+      } else {
+        btnRegister.classList.add('active');
+        btnLogin.classList.remove('active');
+        formLogin.style.display = 'none';
+        formRegister.style.display = 'block';
+      }
+    }
+
+    function togglePasswordVisibility(inputId, btn) {
+      const input = document.getElementById(inputId);
+      if (!input) return;
+      if (input.type === 'password') {
+        input.type = 'text';
+        btn.textContent = '🙈';
+      } else {
+        input.type = 'password';
+        btn.textContent = '👁️';
+      }
+    }
+
+    function handleLoginSubmit(e) {
+      e.preventDefault();
+      const identifier = document.getElementById('loginIdentifier').value.trim() || 'Furkan';
+      const name = identifier.includes('@') ? identifier.split('@')[0] : identifier;
+      const capitalizedName = name.charAt(0).toUpperCase() + name.slice(1);
+
+      const authScreen = document.getElementById('authScreen');
+      if (authScreen) {
+        authScreen.classList.add('hidden');
+      }
+
+      showToast(`Hoş geldiniz ${capitalizedName}! Manevi yolculuğunuz başladı. 🌿`);
+    }
+
+    function handleRegisterSubmit(e) {
+      e.preventDefault();
+      const name = document.getElementById('regName').value.trim() || 'Kardeşim';
+
+      const authScreen = document.getElementById('authScreen');
+      if (authScreen) {
+        authScreen.classList.add('hidden');
+      }
+
+      showToast(`Hesabınız oluşturuldu! Aramıza hoş geldiniz, ${name} 🌿`);
+    }
+
+    function quickSocialLogin(provider) {
+      const authScreen = document.getElementById('authScreen');
+      if (authScreen) {
+        authScreen.classList.add('hidden');
+      }
+      showToast(`${provider} ile güvenle giriş yapıldı. Hoş geldiniz! ✨`);
+    }
+
+    function continueAsGuest() {
+      const authScreen = document.getElementById('authScreen');
+      if (authScreen) {
+        authScreen.classList.add('hidden');
+      }
+      showToast('Misafir modu aktif. Xsir Yol dünyasına hoş geldiniz! 🌿');
+    }
+
+    function logoutUser() {
+      const authScreen = document.getElementById('authScreen');
+      if (authScreen) {
+        authScreen.classList.remove('hidden');
+        authScreen.scrollTop = 0;
+      }
+      switchTab('tab-today');
+      showToast('Oturum kapatıldı. Giriş ekranına dönüldü.');
+    }
+
     // Auto-trigger sample push on first load
     setTimeout(() => {
       triggerNotificationDemo('tarih');
-    }, 1200);
+    }, 1500);
   </script>
 </body>
 
