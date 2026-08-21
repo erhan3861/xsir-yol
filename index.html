@@ -1,0 +1,3636 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover">
+  <meta name="theme-color" content="#07211B">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+  <meta name="description" content="Xsir Yol — İslami ve Manevi Süper-App & Xsir Akademi Hizmet Takip Prototipi">
+  <title>Xsir Yol — Manevi Takip & Hizmet Süper-App</title>
+
+  <!-- Google Fonts: Plus Jakarta Sans & Playfair Display & Amiri -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Amiri:ital,wght@0,400;0,700;1,400&family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&family=Outfit:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+
+  <style>
+    /* ==========================================================================
+       1. CSS VARIABLES & DESIGN SYSTEM (Manevi & Modern Premium Palette)
+       ========================================================================== */
+    :root {
+      /* Brand Color Tokens */
+      --primary-dark: #07211B;
+      --primary: #0D382E;
+      --primary-light: #165647;
+      --primary-soft: #E9F4F0;
+      
+      --accent-gold: #D4AF37;
+      --accent-gold-light: #F4E7BE;
+      --accent-amber: #E79B3A;
+      --accent-terracotta: #C85A3C;
+      --accent-terracotta-soft: #FDF1ED;
+      --accent-indigo: #4F46E5;
+      --accent-emerald: #10B981;
+      --accent-cyan: #0891B2;
+      
+      /* Akademi Modülü Ayrı Kimlik Renkleri */
+      --akademi-bg: #0F172A;
+      --akademi-card: #1E293B;
+      --akademi-accent: #38BDF8;
+      --akademi-purple: #818CF8;
+      
+      /* Neutral & UI Surfaces */
+      --bg-canvas: #0B1412;
+      --app-bg: #F8F9FA;
+      --app-card: #FFFFFF;
+      --text-main: #131E1B;
+      --text-muted: #62726E;
+      --text-light: #8E9E9B;
+      --border-subtle: #E8ECEB;
+      --border-focus: #CBD5E1;
+      
+      /* Shadows & Radii */
+      --radius-phone: 50px;
+      --radius-card: 20px;
+      --radius-sm: 12px;
+      --radius-pill: 9999px;
+      
+      --shadow-phone: 0 25px 60px -15px rgba(0, 0, 0, 0.7), 0 0 0 12px #1E2927, 0 0 0 14px #2F3E3B, 0 35px 80px rgba(13, 56, 46, 0.35);
+      --shadow-card: 0 4px 20px -2px rgba(13, 56, 46, 0.06), 0 2px 6px -1px rgba(0, 0, 0, 0.04);
+      --shadow-card-hover: 0 10px 25px -4px rgba(13, 56, 46, 0.12);
+      --shadow-floating: 0 12px 32px -4px rgba(7, 33, 27, 0.25);
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+      -webkit-tap-highlight-color: transparent;
+      user-select: none;
+    }
+
+    body {
+      font-family: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+      background: radial-gradient(circle at 50% 20%, #15332C 0%, #071310 60%, #030807 100%);
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      color: #FFFFFF;
+      overflow-x: hidden;
+      padding: 20px 10px;
+    }
+
+    /* Ambient Background Glow on Desktop */
+    .desktop-decor {
+      position: fixed;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      pointer-events: none;
+      z-index: 0;
+      overflow: hidden;
+    }
+    .glow-blob {
+      position: absolute;
+      border-radius: 50%;
+      filter: blur(90px);
+      opacity: 0.22;
+      animation: floatGlow 14s ease-in-out infinite alternate;
+    }
+    .glow-1 {
+      width: 500px;
+      height: 500px;
+      background: #14B8A6;
+      top: -100px;
+      left: 10%;
+    }
+    .glow-2 {
+      width: 450px;
+      height: 450px;
+      background: #D4AF37;
+      bottom: -50px;
+      right: 15%;
+      animation-delay: -6s;
+    }
+
+    @keyframes floatGlow {
+      0% { transform: translate(0, 0) scale(1); }
+      50% { transform: translate(40px, 30px) scale(1.08); }
+      100% { transform: translate(-30px, -20px) scale(0.95); }
+    }
+
+    /* Header info bar on desktop */
+    .desktop-header {
+      margin-bottom: 12px;
+      text-align: center;
+      z-index: 1;
+    }
+    .desktop-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      background: rgba(255, 255, 255, 0.08);
+      border: 1px solid rgba(255, 255, 255, 0.15);
+      backdrop-filter: blur(12px);
+      padding: 5px 14px;
+      border-radius: 9999px;
+      font-size: 11.5px;
+      letter-spacing: 0.5px;
+      font-weight: 600;
+      color: #A7F3D0;
+      margin-bottom: 4px;
+    }
+    .desktop-badge::before {
+      content: "";
+      width: 8px;
+      height: 8px;
+      background: #34D399;
+      border-radius: 50%;
+      box-shadow: 0 0 10px #34D399;
+    }
+    .desktop-title {
+      font-size: 13.5px;
+      color: rgba(255, 255, 255, 0.6);
+      font-weight: 400;
+    }
+    .desktop-title strong {
+      color: #FFFFFF;
+      font-weight: 700;
+    }
+
+    /* ==========================================================================
+       DEMO CONTROLLER BAR (BİLDİRİM TETİKLEYİCİ PANELİ)
+       ========================================================================== */
+    .demo-trigger-panel {
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      background: rgba(13, 56, 46, 0.85);
+      border: 1px solid rgba(212, 175, 55, 0.4);
+      backdrop-filter: blur(14px);
+      padding: 6px 12px;
+      border-radius: 999px;
+      margin-bottom: 14px;
+      z-index: 20;
+      box-shadow: 0 10px 25px rgba(0, 0, 0, 0.4);
+      flex-wrap: wrap;
+      justify-content: center;
+      max-width: 500px;
+    }
+    .demo-trigger-lbl {
+      font-size: 10.5px;
+      font-weight: 700;
+      color: #FCD34D;
+      display: flex;
+      align-items: center;
+      gap: 4px;
+      margin-right: 4px;
+    }
+    .demo-notif-btn {
+      background: rgba(255, 255, 255, 0.12);
+      border: 1px solid rgba(255, 255, 255, 0.2);
+      color: #FFFFFF;
+      font-size: 10.5px;
+      font-weight: 600;
+      padding: 4px 9px;
+      border-radius: 999px;
+      cursor: pointer;
+      display: inline-flex;
+      align-items: center;
+      gap: 4px;
+      transition: all 0.15s ease;
+    }
+    .demo-notif-btn:hover {
+      background: rgba(212, 175, 55, 0.35);
+      border-color: #FCD34D;
+      transform: translateY(-1px);
+    }
+    .demo-notif-btn:active {
+      transform: scale(0.95);
+    }
+
+    /* ==========================================================================
+       2. REALISTIC MOBILE PHONE FRAME CONTAINER
+       ========================================================================== */
+    .phone-simulator {
+      position: relative;
+      width: 390px;
+      height: 844px;
+      max-width: 100vw;
+      max-height: 92vh;
+      background: var(--app-bg);
+      border-radius: var(--radius-phone);
+      box-shadow: var(--shadow-phone);
+      display: flex;
+      flex-direction: column;
+      overflow: hidden;
+      z-index: 10;
+      border: 4px solid #364441;
+      transform: translateZ(0);
+      transition: all 0.3s ease;
+    }
+
+    /* Dynamic Island / Top Notch */
+    .dynamic-island-container {
+      position: absolute;
+      top: 10px;
+      left: 50%;
+      transform: translateX(-50%);
+      z-index: 120;
+      width: 120px;
+      height: 32px;
+      background: #000000;
+      border-radius: 20px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 0 10px;
+      transition: all 0.35s cubic-bezier(0.34, 1.56, 0.64, 1);
+      cursor: pointer;
+      box-shadow: 0 4px 15px rgba(0, 0, 0, 0.4);
+    }
+    .dynamic-island-container.expanded {
+      width: 340px;
+      height: 64px;
+      border-radius: 24px;
+      padding: 10px 14px;
+      justify-content: flex-start;
+      gap: 12px;
+    }
+    .island-cam {
+      width: 10px;
+      height: 10px;
+      background: #08101C;
+      border: 1px solid #1E293B;
+      border-radius: 50%;
+    }
+    .island-speaker {
+      width: 38px;
+      height: 4px;
+      background: #111827;
+      border-radius: 4px;
+    }
+    .island-dot {
+      width: 6px;
+      height: 6px;
+      background: #10B981;
+      border-radius: 50%;
+      opacity: 0.8;
+      box-shadow: 0 0 6px #10B981;
+    }
+    .island-expanded-content {
+      display: none;
+      color: #FFFFFF;
+      flex: 1;
+    }
+    .dynamic-island-container.expanded .island-expanded-content {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+    .dynamic-island-container.expanded .island-cam,
+    .dynamic-island-container.expanded .island-speaker {
+      display: none;
+    }
+
+    /* iOS Tarzı Canlı Push Bildirim Bannerı (Simülatör) */
+    .push-notification-banner {
+      position: absolute;
+      top: 10px;
+      left: 14px;
+      right: 14px;
+      background: rgba(255, 255, 255, 0.94);
+      backdrop-filter: blur(24px);
+      -webkit-backdrop-filter: blur(24px);
+      border: 1px solid rgba(255, 255, 255, 0.8);
+      border-radius: 20px;
+      padding: 12px 14px;
+      box-shadow: 0 16px 40px rgba(0, 0, 0, 0.25), 0 2px 8px rgba(0, 0, 0, 0.08);
+      z-index: 130;
+      color: var(--text-main);
+      display: flex;
+      gap: 12px;
+      cursor: pointer;
+      transform: translateY(-130%);
+      opacity: 0;
+      transition: all 0.4s cubic-bezier(0.34, 1.4, 0.64, 1);
+    }
+    .push-notification-banner.show {
+      transform: translateY(0);
+      opacity: 1;
+    }
+    .push-app-icon {
+      width: 38px;
+      height: 38px;
+      border-radius: 10px;
+      background: linear-gradient(135deg, #07211B 0%, #165647 100%);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 18px;
+      color: #FFE699;
+      flex-shrink: 0;
+      box-shadow: 0 4px 10px rgba(7, 33, 27, 0.25);
+    }
+    .push-body {
+      flex: 1;
+      min-width: 0;
+    }
+    .push-top-row {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 2px;
+    }
+    .push-app-name {
+      font-size: 10px;
+      font-weight: 800;
+      letter-spacing: 0.5px;
+      color: var(--primary);
+      text-transform: uppercase;
+    }
+    .push-time {
+      font-size: 9.5px;
+      color: var(--text-light);
+    }
+    .push-title {
+      font-size: 12px;
+      font-weight: 700;
+      color: var(--primary-dark);
+      margin-bottom: 2px;
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+    }
+    .push-snippet {
+      font-size: 11px;
+      color: var(--text-muted);
+      line-height: 1.35;
+      display: -webkit-box;
+      -webkit-line-clamp: 2;
+      -webkit-box-orient: vertical;
+      overflow: hidden;
+    }
+
+    /* Status Bar */
+    .status-bar {
+      position: relative;
+      height: 46px;
+      padding: 10px 24px 0 24px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      font-size: 13px;
+      font-weight: 700;
+      color: #07211B;
+      z-index: 90;
+      background: transparent;
+    }
+    .status-bar.dark-mode-header {
+      color: #FFFFFF;
+    }
+    .status-bar .icons {
+      display: flex;
+      align-items: center;
+      gap: 6px;
+    }
+    .status-bar svg {
+      width: 15px;
+      height: 15px;
+      fill: currentColor;
+    }
+
+    /* Main Scrollable Viewport */
+    .phone-content {
+      flex: 1;
+      overflow-y: auto;
+      overflow-x: hidden;
+      position: relative;
+      padding-bottom: 95px; /* bottom nav spacing */
+      scroll-behavior: smooth;
+    }
+    .phone-content::-webkit-scrollbar {
+      width: 0px;
+      background: transparent;
+    }
+
+    /* Home Indicator Line */
+    .home-indicator {
+      position: absolute;
+      bottom: 8px;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 134px;
+      height: 5px;
+      background: rgba(0, 0, 0, 0.6);
+      border-radius: 10px;
+      z-index: 120;
+      pointer-events: none;
+    }
+    .home-indicator.light {
+      background: rgba(255, 255, 255, 0.7);
+    }
+
+    /* ==========================================================================
+       3. BOTTOM NAVIGATION (5 TABS)
+       ========================================================================== */
+    .bottom-nav {
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      right: 0;
+      height: 82px;
+      padding-bottom: 14px;
+      background: rgba(255, 255, 255, 0.94);
+      backdrop-filter: blur(20px);
+      -webkit-backdrop-filter: blur(20px);
+      border-top: 1px solid rgba(0, 0, 0, 0.06);
+      display: flex;
+      justify-content: space-around;
+      align-items: center;
+      z-index: 110;
+    }
+    .bottom-nav.akademi-nav {
+      background: rgba(15, 23, 42, 0.96);
+      border-top: 1px solid rgba(255, 255, 255, 0.1);
+    }
+    .nav-tab-btn {
+      background: none;
+      border: none;
+      outline: none;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      gap: 3px;
+      color: #84928E;
+      cursor: pointer;
+      width: 64px;
+      transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+      position: relative;
+    }
+    .bottom-nav.akademi-nav .nav-tab-btn {
+      color: #64748B;
+    }
+    .nav-tab-btn svg {
+      width: 22px;
+      height: 22px;
+      stroke-width: 2.2;
+      transition: transform 0.2s ease, stroke 0.2s ease;
+    }
+    .nav-tab-btn span {
+      font-size: 10px;
+      font-weight: 600;
+      letter-spacing: -0.2px;
+    }
+    .nav-tab-btn.active {
+      color: var(--primary);
+    }
+    .bottom-nav.akademi-nav .nav-tab-btn.active {
+      color: var(--akademi-accent);
+    }
+    .nav-tab-btn.active svg {
+      transform: scale(1.12);
+      stroke: var(--primary);
+    }
+    .bottom-nav.akademi-nav .nav-tab-btn.active svg {
+      stroke: var(--akademi-accent);
+    }
+    .nav-tab-btn.active::after {
+      content: "";
+      position: absolute;
+      top: -8px;
+      width: 20px;
+      height: 3px;
+      background: var(--accent-gold);
+      border-radius: 3px;
+    }
+    .bottom-nav.akademi-nav .nav-tab-btn.active::after {
+      background: var(--akademi-accent);
+    }
+
+    /* Tab Page Views */
+    .tab-view {
+      display: none;
+      animation: fadeIn 0.28s ease-out;
+    }
+    .tab-view.active {
+      display: block;
+    }
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(6px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    /* ==========================================================================
+       4. TAB 1: "BUGÜN" (ANA EKRAN / DASHBOARD)
+       ========================================================================== */
+    .header-top {
+      padding: 6px 20px 12px 20px;
+      background: linear-gradient(180deg, rgba(13, 56, 46, 0.08) 0%, transparent 100%);
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+    .user-greeting-box h1 {
+      font-size: 18px;
+      font-weight: 800;
+      color: var(--primary-dark);
+      letter-spacing: -0.4px;
+      display: flex;
+      align-items: center;
+      gap: 6px;
+    }
+    .user-greeting-box .date-str {
+      font-size: 11px;
+      color: var(--text-muted);
+      font-weight: 500;
+      margin-top: 2px;
+    }
+    .header-actions {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+    .action-icon-btn {
+      width: 38px;
+      height: 38px;
+      border-radius: 50%;
+      background: #FFFFFF;
+      border: 1px solid var(--border-subtle);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: var(--primary-dark);
+      cursor: pointer;
+      box-shadow: 0 2px 6px rgba(0, 0, 0, 0.04);
+      position: relative;
+      transition: transform 0.15s ease;
+    }
+    .action-icon-btn:active {
+      transform: scale(0.92);
+    }
+    .badge-count {
+      position: absolute;
+      top: -2px;
+      right: -2px;
+      min-width: 17px;
+      height: 17px;
+      background: #EF4444;
+      color: #FFFFFF;
+      font-size: 9.5px;
+      font-weight: 800;
+      border-radius: 999px;
+      border: 2px solid #FFFFFF;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 0 2px;
+      box-shadow: 0 2px 6px rgba(239, 68, 68, 0.5);
+    }
+
+    /* Günün Bildirim & Tarihte Bugün Hızlı Şeridi */
+    .history-highlight-banner {
+      margin: 0 18px 12px 18px;
+      background: linear-gradient(135deg, #FEF3C7 0%, #FDE68A 100%);
+      border: 1px solid #FCD34D;
+      border-radius: 14px;
+      padding: 10px 14px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      cursor: pointer;
+      transition: transform 0.15s ease;
+    }
+    .history-highlight-banner:hover {
+      transform: translateY(-1px);
+    }
+    .hh-left {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+    .hh-icon {
+      font-size: 20px;
+    }
+    .hh-text h4 {
+      font-size: 11.5px;
+      font-weight: 800;
+      color: #92400E;
+    }
+    .hh-text p {
+      font-size: 10px;
+      color: #78350F;
+    }
+    .hh-arrow {
+      font-size: 11px;
+      font-weight: 700;
+      color: #92400E;
+    }
+
+    /* Namaz Vakti & Geri Sayım Kartı */
+    .prayer-hero-card {
+      margin: 0 18px 14px 18px;
+      background: linear-gradient(135deg, #07211B 0%, #0D382E 50%, #165647 100%);
+      border-radius: var(--radius-card);
+      padding: 18px 16px;
+      color: #FFFFFF;
+      position: relative;
+      overflow: hidden;
+      box-shadow: 0 10px 24px -4px rgba(7, 33, 27, 0.3);
+    }
+    .prayer-hero-card::after {
+      content: "🕌";
+      position: absolute;
+      right: -10px;
+      bottom: -15px;
+      font-size: 80px;
+      opacity: 0.12;
+      pointer-events: none;
+    }
+    .prayer-hero-top {
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-start;
+    }
+    .prayer-next-label {
+      font-size: 11px;
+      text-transform: uppercase;
+      letter-spacing: 0.8px;
+      color: var(--accent-gold-light);
+      font-weight: 700;
+    }
+    .prayer-next-name {
+      font-size: 22px;
+      font-weight: 800;
+      letter-spacing: -0.5px;
+      margin-top: 2px;
+    }
+    .prayer-countdown-badge {
+      background: rgba(212, 175, 55, 0.2);
+      border: 1px solid rgba(212, 175, 55, 0.4);
+      padding: 6px 12px;
+      border-radius: 12px;
+      text-align: right;
+    }
+    .countdown-val {
+      font-size: 17px;
+      font-weight: 800;
+      color: #FFE699;
+      font-variant-numeric: tabular-nums;
+    }
+    .countdown-sub {
+      font-size: 9.5px;
+      color: rgba(255, 255, 255, 0.7);
+    }
+
+    /* 5 Vakit Namaz İlerleme ve Checkbox Butonları */
+    .prayer-times-row {
+      display: flex;
+      justify-content: space-between;
+      gap: 4px;
+      margin-top: 16px;
+      padding-top: 14px;
+      border-top: 1px solid rgba(255, 255, 255, 0.12);
+    }
+    .prayer-col {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      flex: 1;
+      cursor: pointer;
+      padding: 4px 2px;
+      border-radius: 8px;
+      transition: background 0.15s;
+    }
+    .prayer-col:hover {
+      background: rgba(255, 255, 255, 0.08);
+    }
+    .prayer-col .p-name {
+      font-size: 10.5px;
+      color: rgba(255, 255, 255, 0.7);
+      font-weight: 500;
+      margin-bottom: 2px;
+    }
+    .prayer-col .p-time {
+      font-size: 11px;
+      font-weight: 700;
+      margin-bottom: 6px;
+    }
+    .prayer-check-circle {
+      width: 26px;
+      height: 26px;
+      border-radius: 50%;
+      border: 1.5px solid rgba(255, 255, 255, 0.3);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      transition: all 0.2s cubic-bezier(0.34, 1.56, 0.64, 1);
+    }
+    .prayer-col.completed .prayer-check-circle {
+      background: #10B981;
+      border-color: #10B981;
+      box-shadow: 0 0 10px rgba(16, 185, 129, 0.5);
+    }
+    .prayer-col.current {
+      position: relative;
+    }
+    .prayer-col.current .p-name {
+      color: var(--accent-gold-light);
+      font-weight: 700;
+    }
+    .prayer-col.current .prayer-check-circle {
+      border-color: var(--accent-gold);
+      border-width: 2px;
+    }
+
+    /* Yardımcı Şerit: Kıble Pusulası & Zikirmatik Hızlı Butonları */
+    .quick-helper-row {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 10px;
+      margin: 0 18px 14px 18px;
+    }
+    .quick-btn-card {
+      background: var(--app-card);
+      border-radius: 14px;
+      padding: 11px 14px;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      border: 1px solid var(--border-subtle);
+      box-shadow: var(--shadow-card);
+      cursor: pointer;
+      transition: all 0.15s ease;
+    }
+    .quick-btn-card:hover {
+      transform: translateY(-2px);
+      box-shadow: var(--shadow-card-hover);
+    }
+    .quick-btn-card:active {
+      transform: scale(0.96);
+    }
+    .quick-icon {
+      width: 34px;
+      height: 34px;
+      border-radius: 10px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 16px;
+      flex-shrink: 0;
+    }
+    .quick-qibla .quick-icon {
+      background: #FEF3C7;
+      color: #92400E;
+    }
+    .quick-dhikr .quick-icon {
+      background: #E0E7FF;
+      color: #3730A3;
+    }
+    .quick-info h4 {
+      font-size: 12px;
+      font-weight: 700;
+      color: var(--text-main);
+    }
+    .quick-info p {
+      font-size: 10px;
+      color: var(--text-muted);
+    }
+
+    /* GETIR / TRENDYOL GO TARZI MOZAİK GRID BENTO ALANI */
+    .section-title-row {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 0 18px 10px 18px;
+    }
+    .section-title-row h2 {
+      font-size: 15px;
+      font-weight: 800;
+      color: var(--primary-dark);
+      letter-spacing: -0.3px;
+    }
+    .section-link {
+      font-size: 11.5px;
+      font-weight: 700;
+      color: var(--primary);
+      text-decoration: none;
+      cursor: pointer;
+    }
+
+    .mosaic-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      grid-auto-rows: minmax(95px, auto);
+      gap: 10px;
+      margin: 0 18px 14px 18px;
+    }
+    .bento-card {
+      background: var(--app-card);
+      border-radius: var(--radius-card);
+      padding: 14px;
+      position: relative;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      border: 1px solid var(--border-subtle);
+      box-shadow: var(--shadow-card);
+      cursor: pointer;
+      overflow: hidden;
+      transition: all 0.2s cubic-bezier(0.34, 1.56, 0.64, 1);
+    }
+    .bento-card:hover {
+      transform: translateY(-3px);
+      box-shadow: var(--shadow-card-hover);
+    }
+    .bento-card:active {
+      transform: scale(0.97);
+    }
+
+    /* Bento 1: Namaz Takip (Geniş/Büyük Kart) */
+    .bento-namaz {
+      grid-column: span 2;
+      background: linear-gradient(135deg, #ECFDF5 0%, #D1FAE5 100%);
+      border: 1px solid #A7F3D0;
+    }
+    .bento-namaz .card-header-line {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+    .bento-namaz .tag-badge {
+      background: #065F46;
+      color: #FFFFFF;
+      font-size: 9.5px;
+      font-weight: 700;
+      padding: 3px 8px;
+      border-radius: 999px;
+    }
+    .bento-namaz h3 {
+      font-size: 15px;
+      font-weight: 800;
+      color: #064E3B;
+      margin-top: 4px;
+    }
+    .bento-namaz p {
+      font-size: 11.5px;
+      color: #047857;
+      font-weight: 500;
+    }
+    .mini-progress-bar-wrap {
+      margin-top: 10px;
+      background: rgba(6, 95, 70, 0.15);
+      border-radius: 999px;
+      height: 6px;
+      overflow: hidden;
+    }
+    .mini-progress-bar-fill {
+      height: 100%;
+      background: #059669;
+      border-radius: 999px;
+      width: 60%;
+      transition: width 0.4s ease;
+    }
+
+    /* Bento 2: Kütüphane / Kitap Oku (Sıcak Ahşap & Terrakota Tonu) */
+    .bento-library {
+      background: linear-gradient(145deg, #FFF7ED 0%, #FFEDD5 100%);
+      border: 1px solid #FED7AA;
+    }
+    .bento-library .icon-box {
+      width: 32px;
+      height: 32px;
+      border-radius: 10px;
+      background: #EA580C;
+      color: #FFFFFF;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 15px;
+      margin-bottom: 6px;
+    }
+    .bento-library h3 {
+      font-size: 13.5px;
+      font-weight: 800;
+      color: #7C2D12;
+    }
+    .bento-library p {
+      font-size: 10.5px;
+      color: #9A3412;
+      font-weight: 500;
+    }
+    .bento-library .badge-pill {
+      font-size: 9px;
+      font-weight: 700;
+      color: #EA580C;
+      background: #FFFFFF;
+      padding: 2px 7px;
+      border-radius: 999px;
+      display: inline-block;
+      margin-top: 6px;
+    }
+
+    /* Bento 3: AI Asistan (Zümrüt / Altın Aksan) */
+    .bento-ai {
+      background: linear-gradient(145deg, #F0FDF4 0%, #E0E7FF 100%);
+      border: 1px solid #C7D2FE;
+    }
+    .bento-ai .icon-box {
+      width: 32px;
+      height: 32px;
+      border-radius: 10px;
+      background: #4F46E5;
+      color: #FFFFFF;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 15px;
+      margin-bottom: 6px;
+    }
+    .bento-ai h3 {
+      font-size: 13.5px;
+      font-weight: 800;
+      color: #312E81;
+    }
+    .bento-ai p {
+      font-size: 10.5px;
+      color: #4338CA;
+      font-weight: 500;
+    }
+    .bento-ai .sparkle-tag {
+      font-size: 9px;
+      font-weight: 700;
+      color: #4338CA;
+      background: #FFFFFF;
+      padding: 2px 7px;
+      border-radius: 999px;
+      display: inline-block;
+      margin-top: 6px;
+    }
+
+    /* Bento 4: Yolculuğum / İlerleme */
+    .bento-journey {
+      background: #FFFFFF;
+      border: 1px solid #E2E8F0;
+    }
+    .bento-journey h3 {
+      font-size: 13px;
+      font-weight: 800;
+      color: var(--primary-dark);
+    }
+    .bento-journey p {
+      font-size: 10px;
+      color: var(--text-muted);
+      margin-top: 2px;
+    }
+    .journey-stat-ring {
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      margin-top: 8px;
+    }
+    .stat-circle-num {
+      font-size: 18px;
+      font-weight: 800;
+      color: var(--primary);
+    }
+    .stat-circle-lbl {
+      font-size: 9px;
+      color: var(--text-muted);
+      line-height: 1.1;
+    }
+
+    /* Bento 5: Hizmet Alanı (Xsir Akademi) */
+    .bento-service {
+      background: linear-gradient(145deg, #0F172A 0%, #1E293B 100%);
+      color: #FFFFFF;
+      border: 1px solid #334155;
+    }
+    .bento-service h3 {
+      font-size: 13px;
+      font-weight: 800;
+      color: #38BDF8;
+    }
+    .bento-service p {
+      font-size: 10px;
+      color: #94A3B8;
+      margin-top: 2px;
+    }
+    .service-badge-pill {
+      font-size: 9px;
+      font-weight: 700;
+      color: #38BDF8;
+      background: rgba(56, 189, 248, 0.15);
+      border: 1px solid rgba(56, 189, 248, 0.3);
+      padding: 3px 8px;
+      border-radius: 999px;
+      display: inline-block;
+      margin-top: 8px;
+    }
+
+    /* Günün Ayeti / Manevi Hatırlatıcı Kartı */
+    .daily-verse-card {
+      margin: 0 18px 14px 18px;
+      background: #FFFFFF;
+      border-radius: var(--radius-card);
+      padding: 16px;
+      border: 1px solid var(--border-subtle);
+      box-shadow: var(--shadow-card);
+      position: relative;
+    }
+    .daily-verse-card .verse-tag {
+      display: inline-flex;
+      align-items: center;
+      gap: 4px;
+      font-size: 10px;
+      font-weight: 700;
+      color: #92400E;
+      background: #FEF3C7;
+      padding: 3px 8px;
+      border-radius: 6px;
+      margin-bottom: 8px;
+    }
+    .verse-arabic {
+      font-family: 'Amiri', serif;
+      font-size: 17px;
+      color: var(--primary-dark);
+      text-align: right;
+      direction: rtl;
+      line-height: 1.6;
+      margin-bottom: 6px;
+    }
+    .verse-turkish {
+      font-size: 12px;
+      color: var(--text-main);
+      font-style: italic;
+      line-height: 1.45;
+    }
+    .verse-ref {
+      font-size: 10.5px;
+      color: var(--text-muted);
+      font-weight: 600;
+      text-align: right;
+      margin-top: 6px;
+    }
+
+    /* Günlük Özet Alt Çubuğu */
+    .daily-summary-strip {
+      margin: 0 18px 10px 18px;
+      background: #EEF2F1;
+      border-radius: 12px;
+      padding: 10px 14px;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      font-size: 11px;
+      color: var(--primary-dark);
+      font-weight: 600;
+    }
+    .daily-summary-strip .dot-sep {
+      color: #9CA3AF;
+    }
+
+    /* ==========================================================================
+       5. TAB 2: "KEŞFET" (KÜTÜPHANE, AI ASİSTAN, İÇERİKLER)
+       ========================================================================== */
+    .explore-header {
+      padding: 12px 18px 10px 18px;
+    }
+    .search-input-wrap {
+      position: relative;
+      margin-bottom: 12px;
+    }
+    .search-input-wrap input {
+      width: 100%;
+      height: 44px;
+      background: #FFFFFF;
+      border: 1px solid var(--border-subtle);
+      border-radius: 14px;
+      padding: 0 16px 0 42px;
+      font-size: 13px;
+      color: var(--text-main);
+      font-family: inherit;
+      outline: none;
+      box-shadow: 0 2px 8px rgba(0, 0, 0, 0.03);
+    }
+    .search-input-wrap input:focus {
+      border-color: var(--primary);
+    }
+    .search-input-wrap svg {
+      position: absolute;
+      left: 14px;
+      top: 50%;
+      transform: translateY(-50%);
+      width: 18px;
+      height: 18px;
+      stroke: #9CA3AF;
+    }
+
+    /* Filtre Hapları */
+    .filter-pills-row {
+      display: flex;
+      gap: 8px;
+      overflow-x: auto;
+      padding-bottom: 4px;
+    }
+    .filter-pills-row::-webkit-scrollbar {
+      display: none;
+    }
+    .filter-pill {
+      background: #FFFFFF;
+      border: 1px solid var(--border-subtle);
+      padding: 6px 14px;
+      border-radius: 999px;
+      font-size: 11.5px;
+      font-weight: 600;
+      color: var(--text-muted);
+      white-space: nowrap;
+      cursor: pointer;
+      transition: all 0.15s;
+    }
+    .filter-pill.active {
+      background: var(--primary);
+      color: #FFFFFF;
+      border-color: var(--primary);
+    }
+
+    /* AI Asistan Banner */
+    .ai-banner-card {
+      margin: 10px 18px 16px 18px;
+      background: linear-gradient(135deg, #1E1B4B 0%, #312E81 50%, #4338CA 100%);
+      border-radius: var(--radius-card);
+      padding: 16px;
+      color: #FFFFFF;
+      box-shadow: 0 10px 24px -4px rgba(49, 46, 129, 0.35);
+      cursor: pointer;
+      position: relative;
+      overflow: hidden;
+      transition: transform 0.2s ease;
+    }
+    .ai-banner-card:hover {
+      transform: translateY(-2px);
+    }
+    .ai-banner-card::after {
+      content: "✨";
+      position: absolute;
+      right: 14px;
+      bottom: 10px;
+      font-size: 48px;
+      opacity: 0.2;
+    }
+    .ai-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 4px;
+      background: rgba(255, 255, 255, 0.18);
+      padding: 3px 8px;
+      border-radius: 6px;
+      font-size: 9.5px;
+      font-weight: 700;
+      color: #E0E7FF;
+      margin-bottom: 6px;
+    }
+    .ai-banner-card h3 {
+      font-size: 16px;
+      font-weight: 800;
+      margin-bottom: 4px;
+    }
+    .ai-banner-card p {
+      font-size: 11px;
+      color: #C7D2FE;
+      line-height: 1.4;
+      max-width: 80%;
+    }
+    .ai-source-note {
+      font-size: 9.5px;
+      color: #A5B4FC;
+      margin-top: 8px;
+      display: flex;
+      align-items: center;
+      gap: 4px;
+    }
+
+    /* Kütüphane Yatay Scroll */
+    .books-scroll-row {
+      display: flex;
+      gap: 12px;
+      overflow-x: auto;
+      padding: 0 18px 16px 18px;
+    }
+    .books-scroll-row::-webkit-scrollbar {
+      display: none;
+    }
+    .book-card {
+      flex: 0 0 130px;
+      background: #FFFFFF;
+      border-radius: 16px;
+      overflow: hidden;
+      border: 1px solid var(--border-subtle);
+      box-shadow: var(--shadow-card);
+      cursor: pointer;
+      transition: all 0.2s ease;
+    }
+    .book-card:hover {
+      transform: translateY(-3px);
+      box-shadow: var(--shadow-card-hover);
+    }
+    .book-cover {
+      height: 125px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      padding: 10px;
+      text-align: center;
+      color: #FFFFFF;
+      position: relative;
+    }
+    .book-cover.quran {
+      background: linear-gradient(135deg, #064E3B 0%, #047857 100%);
+    }
+    .book-cover.riyaz {
+      background: linear-gradient(135deg, #7C2D12 0%, #B45309 100%);
+    }
+    .book-cover.risale {
+      background: linear-gradient(135deg, #1E3A8A 0%, #2563EB 100%);
+    }
+    .book-cover.cevsen {
+      background: linear-gradient(135deg, #4C1D95 0%, #7C3AED 100%);
+    }
+    .book-cover.hadis {
+      background: linear-gradient(135deg, #831843 0%, #DB2777 100%);
+    }
+    .book-cover .icon-lg {
+      font-size: 26px;
+      margin-bottom: 4px;
+    }
+    .book-cover h4 {
+      font-size: 11px;
+      font-weight: 700;
+      line-height: 1.2;
+    }
+    .book-info {
+      padding: 8px 10px;
+    }
+    .book-info .book-title {
+      font-size: 11.5px;
+      font-weight: 700;
+      color: var(--text-main);
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+    }
+    .book-info .book-author {
+      font-size: 9.5px;
+      color: var(--text-muted);
+    }
+
+    /* Fetva / İçerik Akışı Listesi */
+    .content-feed-list {
+      padding: 0 18px 20px 18px;
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+    }
+    .feed-card {
+      background: #FFFFFF;
+      border-radius: 14px;
+      padding: 12px 14px;
+      border: 1px solid var(--border-subtle);
+      box-shadow: var(--shadow-card);
+      display: flex;
+      gap: 12px;
+      cursor: pointer;
+      transition: all 0.15s ease;
+    }
+    .feed-card:hover {
+      transform: translateY(-2px);
+      box-shadow: var(--shadow-card-hover);
+    }
+    .feed-thumb {
+      width: 70px;
+      height: 70px;
+      border-radius: 10px;
+      background: #F1F5F9;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 22px;
+      flex-shrink: 0;
+      position: relative;
+    }
+    .feed-thumb .play-tag {
+      position: absolute;
+      width: 22px;
+      height: 22px;
+      background: rgba(0, 0, 0, 0.7);
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: #FFFFFF;
+      font-size: 10px;
+    }
+    .feed-body {
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+    }
+    .feed-badge-row {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+    .feed-source-tag {
+      font-size: 9.5px;
+      font-weight: 700;
+      color: var(--primary);
+      background: var(--primary-soft);
+      padding: 2px 6px;
+      border-radius: 4px;
+    }
+    .feed-time {
+      font-size: 9.5px;
+      color: var(--text-light);
+    }
+    .feed-body h4 {
+      font-size: 12.5px;
+      font-weight: 700;
+      color: var(--text-main);
+      line-height: 1.3;
+      margin: 3px 0;
+    }
+    .feed-body p {
+      font-size: 10px;
+      color: var(--text-muted);
+    }
+
+    /* ==========================================================================
+       6. TAB 3: "YOLCULUK" (İLERLEME, İSTATİSTİKLER, ROZETLER)
+       ========================================================================== */
+    .journey-view-container {
+      padding: 14px 18px 20px 18px;
+    }
+    .stats-overview-box {
+      background: linear-gradient(135deg, #07211B 0%, #0D382E 100%);
+      border-radius: var(--radius-card);
+      padding: 18px;
+      color: #FFFFFF;
+      margin-bottom: 16px;
+      box-shadow: 0 10px 24px -4px rgba(7, 33, 27, 0.35);
+    }
+    .stats-overview-title {
+      font-size: 12px;
+      color: var(--accent-gold-light);
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.6px;
+    }
+    .stats-overview-head {
+      font-size: 20px;
+      font-weight: 800;
+      margin: 2px 0 14px 0;
+    }
+    .stats-metrics-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 10px;
+      padding-top: 12px;
+      border-top: 1px solid rgba(255, 255, 255, 0.15);
+      text-align: center;
+    }
+    .metric-col .val {
+      font-size: 19px;
+      font-weight: 800;
+      color: #FCD34D;
+    }
+    .metric-col .lbl {
+      font-size: 10px;
+      color: rgba(255, 255, 255, 0.7);
+      margin-top: 2px;
+    }
+
+    /* Haftalık Bar Grafiği */
+    .chart-card {
+      background: #FFFFFF;
+      border-radius: var(--radius-card);
+      padding: 16px;
+      border: 1px solid var(--border-subtle);
+      box-shadow: var(--shadow-card);
+      margin-bottom: 16px;
+    }
+    .chart-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 14px;
+    }
+    .chart-header h3 {
+      font-size: 14px;
+      font-weight: 800;
+      color: var(--primary-dark);
+    }
+    .chart-header .filter-select {
+      font-size: 11px;
+      font-weight: 600;
+      color: var(--text-muted);
+      background: #F1F5F9;
+      padding: 3px 8px;
+      border-radius: 6px;
+    }
+    .bar-chart-container {
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-end;
+      height: 110px;
+      padding: 0 6px 6px 6px;
+      border-bottom: 1px solid #E2E8F0;
+    }
+    .bar-col {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 6px;
+      flex: 1;
+    }
+    .bar-col .bar-track {
+      width: 14px;
+      height: 80px;
+      background: #F1F5F9;
+      border-radius: 8px;
+      display: flex;
+      align-items: flex-end;
+      overflow: hidden;
+    }
+    .bar-col .bar-fill {
+      width: 100%;
+      background: linear-gradient(180deg, #10B981 0%, #059669 100%);
+      border-radius: 8px;
+      transition: height 0.5s ease;
+    }
+    .bar-col.today .bar-fill {
+      background: linear-gradient(180deg, #F59E0B 0%, #D97706 100%);
+    }
+    .bar-col .day-label {
+      font-size: 10px;
+      font-weight: 600;
+      color: var(--text-muted);
+    }
+    .bar-col.today .day-label {
+      color: var(--primary);
+      font-weight: 800;
+    }
+
+    /* Rozet & Başarı Sistemi */
+    .badges-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 10px;
+      margin-bottom: 16px;
+    }
+    .badge-item-card {
+      background: #FFFFFF;
+      border-radius: 14px;
+      padding: 12px;
+      border: 1px solid var(--border-subtle);
+      box-shadow: var(--shadow-card);
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+    .badge-item-card.locked {
+      opacity: 0.55;
+      background: #F8FAFC;
+    }
+    .badge-icon-box {
+      width: 38px;
+      height: 38px;
+      border-radius: 12px;
+      background: #FEF3C7;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 18px;
+      flex-shrink: 0;
+    }
+    .badge-item-card.locked .badge-icon-box {
+      background: #E2E8F0;
+      filter: grayscale(1);
+    }
+    .badge-meta h4 {
+      font-size: 11.5px;
+      font-weight: 700;
+      color: var(--text-main);
+    }
+    .badge-meta p {
+      font-size: 9.5px;
+      color: var(--text-muted);
+      margin-top: 1px;
+    }
+
+    /* Geçmiş Kayıtlar */
+    .history-list {
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+    }
+    .history-row {
+      background: #FFFFFF;
+      border-radius: 12px;
+      padding: 10px 14px;
+      border: 1px solid var(--border-subtle);
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+    .history-date {
+      font-size: 11.5px;
+      font-weight: 700;
+      color: var(--text-main);
+    }
+    .history-desc {
+      font-size: 10px;
+      color: var(--text-muted);
+    }
+    .history-score {
+      font-size: 11.5px;
+      font-weight: 800;
+      color: #059669;
+      background: #ECFDF5;
+      padding: 3px 8px;
+      border-radius: 6px;
+    }
+
+    /* ==========================================================================
+       7. TAB 4: "TOPLULUK / HİZMET" (XSİR AKADEMİ GÖNÜLLÜ ALANI)
+       ========================================================================== */
+    .akademi-theme-bg {
+      background: var(--akademi-bg);
+      color: #FFFFFF;
+      min-height: 100%;
+      padding: 12px 18px 24px 18px;
+    }
+    .akademi-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 14px;
+    }
+    .akademi-logo-box {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+    .akademi-logo-circle {
+      width: 32px;
+      height: 32px;
+      border-radius: 9px;
+      background: linear-gradient(135deg, #0284C7 0%, #38BDF8 100%);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-weight: 800;
+      font-size: 15px;
+      color: #FFFFFF;
+      box-shadow: 0 0 12px rgba(56, 189, 248, 0.5);
+    }
+    .akademi-title-group h1 {
+      font-size: 16px;
+      font-weight: 800;
+      color: #FFFFFF;
+      letter-spacing: -0.3px;
+    }
+    .akademi-title-group p {
+      font-size: 10px;
+      color: #94A3B8;
+    }
+    .volunteer-level-badge {
+      background: rgba(56, 189, 248, 0.15);
+      border: 1px solid rgba(56, 189, 248, 0.3);
+      padding: 4px 10px;
+      border-radius: 999px;
+      font-size: 10px;
+      font-weight: 700;
+      color: #38BDF8;
+    }
+
+    /* Hizmet Kartı */
+    .service-tracker-card {
+      background: var(--akademi-card);
+      border: 1px solid rgba(255, 255, 255, 0.08);
+      border-radius: var(--radius-card);
+      padding: 16px;
+      margin-bottom: 16px;
+      box-shadow: 0 10px 25px -4px rgba(0, 0, 0, 0.4);
+    }
+    .service-hours-row {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 12px;
+    }
+    .service-hours-num {
+      font-size: 26px;
+      font-weight: 800;
+      color: #38BDF8;
+    }
+    .service-hours-lbl {
+      font-size: 11px;
+      color: #94A3B8;
+    }
+    .service-goal-btn {
+      background: #0284C7;
+      color: #FFFFFF;
+      border: none;
+      padding: 6px 12px;
+      border-radius: 8px;
+      font-size: 11px;
+      font-weight: 700;
+      cursor: pointer;
+    }
+    .service-progress-wrap {
+      background: rgba(255, 255, 255, 0.1);
+      height: 8px;
+      border-radius: 999px;
+      overflow: hidden;
+      margin-bottom: 6px;
+    }
+    .service-progress-fill {
+      height: 100%;
+      background: linear-gradient(90deg, #0284C7 0%, #38BDF8 100%);
+      width: 74%;
+      border-radius: 999px;
+    }
+    .service-progress-note {
+      font-size: 9.5px;
+      color: #64748B;
+      text-align: right;
+    }
+
+    /* Görev Listesi */
+    .tasks-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 10px;
+    }
+    .tasks-header h3 {
+      font-size: 13.5px;
+      font-weight: 700;
+      color: #E2E8F0;
+    }
+    .task-item-row {
+      background: #1E293B;
+      border: 1px solid rgba(255, 255, 255, 0.05);
+      border-radius: 12px;
+      padding: 10px 12px;
+      margin-bottom: 8px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      cursor: pointer;
+      transition: all 0.15s ease;
+    }
+    .task-item-row:hover {
+      background: #273549;
+    }
+    .task-left {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+    .task-check-box {
+      width: 20px;
+      height: 20px;
+      border-radius: 6px;
+      border: 2px solid #64748B;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      transition: all 0.2s;
+    }
+    .task-item-row.completed .task-check-box {
+      background: #10B981;
+      border-color: #10B981;
+    }
+    .task-meta h4 {
+      font-size: 11.5px;
+      font-weight: 600;
+      color: #F8FAFC;
+    }
+    .task-item-row.completed .task-meta h4 {
+      text-decoration: line-through;
+      color: #64748B;
+    }
+    .task-meta p {
+      font-size: 9.5px;
+      color: #94A3B8;
+    }
+    .task-tag {
+      font-size: 9px;
+      font-weight: 700;
+      padding: 3px 6px;
+      border-radius: 4px;
+    }
+    .tag-kitap { background: rgba(234, 88, 12, 0.2); color: #FB923C; }
+    .tag-seminer { background: rgba(14, 165, 233, 0.2); color: #38BDF8; }
+    .tag-medya { background: rgba(168, 85, 247, 0.2); color: #C084FC; }
+
+    /* Forum & İstişare Başlıkları */
+    .forum-feed {
+      margin-top: 16px;
+    }
+    .forum-item {
+      background: #1E293B;
+      border-radius: 12px;
+      padding: 12px;
+      margin-bottom: 8px;
+      border-left: 3px solid #38BDF8;
+      cursor: pointer;
+    }
+    .forum-item h4 {
+      font-size: 12px;
+      font-weight: 700;
+      color: #FFFFFF;
+      margin-bottom: 4px;
+    }
+    .forum-item-foot {
+      display: flex;
+      justify-content: space-between;
+      font-size: 9.5px;
+      color: #94A3B8;
+    }
+
+    /* ==========================================================================
+       8. TAB 5: "BEN" (PROFİL & AYARLAR)
+       ========================================================================== */
+    .profile-container {
+      padding: 14px 18px 20px 18px;
+    }
+    .profile-card-top {
+      background: #FFFFFF;
+      border-radius: var(--radius-card);
+      padding: 18px;
+      border: 1px solid var(--border-subtle);
+      box-shadow: var(--shadow-card);
+      display: flex;
+      align-items: center;
+      gap: 14px;
+      margin-bottom: 16px;
+    }
+    .profile-avatar-wrap {
+      width: 58px;
+      height: 58px;
+      border-radius: 50%;
+      background: linear-gradient(135deg, #07211B 0%, #165647 100%);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: #FFE699;
+      font-size: 22px;
+      font-weight: 800;
+      border: 2px solid var(--accent-gold);
+      flex-shrink: 0;
+    }
+    .profile-name-box h2 {
+      font-size: 16px;
+      font-weight: 800;
+      color: var(--primary-dark);
+    }
+    .profile-name-box p {
+      font-size: 11px;
+      color: var(--text-muted);
+      margin-top: 1px;
+    }
+    .profile-role-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 4px;
+      background: var(--primary-soft);
+      color: var(--primary);
+      font-size: 9.5px;
+      font-weight: 700;
+      padding: 2px 7px;
+      border-radius: 6px;
+      margin-top: 5px;
+    }
+
+    /* Ayarlar Menü Listesi */
+    .settings-group {
+      background: #FFFFFF;
+      border-radius: 16px;
+      overflow: hidden;
+      border: 1px solid var(--border-subtle);
+      box-shadow: var(--shadow-card);
+      margin-bottom: 14px;
+    }
+    .settings-group-title {
+      font-size: 11px;
+      font-weight: 700;
+      color: var(--text-light);
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+      padding: 12px 16px 6px 16px;
+    }
+    .settings-row {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 12px 16px;
+      border-bottom: 1px solid var(--border-subtle);
+      cursor: pointer;
+      transition: background 0.15s;
+    }
+    .settings-row:last-child {
+      border-bottom: none;
+    }
+    .settings-row:hover {
+      background: #F8FAFC;
+    }
+    .settings-left {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+    .settings-icon {
+      width: 32px;
+      height: 32px;
+      border-radius: 9px;
+      background: #F1F5F9;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 15px;
+      color: var(--primary);
+    }
+    .settings-title {
+      font-size: 12.5px;
+      font-weight: 600;
+      color: var(--text-main);
+    }
+    .settings-right {
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      font-size: 11.5px;
+      color: var(--text-light);
+    }
+
+    /* ==========================================================================
+       9. NOTIFICATION CENTER (BİLDİRİM MERKEZİ MODAL & SİSTEMİ)
+       ========================================================================== */
+    .notif-modal-sheet {
+      height: 85%;
+      display: flex;
+      flex-direction: column;
+    }
+    .notif-tabs-filter {
+      display: flex;
+      gap: 6px;
+      overflow-x: auto;
+      padding-bottom: 10px;
+      border-bottom: 1px solid var(--border-subtle);
+      margin-bottom: 12px;
+    }
+    .notif-tabs-filter::-webkit-scrollbar {
+      display: none;
+    }
+    .notif-tab-chip {
+      background: #F1F5F9;
+      color: var(--text-muted);
+      border: 1px solid transparent;
+      padding: 5px 11px;
+      border-radius: 999px;
+      font-size: 11px;
+      font-weight: 700;
+      white-space: nowrap;
+      cursor: pointer;
+      transition: all 0.15s;
+    }
+    .notif-tab-chip.active {
+      background: var(--primary);
+      color: #FFFFFF;
+    }
+    .notif-list-box {
+      flex: 1;
+      overflow-y: auto;
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+      padding-right: 2px;
+    }
+    .notif-card-item {
+      background: #FFFFFF;
+      border: 1px solid var(--border-subtle);
+      border-radius: 16px;
+      padding: 13px 14px;
+      box-shadow: 0 2px 10px rgba(0, 0, 0, 0.03);
+      cursor: pointer;
+      position: relative;
+      transition: all 0.2s ease;
+    }
+    .notif-card-item.unread {
+      background: #F4FAF8;
+      border-color: #A7F3D0;
+    }
+    .notif-card-item:hover {
+      transform: translateY(-2px);
+      box-shadow: var(--shadow-card-hover);
+    }
+    .notif-card-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 6px;
+    }
+    .notif-category-tag {
+      font-size: 9.5px;
+      font-weight: 800;
+      padding: 3px 8px;
+      border-radius: 6px;
+      display: inline-flex;
+      align-items: center;
+      gap: 4px;
+      text-transform: uppercase;
+      letter-spacing: 0.3px;
+    }
+    .tag-tarih { background: #FEF3C7; color: #92400E; }
+    .tag-ayet { background: #ECFDF5; color: #065F46; }
+    .tag-hadis { background: #EFF6FF; color: #1E40AF; }
+    .tag-risale { background: #F5F3FF; color: #5B21B6; }
+    .tag-alim { background: #FFF7ED; color: #9A3412; }
+    .tag-dua { background: #FDF2F8; color: #9D174D; }
+
+    .notif-time-ago {
+      font-size: 10px;
+      color: var(--text-light);
+    }
+    .notif-card-title {
+      font-size: 13px;
+      font-weight: 800;
+      color: var(--primary-dark);
+      margin-bottom: 4px;
+      line-height: 1.3;
+    }
+    .notif-card-body {
+      font-size: 11.5px;
+      color: var(--text-main);
+      line-height: 1.45;
+    }
+    .notif-card-arabic {
+      font-family: 'Amiri', serif;
+      font-size: 16px;
+      color: var(--primary-dark);
+      text-align: right;
+      direction: rtl;
+      margin: 6px 0;
+      line-height: 1.5;
+    }
+    .notif-card-footer {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-top: 8px;
+      padding-top: 8px;
+      border-top: 1px dashed var(--border-subtle);
+    }
+    .notif-source-badge {
+      font-size: 10px;
+      color: var(--text-muted);
+      font-weight: 600;
+    }
+    .notif-action-btns {
+      display: flex;
+      gap: 6px;
+    }
+    .notif-act-btn {
+      background: #F1F5F9;
+      border: none;
+      padding: 3px 8px;
+      border-radius: 6px;
+      font-size: 10px;
+      font-weight: 700;
+      color: var(--primary);
+      cursor: pointer;
+      transition: background 0.15s;
+    }
+    .notif-act-btn:hover {
+      background: var(--primary-soft);
+    }
+
+    /* ==========================================================================
+       10. MODAL & INTERACTIVE POPUPS (AI CHAT, KIBLE, ZİKİRMATİK)
+       ========================================================================== */
+    .modal-overlay {
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      background: rgba(0, 0, 0, 0.65);
+      backdrop-filter: blur(8px);
+      -webkit-backdrop-filter: blur(8px);
+      z-index: 150;
+      display: none;
+      align-items: flex-end;
+      opacity: 0;
+      transition: opacity 0.25s ease;
+    }
+    .modal-overlay.active {
+      display: flex;
+      opacity: 1;
+    }
+    .modal-sheet {
+      width: 100%;
+      background: #FFFFFF;
+      border-radius: 28px 28px 0 0;
+      padding: 20px 18px 30px 18px;
+      max-height: 85%;
+      overflow-y: auto;
+      transform: translateY(100%);
+      transition: transform 0.3s cubic-bezier(0.32, 1.25, 0.32, 1);
+    }
+    .modal-overlay.active .modal-sheet {
+      transform: translateY(0);
+    }
+    .modal-handle {
+      width: 40px;
+      height: 4px;
+      background: #CBD5E1;
+      border-radius: 999px;
+      margin: 0 auto 16px auto;
+    }
+    .modal-head {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 14px;
+    }
+    .modal-head h3 {
+      font-size: 16px;
+      font-weight: 800;
+      color: var(--primary-dark);
+    }
+    .modal-close-btn {
+      background: #F1F5F9;
+      border: none;
+      width: 28px;
+      height: 28px;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      cursor: pointer;
+      font-weight: 700;
+      color: #64748B;
+    }
+
+    /* Zikirmatik Modal İçeriği */
+    .dhikr-container {
+      text-align: center;
+      padding: 10px 0;
+    }
+    .dhikr-title {
+      font-size: 14px;
+      font-weight: 700;
+      color: var(--primary);
+    }
+    .dhikr-counter-display {
+      font-size: 56px;
+      font-weight: 800;
+      color: var(--primary-dark);
+      margin: 14px 0;
+      font-variant-numeric: tabular-nums;
+    }
+    .dhikr-tap-button {
+      width: 120px;
+      height: 120px;
+      border-radius: 50%;
+      background: linear-gradient(135deg, #07211B 0%, #165647 100%);
+      color: #FFE699;
+      border: 4px solid var(--accent-gold);
+      font-size: 16px;
+      font-weight: 800;
+      margin: 0 auto 16px auto;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      box-shadow: 0 10px 25px rgba(7, 33, 27, 0.4);
+      cursor: pointer;
+      transition: transform 0.1s ease;
+    }
+    .dhikr-tap-button:active {
+      transform: scale(0.92);
+    }
+
+    /* Kıble Pusulası Modal İçeriği */
+    .qibla-compass-wrap {
+      text-align: center;
+      padding: 14px 0;
+    }
+    .compass-dial {
+      width: 170px;
+      height: 170px;
+      border-radius: 50%;
+      border: 3px dashed #CBD5E1;
+      margin: 0 auto 16px auto;
+      position: relative;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background: #F8FAFC;
+    }
+    .compass-needle {
+      position: absolute;
+      width: 4px;
+      height: 130px;
+      background: linear-gradient(to bottom, #EF4444 50%, #3B82F6 50%);
+      transform: rotate(142deg);
+      border-radius: 4px;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.2);
+      transition: transform 1s cubic-bezier(0.34, 1.56, 0.64, 1);
+    }
+    .qibla-kaaba-icon {
+      font-size: 24px;
+      z-index: 2;
+    }
+
+    /* AI Danışman Sohbet Modalı */
+    .ai-chat-sheet {
+      height: 80%;
+      display: flex;
+      flex-direction: column;
+    }
+    .chat-messages-box {
+      flex: 1;
+      overflow-y: auto;
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+      padding-bottom: 10px;
+    }
+    .chat-msg {
+      max-width: 85%;
+      padding: 10px 14px;
+      border-radius: 16px;
+      font-size: 12px;
+      line-height: 1.45;
+    }
+    .chat-msg.bot {
+      background: #F1F5F9;
+      color: #1E293B;
+      align-self: flex-start;
+      border-bottom-left-radius: 4px;
+    }
+    .chat-msg.user {
+      background: var(--primary);
+      color: #FFFFFF;
+      align-self: flex-end;
+      border-bottom-right-radius: 4px;
+    }
+    .chat-input-row {
+      display: flex;
+      gap: 8px;
+      padding-top: 10px;
+      border-top: 1px solid var(--border-subtle);
+    }
+    .chat-input-row input {
+      flex: 1;
+      height: 40px;
+      border: 1px solid var(--border-subtle);
+      border-radius: 12px;
+      padding: 0 12px;
+      font-size: 12px;
+      outline: none;
+    }
+    .chat-send-btn {
+      width: 40px;
+      height: 40px;
+      background: var(--primary);
+      color: #FFFFFF;
+      border: none;
+      border-radius: 12px;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    /* Toast Bildirim */
+    .toast-msg {
+      position: absolute;
+      top: 60px;
+      left: 50%;
+      transform: translateX(-50%) translateY(-20px);
+      background: #1E293B;
+      color: #FFFFFF;
+      padding: 8px 16px;
+      border-radius: 999px;
+      font-size: 11.5px;
+      font-weight: 600;
+      box-shadow: 0 8px 20px rgba(0, 0, 0, 0.25);
+      z-index: 200;
+      opacity: 0;
+      pointer-events: none;
+      transition: all 0.3s ease;
+    }
+    .toast-msg.show {
+      opacity: 1;
+      transform: translateX(-50%) translateY(0);
+    }
+
+    /* Responsive Adaptation for smaller real screens */
+    @media (max-width: 440px) {
+      body {
+        padding: 0;
+        background: var(--app-bg);
+      }
+      .phone-simulator {
+        width: 100vw;
+        height: 100vh;
+        max-height: 100vh;
+        border-radius: 0;
+        border: none;
+        box-shadow: none;
+      }
+      .desktop-header, .desktop-decor, .demo-trigger-panel {
+        display: none;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Desktop Ambient Glow & Header -->
+  <div class="desktop-decor">
+    <div class="glow-blob glow-1"></div>
+    <div class="glow-blob glow-2"></div>
+  </div>
+
+  <div class="desktop-header">
+    <div class="desktop-badge">Xsir Manevi Süper-App & Akademi Prototipi</div>
+    <div class="desktop-title"><strong>Xsir Yol</strong> — Canlı Bildirim & Manevi Hatırlatma Demosu</div>
+  </div>
+
+  <!-- ========================================================================
+       DEMO TETİKLEME PANELİ (BİLDİRİM TEST VE SİMÜLASYON KONTROLÜ)
+       ======================================================================== -->
+  <div class="demo-trigger-panel">
+    <div class="demo-trigger-lbl">⚡ Bildirim Tetikle:</div>
+    <button class="demo-notif-btn" onclick="triggerNotificationDemo('tarih')">🏛️ Tarihte Bugün</button>
+    <button class="demo-notif-btn" onclick="triggerNotificationDemo('ayet')">📖 Günün Ayeti</button>
+    <button class="demo-notif-btn" onclick="triggerNotificationDemo('hadis')">📜 Hadis-i Şerif</button>
+    <button class="demo-notif-btn" onclick="triggerNotificationDemo('risale')">📘 Risale Alıntısı</button>
+    <button class="demo-notif-btn" onclick="triggerNotificationDemo('alim')">✨ Âlimlerin Hikmeti</button>
+    <button class="demo-notif-btn" onclick="triggerNotificationDemo('dua')">🤲 Günün Duası</button>
+  </div>
+
+  <!-- ========================================================================
+       MOBILE PHONE CONTAINER (IPHONE SIMULATION)
+       ======================================================================== -->
+  <div class="phone-simulator" id="phoneContainer">
+
+    <!-- Dynamic Island -->
+    <div class="dynamic-island-container" id="dynamicIsland" onclick="toggleDynamicIsland()" title="Dynamic Island: Tıkla ve genişlet">
+      <div class="island-cam"></div>
+      <div class="island-speaker"></div>
+      <div class="island-dot"></div>
+      <div class="island-expanded-content">
+        <div style="display: flex; align-items: center; gap: 8px;">
+          <span style="font-size: 16px;">🕌</span>
+          <div>
+            <div style="font-size: 11px; font-weight: 700;">İkindi Vakti</div>
+            <div style="font-size: 9px; color: #34D399;">02:44:12 kaldı</div>
+          </div>
+        </div>
+        <div style="font-size: 10px; background: rgba(255,255,255,0.2); padding: 3px 8px; border-radius: 6px; font-weight: 700;">
+          İstanbul
+        </div>
+      </div>
+    </div>
+
+    <!-- iOS Tarzı Canlı Push Bildirim Bannerı -->
+    <div class="push-notification-banner" id="pushNotification" onclick="openNotifModalFromPush()">
+      <div class="push-app-icon" id="pushIcon">🏛️</div>
+      <div class="push-body">
+        <div class="push-top-row">
+          <span class="push-app-name" id="pushCategory">İSLAMİ TARİHTE BUGÜN</span>
+          <span class="push-time">Şimdi</span>
+        </div>
+        <div class="push-title" id="pushTitle">Malazgirt Zaferi & Safer Ayı Hatırası</div>
+        <div class="push-snippet" id="pushSnippet">Sultan Alparslan'ın Cuma namazı sonrası beyaz kefeni giyerek İslam ordusuna yaptığı tarihi manevi dua ve zafer...</div>
+      </div>
+    </div>
+
+    <!-- Status Bar -->
+    <div class="status-bar" id="statusBar">
+      <span id="liveTime">13:45</span>
+      <div class="icons">
+        <!-- Signal Icon -->
+        <svg viewBox="0 0 24 24"><path d="M12 3c-4.97 0-9 4.03-9 9 0 2.12.74 4.07 1.97 5.61L4.35 18.25c-.22.28-.18.69.1.91.28.22.69.18.91-.1l.66-.82C7.57 19.34 9.68 20 12 20s4.43-.66 5.98-1.76l.66.82c.22.28.63.32.91.1.28-.22.32-.63.1-.91l-.62-.64C20.26 16.07 21 14.12 21 12c0-4.97-4.03-9-9-9z"/></svg>
+        <!-- Wifi Icon -->
+        <svg viewBox="0 0 24 24"><path d="M12 4C7.31 4 3.07 5.9 0 8.98L12 21 24 8.98C20.93 5.9 16.69 4 12 4zm0 3.5c3.78 0 7.22 1.5 9.76 3.93L12 19.12 2.24 11.43C4.78 9 8.22 7.5 12 7.5z"/></svg>
+        <!-- Battery Icon -->
+        <svg viewBox="0 0 24 24"><path d="M17 6H7c-1.1 0-2 .9-2 2v8c0 1.1.9 2 2 2h10c1.1 0 2-.9 2-2V8c0-1.1-.9-2-2-2zm-1 9H8V9h8v6zm4-5h1v4h-1v-4z"/></svg>
+      </div>
+    </div>
+
+    <!-- Toast Notification Element -->
+    <div class="toast-msg" id="toastMsg">İşlem tamamlandı ✨</div>
+
+    <!-- ======================================================================
+         SCROLLABLE CONTENT AREA (5 SEPARATE TAB VIEWS)
+         ====================================================================== -->
+    <div class="phone-content" id="phoneContent">
+
+      <!-- ====================================================================
+           TAB 1: BUGÜN (ANA DASHBOARD)
+           ==================================================================== -->
+      <div class="tab-view active" id="tab-today">
+        
+        <!-- Üst Karşılama ve Bildirim Çanı -->
+        <div class="header-top">
+          <div class="user-greeting-box">
+            <h1>Esselamü aleyküm, Furkan 🌿</h1>
+            <div class="date-str">21 Ağustos 2026 · 8 Safer 1448 Hicri</div>
+          </div>
+          <div class="header-actions">
+            <button class="action-icon-btn" onclick="openNotificationCenter()" title="Bildirim Merkezi">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 8A6 6 0 0 0 6 8c0 7-3 9-3 9h18s-3-2-3-9"></path><path d="M13.73 21a2 2 0 0 1-3.46 0"></path></svg>
+              <div class="badge-count" id="notifBadgeCount">6</div>
+            </button>
+          </div>
+        </div>
+
+        <!-- İslami Tarihte Bugün Hızlı Şeridi -->
+        <div class="history-highlight-banner" onclick="openNotifCategory('tarih')">
+          <div class="hh-left">
+            <span class="hh-icon">🏛️</span>
+            <div class="hh-text">
+              <h4>İslami Tarihte Bugün · 8 Safer</h4>
+              <p>Malazgirt Zaferi & İslam Ordusunun Manevi Hazırlığı</p>
+            </div>
+          </div>
+          <span class="hh-arrow">Oku ❯</span>
+        </div>
+
+        <!-- Namaz Vakti & Geri Sayım Hero Kartı -->
+        <div class="prayer-hero-card">
+          <div class="prayer-hero-top">
+            <div>
+              <div class="prayer-next-label">Sonraki Vakit</div>
+              <div class="prayer-next-name">İkindi Vakti</div>
+              <div style="font-size: 11px; opacity: 0.8; margin-top: 2px;">İstanbul · 16:48</div>
+            </div>
+            <div class="prayer-countdown-badge">
+              <div class="countdown-val" id="prayerCountdown">02:44:12</div>
+              <div class="countdown-sub">kaldı</div>
+            </div>
+          </div>
+
+          <!-- 5 Vakit Kontrol Satırı -->
+          <div class="prayer-times-row">
+            <div class="prayer-col completed" onclick="togglePrayer(this, 'İmsak')">
+              <span class="p-name">İmsak</span>
+              <span class="p-time">04:42</span>
+              <div class="prayer-check-circle">✓</div>
+            </div>
+            <div class="prayer-col completed" onclick="togglePrayer(this, 'Güneş')">
+              <span class="p-name">Güneş</span>
+              <span class="p-time">06:14</span>
+              <div class="prayer-check-circle">✓</div>
+            </div>
+            <div class="prayer-col completed" onclick="togglePrayer(this, 'Öğle')">
+              <span class="p-name">Öğle</span>
+              <span class="p-time">13:12</span>
+              <div class="prayer-check-circle">✓</div>
+            </div>
+            <div class="prayer-col current" onclick="togglePrayer(this, 'İkindi')">
+              <span class="p-name">İkindi</span>
+              <span class="p-time">16:48</span>
+              <div class="prayer-check-circle"></div>
+            </div>
+            <div class="prayer-col" onclick="togglePrayer(this, 'Akşam')">
+              <span class="p-name">Akşam</span>
+              <span class="p-time">20:02</span>
+              <div class="prayer-check-circle"></div>
+            </div>
+            <div class="prayer-col" onclick="togglePrayer(this, 'Yatsı')">
+              <span class="p-name">Yatsı</span>
+              <span class="p-time">21:28</span>
+              <div class="prayer-check-circle"></div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Hızlı Yardımcılar: Kıble Pusulası & Zikirmatik -->
+        <div class="quick-helper-row">
+          <div class="quick-btn-card quick-qibla" onclick="openQiblaModal()">
+            <div class="quick-icon">🧭</div>
+            <div class="quick-info">
+              <h4>Kıbleyi Bul</h4>
+              <p>142° Güneydoğu</p>
+            </div>
+          </div>
+          <div class="quick-btn-card quick-dhikr" onclick="openDhikrModal()">
+            <div class="quick-icon">📿</div>
+            <div class="quick-info">
+              <h4>Zikirmatik</h4>
+              <p id="quickDhikrSub">Sübhanallah (33)</p>
+            </div>
+          </div>
+        </div>
+
+        <!-- BENTO MOSAIC GRID (GETIR / TRENDYOL GO TARZI) -->
+        <div class="section-title-row">
+          <h2>Manevi Takip Modülleri</h2>
+          <span class="section-link" onclick="switchTab('tab-journey')">Tüm Raporlar →</span>
+        </div>
+
+        <div class="mosaic-grid">
+          
+          <!-- Bento 1: Namaz Takip (Büyük / Geniş Kart) -->
+          <div class="bento-card bento-namaz" onclick="showToast('Bugün 3/5 vakit kılındı. Harika ilerliyorsun!')">
+            <div class="card-header-line">
+              <span class="tag-badge">GÜNLÜK HEDEF</span>
+              <span style="font-size: 11px; font-weight: 700; color: #064E3B;">3/5 Vakit</span>
+            </div>
+            <div>
+              <h3>Namaz Takip & Huşu</h3>
+              <p>Öğle namazı kılındı · Tesbihat tamam</p>
+            </div>
+            <div class="mini-progress-bar-wrap">
+              <div class="mini-progress-bar-fill" style="width: 60%;"></div>
+            </div>
+          </div>
+
+          <!-- Bento 2: Kütüphane (Sıcak Ahşap & Terrakota Tonu) -->
+          <div class="bento-card bento-library" onclick="switchTab('tab-explore')">
+            <div>
+              <div class="icon-box">📖</div>
+              <h3>Kütüphane</h3>
+              <p>Sözler · 45. Sayfa</p>
+            </div>
+            <span class="badge-pill">12 Eser Seni Bekliyor</span>
+          </div>
+
+          <!-- Bento 3: AI Manevi Danışman -->
+          <div class="bento-card bento-ai" onclick="openAIChatModal()">
+            <div>
+              <div class="icon-box">✨</div>
+              <h3>AI Asistan</h3>
+              <p>Muteber kaynaklardan ilim rehberi</p>
+            </div>
+            <span class="sparkle-tag">Bir Soru Sor 💬</span>
+          </div>
+
+          <!-- Bento 4: Yolculuğum -->
+          <div class="bento-card bento-journey" onclick="switchTab('tab-journey')">
+            <div>
+              <span style="font-size: 10px; font-weight: 700; color: var(--primary);">HAFTALIK SERİ</span>
+              <h3>Yolculuğum</h3>
+              <p>Kesintisiz 5. Gün</p>
+            </div>
+            <div class="journey-stat-ring">
+              <span class="stat-circle-num">%88</span>
+              <span class="stat-circle-lbl">Haftalık<br>Başarı</span>
+            </div>
+          </div>
+
+          <!-- Bento 5: Hizmet Alanı (Xsir Akademi) -->
+          <div class="bento-card bento-service" onclick="switchTab('tab-community')">
+            <div>
+              <span style="font-size: 9px; font-weight: 700; color: #38BDF8; letter-spacing: 0.5px;">XSİR AKADEMİ</span>
+              <h3>Hizmet & Gönüllü</h3>
+              <p>2 Açık Görev Seni Bekliyor</p>
+            </div>
+            <span class="service-badge-pill">Giriş Yap →</span>
+          </div>
+
+        </div>
+
+        <!-- Günün Ayeti Kartı -->
+        <div class="daily-verse-card" onclick="openNotifCategory('ayet')">
+          <div class="verse-tag">☀️ GÜNÜN AYETİ</div>
+          <div class="verse-arabic">أَلَا بِذِكْرِ اللَّهِ تَطْمَئِنُّ الْقُلُوبُ</div>
+          <div class="verse-turkish">"Bilesiniz ki, kalpler ancak Allah'ı anmakla huzur bulur."</div>
+          <div class="verse-ref">Ra'd Suresi, 28. Ayet ❯</div>
+        </div>
+
+        <!-- Günlük Manevi Özet Şeridi -->
+        <div class="daily-summary-strip">
+          <span>🕌 3 Vakit Kılındı</span>
+          <span class="dot-sep">·</span>
+          <span>📿 99 Zikir</span>
+          <span class="dot-sep">·</span>
+          <span>📖 10 Sayfa Okundu</span>
+        </div>
+
+      </div>
+
+
+      <!-- ====================================================================
+           TAB 2: KEŞFET (KÜTÜPHANE, AI ASİSTAN, İÇERİK AKIŞI)
+           ==================================================================== -->
+      <div class="tab-view" id="tab-explore">
+        
+        <div class="explore-header">
+          <div class="search-input-wrap">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="8"></circle><line x1="21" y1="21" x2="16.65" y2="16.65"></line></svg>
+            <input type="text" placeholder="Ayet, Hadis, Risale veya konu ara…">
+          </div>
+
+          <!-- Filtreler -->
+          <div class="filter-pills-row">
+            <div class="filter-pill active">Tümü</div>
+            <div class="filter-pill">Kur'an-ı Kerim</div>
+            <div class="filter-pill">Risale-i Nur</div>
+            <div class="filter-pill">Hadis & Siyer</div>
+            <div class="filter-pill">Cevşen</div>
+            <div class="filter-pill">Sohbetler</div>
+          </div>
+        </div>
+
+        <!-- AI Asistan Banner -->
+        <div class="ai-banner-card" onclick="openAIChatModal()">
+          <span class="ai-badge">✨ YOL AI REHBERİ</span>
+          <h3>Aklındaki Soruyu Sor</h3>
+          <p>İslamiyet, fıkıh, maneviyat ve güncel meseleler hakkında kaynaklı yanıtlar al.</p>
+          <div class="ai-source-note">
+            <span>🛡️ Çınaraltı ve muteber kaynaklar referans alınır</span>
+          </div>
+        </div>
+
+        <!-- Kütüphane Bölümü (Yatay Kartlar) -->
+        <div class="section-title-row" style="margin-top: 6px;">
+          <h2>Manevi Kütüphane</h2>
+          <span class="section-link">Tümü (18)</span>
+        </div>
+
+        <div class="books-scroll-row">
+          <div class="book-card" onclick="openBookModal('Kur\'an-ı Kerim', 'Hafız Osman Hattı · Mealli', 'quran')">
+            <div class="book-cover quran">
+              <div class="icon-lg">📖</div>
+              <h4>Kur'an-ı<br>Kerim</h4>
+            </div>
+            <div class="book-info">
+              <div class="book-title">Mushaf-ı Şerif</div>
+              <div class="book-author">Arapça & Meal</div>
+            </div>
+          </div>
+
+          <div class="book-card" onclick="openBookModal('Sözler', 'Bediüzzaman Said Nursi', 'risale')">
+            <div class="book-cover risale">
+              <div class="icon-lg">📘</div>
+              <h4>Risale-i Nur<br>Külliyatı</h4>
+            </div>
+            <div class="book-info">
+              <div class="book-title">Sözler</div>
+              <div class="book-author">Said Nursi</div>
+            </div>
+          </div>
+
+          <div class="book-card" onclick="openBookModal('Riyazü\'s Salihin', 'İmam Nevevi', 'riyaz')">
+            <div class="book-cover riyaz">
+              <div class="icon-lg">📜</div>
+              <h4>Riyazü's<br>Salihin</h4>
+            </div>
+            <div class="book-info">
+              <div class="book-title">Hadis-i Şerifler</div>
+              <div class="book-author">İmam Nevevi</div>
+            </div>
+          </div>
+
+          <div class="book-card" onclick="openBookModal('Cevşen-ül Kebir', 'Büyük Zikir Mecmuası', 'cevsen')">
+            <div class="book-cover cevsen">
+              <div class="icon-lg">📿</div>
+              <h4>Cevşen-ül<br>Kebir</h4>
+            </div>
+            <div class="book-info">
+              <div class="book-title">Cevşen & Dua</div>
+              <div class="book-author">Arapça & Okunuş</div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Fetva / Video / İçerik Akışı -->
+        <div class="section-title-row">
+          <h2>Günün Dersleri & Sohbetler</h2>
+          <span class="section-link">Popüler</span>
+        </div>
+
+        <div class="content-feed-list">
+          <div class="feed-card" onclick="showToast('Sohbet kaydı başlatılıyor...')">
+            <div class="feed-thumb" style="background: #FEF3C7;">
+              🎙️
+              <div class="play-tag">▶</div>
+            </div>
+            <div class="feed-body">
+              <div class="feed-badge-row">
+                <span class="feed-source-tag">ÇINARALTI SOHBET</span>
+                <span class="feed-time">18 dk</span>
+              </div>
+              <h4>Vesveseden Nasıl Kurtulunur?</h4>
+              <p>Kalbe gelen şüphe ve vesveselerin tedavisi üzerine pratik rehber.</p>
+            </div>
+          </div>
+
+          <div class="feed-card" onclick="showToast('Makale açılıyor...')">
+            <div class="feed-thumb" style="background: #E0E7FF;">
+              📚
+              <div class="play-tag">📄</div>
+            </div>
+            <div class="feed-body">
+              <div class="feed-badge-row">
+                <span class="feed-source-tag">RİSALE TAHLİLİ</span>
+                <span class="feed-time">6 dk okuma</span>
+              </div>
+              <h4>23. Söz: İnsanın Hakiki Kıymeti</h4>
+              <p>İman insanı insan eder, belki sultan eder hakikatinin izahı.</p>
+            </div>
+          </div>
+
+          <div class="feed-card" onclick="showToast('Video ders başlatılıyor...')">
+            <div class="feed-thumb" style="background: #DCFCE7;">
+              🎥
+              <div class="play-tag">▶</div>
+            </div>
+            <div class="feed-body">
+              <div class="feed-badge-row">
+                <span class="feed-source-tag">GENÇLİK REHBERİ</span>
+                <span class="feed-time">12 dk</span>
+              </div>
+              <h4>Zamanı Bereketlendirmenin 5 Yolu</h4>
+              <p>Günlük hayatta namaz ve ilim dengesini sağlamak.</p>
+            </div>
+          </div>
+        </div>
+
+      </div>
+
+
+      <!-- ====================================================================
+           TAB 3: YOLCULUK (KİŞİSEL İLERLEME & İSTATİSTİKLER)
+           ==================================================================== -->
+      <div class="tab-view" id="tab-journey">
+        <div class="journey-view-container">
+
+          <!-- Genel Özet Kartı -->
+          <div class="stats-overview-box">
+            <div class="stats-overview-title">Manevi Karnem</div>
+            <div class="stats-overview-head">Haftalık Başarı: %88</div>
+            <div class="stats-metrics-grid">
+              <div class="metric-col">
+                <div class="val">32/35</div>
+                <div class="lbl">Vakit Namaz</div>
+              </div>
+              <div class="metric-col">
+                <div class="val">68 Sayfa</div>
+                <div class="lbl">Kitap Okuma</div>
+              </div>
+              <div class="metric-col">
+                <div class="val">1,240</div>
+                <div class="lbl">Çekilen Zikir</div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Bar Grafiği (Haftalık İlerleme) -->
+          <div class="chart-card">
+            <div class="chart-header">
+              <h3>Haftalık Namaz & İbadet</h3>
+              <span class="filter-select">Bu Hafta ▾</span>
+            </div>
+            <div class="bar-chart-container">
+              <div class="bar-col">
+                <div class="bar-track"><div class="bar-fill" style="height: 100%;"></div></div>
+                <span class="day-label">Pzt</span>
+              </div>
+              <div class="bar-col">
+                <div class="bar-track"><div class="bar-fill" style="height: 80%;"></div></div>
+                <span class="day-label">Sal</span>
+              </div>
+              <div class="bar-col">
+                <div class="bar-track"><div class="bar-fill" style="height: 100%;"></div></div>
+                <span class="day-label">Çar</span>
+              </div>
+              <div class="bar-col">
+                <div class="bar-track"><div class="bar-fill" style="height: 60%;"></div></div>
+                <span class="day-label">Per</span>
+              </div>
+              <div class="bar-col today">
+                <div class="bar-track"><div class="bar-fill" style="height: 60%;"></div></div>
+                <span class="day-label">Cum</span>
+              </div>
+              <div class="bar-col">
+                <div class="bar-track"><div class="bar-fill" style="height: 20%;"></div></div>
+                <span class="day-label">Cmt</span>
+              </div>
+              <div class="bar-col">
+                <div class="bar-track"><div class="bar-fill" style="height: 20%;"></div></div>
+                <span class="day-label">Paz</span>
+              </div>
+            </div>
+          </div>
+
+          <!-- Rozetler & Başarı Sistemi -->
+          <div class="section-title-row" style="padding-left: 0; padding-right: 0;">
+            <h2>Manevi Rozetler (4/8)</h2>
+            <span class="section-link">Tümü</span>
+          </div>
+
+          <div class="badges-grid">
+            <div class="badge-item-card" onclick="showToast('Rozet Kazanıldı: 7 Gün 5 Vakit Namaz!')">
+              <div class="badge-icon-box">🌟</div>
+              <div class="badge-meta">
+                <h4>Huşu Neferi</h4>
+                <p>7 Gün 5 Vakit</p>
+              </div>
+            </div>
+
+            <div class="badge-item-card" onclick="showToast('Rozet Kazanıldı: İlk Kitap Hatmi Tamamlandı!')">
+              <div class="badge-icon-box">📖</div>
+              <div class="badge-meta">
+                <h4>İlk Hatim</h4>
+                <p>Küçük Sözler Bitti</p>
+              </div>
+            </div>
+
+            <div class="badge-item-card" onclick="showToast('Rozet Kazanıldı: Sabah Namazı Devamı')">
+              <div class="badge-icon-box">🌅</div>
+              <div class="badge-meta">
+                <h4>Fecr Muhafızı</h4>
+                <p>5 Gün Sabah Namazı</p>
+              </div>
+            </div>
+
+            <div class="badge-item-card locked" onclick="showToast('Bu rozet henüz kilitli. 30 gün boyunca düzenli zikir çekmelisin.')">
+              <div class="badge-icon-box">🔒</div>
+              <div class="badge-meta">
+                <h4>Zikir Âşığı</h4>
+                <p>30 Gün Kesintisiz</p>
+              </div>
+            </div>
+          </div>
+
+          <!-- Geçmiş Günlük Kayıtlar -->
+          <div class="section-title-row" style="padding-left: 0; padding-right: 0;">
+            <h2>Geçmiş Günler</h2>
+          </div>
+
+          <div class="history-list">
+            <div class="history-row">
+              <div>
+                <div class="history-date">Dün · 20 Ağustos Perşembe</div>
+                <div class="history-desc">4 vakit namaz · 15 sf Risale · Akşam sohbeti</div>
+              </div>
+              <div class="history-score">%80</div>
+            </div>
+            <div class="history-row">
+              <div>
+                <div class="history-date">19 Ağustos Çarşamba</div>
+                <div class="history-desc">5 vakit tam · Tesbihat · 100 Salavat</div>
+              </div>
+              <div class="history-score">%100</div>
+            </div>
+            <div class="history-row">
+              <div>
+                <div class="history-date">18 Ağustos Salı</div>
+                <div class="history-desc">4 vakit · Hizmet istişaresi · 20 sf Okuma</div>
+              </div>
+              <div class="history-score">%85</div>
+            </div>
+          </div>
+
+        </div>
+      </div>
+
+
+      <!-- ====================================================================
+           TAB 4: TOPLULUK / HİZMET (XSİR AKADEMİ GÖNÜLLÜ PANELİ)
+           ==================================================================== -->
+      <div class="tab-view" id="tab-community">
+        <div class="akademi-theme-bg">
+          
+          <!-- Akademi Header -->
+          <div class="akademi-header">
+            <div class="akademi-logo-box">
+              <div class="akademi-logo-circle">X</div>
+              <div class="akademi-title-group">
+                <h1>Xsir Akademi</h1>
+                <p>Hizmet & Gönüllü Yönetim Alanı</p>
+              </div>
+            </div>
+            <div class="volunteer-level-badge">
+              ⚡ 3. Kademe Gönüllü
+            </div>
+          </div>
+
+          <!-- Hizmet Saati Takip Kartı -->
+          <div class="service-tracker-card">
+            <div class="service-hours-row">
+              <div>
+                <div class="service-hours-num">18.5 <span style="font-size: 14px; color: #94A3B8;">Saat</span></div>
+                <div class="service-hours-lbl">Bu Ay Yapılan Hizmet</div>
+              </div>
+              <button class="service-goal-btn" onclick="showToast('Hizmet saati loglama formu açıldı.')">+ Saat Ekle</button>
+            </div>
+            <div class="service-progress-wrap">
+              <div class="service-progress-fill"></div>
+            </div>
+            <div class="service-progress-note">Aylık 25 saat hedefinin %74'ü tamamlandı</div>
+          </div>
+
+          <!-- Bekleyen Görevler -->
+          <div class="tasks-header">
+            <h3>Üzerimdeki Görevler (2)</h3>
+            <span style="font-size: 11px; color: #38BDF8; cursor: pointer;" onclick="showToast('Tüm görevler listelendi.')">Tümü</span>
+          </div>
+
+          <div class="task-item-row" onclick="toggleTask(this)">
+            <div class="task-left">
+              <div class="task-check-box"></div>
+              <div class="task-meta">
+                <h4>Üniversite Gençlik Kitap Dağıtımı</h4>
+                <p>Teslimat: Yarın 14:00 · Kadıköy Temsilcilik</p>
+              </div>
+            </div>
+            <span class="task-tag tag-kitap">Dağıtım</span>
+          </div>
+
+          <div class="task-item-row" onclick="toggleTask(this)">
+            <div class="task-left">
+              <div class="task-check-box"></div>
+              <div class="task-meta">
+                <h4>Haftalık Seminer Salonu Hazırlığı</h4>
+                <p>Pazar 18:30 · Ses ve projeksiyon kontrolü</p>
+              </div>
+            </div>
+            <span class="task-tag tag-seminer">Lojistik</span>
+          </div>
+
+          <div class="task-item-row completed" onclick="toggleTask(this)">
+            <div class="task-left">
+              <div class="task-check-box">✓</div>
+              <div class="task-meta">
+                <h4>Yeni Kayıt Olan 5 Öğrenci Araması</h4>
+                <p>Tamamlandı · Rapor sisteme girildi</p>
+              </div>
+            </div>
+            <span class="task-tag tag-medya">İletişim</span>
+          </div>
+
+          <!-- Akademi Forum & İstişare Başlıkları -->
+          <div class="forum-feed">
+            <div class="tasks-header">
+              <h3>Gönüllü İstişare & Forum</h3>
+              <span style="font-size: 11px; color: #38BDF8; cursor: pointer;">Yeni Başlık</span>
+            </div>
+
+            <div class="forum-item" onclick="showToast('İstişare konusu açılıyor...')">
+              <h4>2026 Güz Dönemi Üniversite Tanıtım Stantları</h4>
+              <div class="forum-item-foot">
+                <span>Ahmet Yılmaz (Koordinatör)</span>
+                <span>💬 24 Yanıt · 15 dk önce</span>
+              </div>
+            </div>
+
+            <div class="forum-item" onclick="showToast('İstişare konusu açılıyor...')">
+              <h4>Lise İlim Halkaları Müfredat Güncellemesi</h4>
+              <div class="forum-item-foot">
+                <span>Eğitim Komisyonu</span>
+                <span>💬 12 Yanıt · 2 saat önce</span>
+              </div>
+            </div>
+          </div>
+
+        </div>
+      </div>
+
+
+      <!-- ====================================================================
+           TAB 5: BEN (PROFİL & AYARLAR)
+           ==================================================================== -->
+      <div class="tab-view" id="tab-profile">
+        <div class="profile-container">
+
+          <!-- Profil Üst Kartı -->
+          <div class="profile-card-top">
+            <div class="profile-avatar-wrap">
+              AF
+            </div>
+            <div class="profile-name-box">
+              <h2>Ahmet Furkan</h2>
+              <p>furkan@xsir.org · Katılım: Mart 2024</p>
+              <div class="profile-role-badge">
+                🌿 Xsir Yol Yolcusu & Akademi Gönüllüsü
+              </div>
+            </div>
+          </div>
+
+          <!-- Hesap Ayarları Grubu -->
+          <div class="settings-group">
+            <div class="settings-group-title">Manevi Tercihler & Vakitler</div>
+            <div class="settings-row" onclick="showToast('Konum ayarlandı: İstanbul / Türkiye')">
+              <div class="settings-left">
+                <div class="settings-icon">📍</div>
+                <div class="settings-title">Konum & Ezan Vakti Hesabı</div>
+              </div>
+              <div class="settings-right">Diyanet ❯</div>
+            </div>
+            <div class="settings-row" onclick="openNotificationCenter()">
+              <div class="settings-left">
+                <div class="settings-icon">🔔</div>
+                <div class="settings-title">Manevi Hatırlatıcılar & Tarihte Bugün</div>
+              </div>
+              <div class="settings-right">6 Yeni ❯</div>
+            </div>
+            <div class="settings-row" onclick="openQiblaModal()">
+              <div class="settings-left">
+                <div class="settings-icon">🧭</div>
+                <div class="settings-title">Kıble Pusulası Kalibrasyonu</div>
+              </div>
+              <div class="settings-right">142° ❯</div>
+            </div>
+          </div>
+
+          <!-- Uygulama & Akademi Grubu -->
+          <div class="settings-group">
+            <div class="settings-group-title">Xsir Akademi & Güvenlik</div>
+            <div class="settings-row" onclick="switchTab('tab-community')">
+              <div class="settings-left">
+                <div class="settings-icon">🎓</div>
+                <div class="settings-title">Akademi Gönüllü Kartı</div>
+              </div>
+              <div class="settings-right">3. Kademe ❯</div>
+            </div>
+            <div class="settings-row" onclick="showToast('Verileriniz yerel cihazınızda güvende.')">
+              <div class="settings-left">
+                <div class="settings-icon">☁️</div>
+                <div class="settings-title">Yedekleme & Manevi Günlük Arşivi</div>
+              </div>
+              <div class="settings-right">Güncel ❯</div>
+            </div>
+            <div class="settings-row" onclick="showToast('Uygulama Sürümü: v2.4.0 (Xsir Yol Suite)')">
+              <div class="settings-left">
+                <div class="settings-icon">ℹ️</div>
+                <div class="settings-title">Hakkında & Çınaraltı İletişim</div>
+              </div>
+              <div class="settings-right">v2.4 ❯</div>
+            </div>
+          </div>
+
+        </div>
+      </div>
+
+    </div>
+    <!-- /Phone Content -->
+
+
+    <!-- ======================================================================
+         BOTTOM NAVIGATION BAR (5 FIXED TABS)
+         ====================================================================== -->
+    <nav class="bottom-nav" id="bottomNav">
+      <button class="nav-tab-btn active" id="btn-tab-today" onclick="switchTab('tab-today')">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><path d="m3 9 9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"></path><polyline points="9 22 9 12 15 12 15 22"></polyline></svg>
+        <span>Bugün</span>
+      </button>
+
+      <button class="nav-tab-btn" id="btn-tab-explore" onclick="switchTab('tab-explore')">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><circle cx="12" cy="12" r="10"></circle><polygon points="16.24 7.76 14.12 14.12 7.76 16.24 9.88 9.88 16.24 7.76"></polygon></svg>
+        <span>Keşfet</span>
+      </button>
+
+      <button class="nav-tab-btn" id="btn-tab-journey" onclick="switchTab('tab-journey')">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><path d="M12 20v-6M6 20V10M18 20V4"></path></svg>
+        <span>Yolculuk</span>
+      </button>
+
+      <button class="nav-tab-btn" id="btn-tab-community" onclick="switchTab('tab-community')">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"></path><circle cx="9" cy="7" r="4"></circle><path d="M23 21v-2a4 4 0 0 0-3-3.87"></path><path d="M16 3.13a4 4 0 0 1 0 7.75"></path></svg>
+        <span>Hizmet</span>
+      </button>
+
+      <button class="nav-tab-btn" id="btn-tab-profile" onclick="switchTab('tab-profile')">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"></path><circle cx="12" cy="7" r="4"></circle></svg>
+        <span>Ben</span>
+      </button>
+    </nav>
+
+    <!-- Home Indicator -->
+    <div class="home-indicator" id="homeIndicator"></div>
+
+    <!-- ======================================================================
+         MODALS & INTERACTIVE OVERLAYS
+         ====================================================================== -->
+
+    <!-- Modal 0: BİLDİRİM MERKEZİ & GÜNÜN MANEVİ DAMLALARI -->
+    <div class="modal-overlay" id="notifCenterModal" onclick="closeAllModals(event)">
+      <div class="modal-sheet notif-modal-sheet" onclick="event.stopPropagation()">
+        <div class="modal-handle"></div>
+        <div class="modal-head">
+          <div style="display: flex; align-items: center; gap: 8px;">
+            <span style="font-size: 20px;">🔔</span>
+            <div>
+              <h3>Bildirim Merkezi & Damlalar</h3>
+              <div style="font-size: 10px; color: var(--text-muted);">Günün manevi paylaşımları ve hatıraları</div>
+            </div>
+          </div>
+          <button class="modal-close-btn" onclick="closeAllModals()">✕</button>
+        </div>
+
+        <!-- Filtre Kategori Çipleri -->
+        <div class="notif-tabs-filter" id="notifFilterChips">
+          <button class="notif-tab-chip active" onclick="filterNotifCategory('all', this)">Tümü (6)</button>
+          <button class="notif-tab-chip" onclick="filterNotifCategory('tarih', this)">🏛️ Tarihte Bugün</button>
+          <button class="notif-tab-chip" onclick="filterNotifCategory('ayet', this)">📖 Ayet-i Kerime</button>
+          <button class="notif-tab-chip" onclick="filterNotifCategory('hadis', this)">📜 Hadis-i Şerif</button>
+          <button class="notif-tab-chip" onclick="filterNotifCategory('risale', this)">📘 Risale & Siyer</button>
+          <button class="notif-tab-chip" onclick="filterNotifCategory('alim', this)">✨ Âlimlerin Sözü</button>
+          <button class="notif-tab-chip" onclick="filterNotifCategory('dua', this)">🤲 Günün Duası</button>
+        </div>
+
+        <!-- Bildirim Listesi -->
+        <div class="notif-list-box" id="notifListBox">
+
+          <!-- 1. İslami Tarihte Bugün -->
+          <div class="notif-card-item unread" data-cat="tarih" onclick="triggerNotificationDemo('tarih')">
+            <div class="notif-card-header">
+              <span class="notif-category-tag tag-tarih">🏛️ İslami Tarihte Bugün</span>
+              <span class="notif-time-ago">08:15 · 8 Safer</span>
+            </div>
+            <div class="notif-card-title">Malazgirt Zaferi & Safer Ayının Manevi Hazırlığı</div>
+            <div class="notif-card-body">
+              Sultan Alparslan, 26 Ağustos 1071 Cuma günü ordusuyla birlikte gözyaşları içinde namaz kılmış, "Ya Rabbi! Seni kendime vekil yapıyorum..." diyerek beyaz kefenini kuşanmış ve Anadolu'nun kapılarını İslam'a açan kutlu zaferi kazanmıştır.
+            </div>
+            <div class="notif-card-footer">
+              <span class="notif-source-badge">İslam Tarihi Ansiklopedisi</span>
+              <div class="notif-action-btns">
+                <button class="notif-act-btn" onclick="event.stopPropagation(); copyText('Malazgirt Zaferi: Sultan Alparslan Cuma namazı sonrası beyaz kefeni kuşanarak Anadolu kapılarını İslamiyete açmıştır.')">📋 Kopyala</button>
+                <button class="notif-act-btn" onclick="event.stopPropagation(); showToast('Tarihi hatıra paylaşıldı.')">↗ Paylaş</button>
+              </div>
+            </div>
+          </div>
+
+          <!-- 2. Günün Ayet-i Kerimesi -->
+          <div class="notif-card-item unread" data-cat="ayet" onclick="triggerNotificationDemo('ayet')">
+            <div class="notif-card-header">
+              <span class="notif-category-tag tag-ayet">📖 Günün Ayeti</span>
+              <span class="notif-time-ago">06:00 · Fecr</span>
+            </div>
+            <div class="notif-card-title">Bakara Suresi · 152. Ayet</div>
+            <div class="notif-card-arabic">فَاذْكُرُونِي أَذْكُرْكُمْ وَاشْكُرُوا لِي وَلَا تَكْفُرُونِ</div>
+            <div class="notif-card-body">
+              "Öyleyse yalnız beni anın ki ben de sizi anayım. Bana şükredin, sakın nankörlük etmeyin."
+            </div>
+            <div class="notif-card-footer">
+              <span class="notif-source-badge">Mushaf-ı Şerif</span>
+              <div class="notif-action-btns">
+                <button class="notif-act-btn" onclick="event.stopPropagation(); copyText('Bakara 152: Öyleyse yalnız beni anın ki ben de sizi anayım. Bana şükredin, sakın nankörlük etmeyin.')">📋 Kopyala</button>
+                <button class="notif-act-btn" onclick="event.stopPropagation(); showToast('Ayet panoya kopyalandı.')">❤️ Kaydet</button>
+              </div>
+            </div>
+          </div>
+
+          <!-- 3. Günün Hadis-i Şerifi -->
+          <div class="notif-card-item unread" data-cat="hadis" onclick="triggerNotificationDemo('hadis')">
+            <div class="notif-card-header">
+              <span class="notif-category-tag tag-hadis">📜 Hadis-i Şerif</span>
+              <span class="notif-time-ago">10:30 · Kuşluk</span>
+            </div>
+            <div class="notif-card-title">İki Büyük Nimet: Sıhhat ve Boş Vakit</div>
+            <div class="notif-card-body">
+              Resûlullah (sallallahu aleyhi ve sellem) şöyle buyurdu: "İki nimet vardır ki, insanların pek çoğu bu ikisinde aldanmış, zarara uğramıştır: Sağlık ve boş vakit."
+            </div>
+            <div class="notif-card-footer">
+              <span class="notif-source-badge">Sahih-i Buhârî, Rikâk 1</span>
+              <div class="notif-action-btns">
+                <button class="notif-act-btn" onclick="event.stopPropagation(); copyText('Hadis: İki nimet vardır ki insanların çoğu bunda aldanmıştır: Sağlık ve boş vakit. (Buhari)')">📋 Kopyala</button>
+                <button class="notif-act-btn" onclick="event.stopPropagation(); showToast('Hadis-i Şerif paylaşıldı.')">↗ Paylaş</button>
+              </div>
+            </div>
+          </div>
+
+          <!-- 4. Risale-i Nur & Siyer Alıntısı -->
+          <div class="notif-card-item unread" data-cat="risale" onclick="triggerNotificationDemo('risale')">
+            <div class="notif-card-header">
+              <span class="notif-category-tag tag-risale">📘 Risale & Siyer</span>
+              <span class="notif-time-ago">12:15 · Öğle</span>
+            </div>
+            <div class="notif-card-title">23. Söz: İmanın Hakiki Kuvveti</div>
+            <div class="notif-card-body">
+              "İman hem nurdur, hem kuvvettir. Evet, hakikî imanı elde eden adam, kâinata meydan okuyabilir ve imanın kuvvetine göre, hâdisatın tazyikatından kurtulabilir."
+            </div>
+            <div class="notif-card-footer">
+              <span class="notif-source-badge">Bediüzzaman Said Nursi · Sözler</span>
+              <div class="notif-action-btns">
+                <button class="notif-act-btn" onclick="event.stopPropagation(); copyText('İman hem nurdur, hem kuvvettir. Hakiki imanı elde eden adam kâinata meydan okuyabilir. (Sözler)')">📋 Kopyala</button>
+                <button class="notif-act-btn" onclick="event.stopPropagation(); openBookModal('Sözler', 'Bediüzzaman Said Nursi', 'risale')">📖 Kitapta Aç</button>
+              </div>
+            </div>
+          </div>
+
+          <!-- 5. İslam Âlimlerinin Hikmetli Sözü -->
+          <div class="notif-card-item unread" data-cat="alim" onclick="triggerNotificationDemo('alim')">
+            <div class="notif-card-header">
+              <span class="notif-category-tag tag-alim">✨ Âlimlerin Hikmeti</span>
+              <span class="notif-time-ago">14:00 · İkindi</span>
+            </div>
+            <div class="notif-card-title">İmam Gazâlî (r.a.) · Kalbin Cilası</div>
+            <div class="notif-card-body">
+              "Kalp bir ayna gibidir. Günahlar ve dünya sevgisi o aynayı paslandırıp karartır. Allah'ın zikri, tövbe ve ihlaslı ibadet ise o aynayı parlatarak hakikat nurlarının yansımasını sağlar."
+            </div>
+            <div class="notif-card-footer">
+              <span class="notif-source-badge">İhyâu Ulûmi'd-Dîn</span>
+              <div class="notif-action-btns">
+                <button class="notif-act-btn" onclick="event.stopPropagation(); copyText('İmam Gazali: Kalp bir ayna gibidir; günahlar karartır, zikir parlatır.')">📋 Kopyala</button>
+                <button class="notif-act-btn" onclick="event.stopPropagation(); showToast('Hikmetli söz kaydedildi.')">❤️ Kaydet</button>
+              </div>
+            </div>
+          </div>
+
+          <!-- 6. Günün Duası & Manevi Niyaz -->
+          <div class="notif-card-item unread" data-cat="dua" onclick="triggerNotificationDemo('dua')">
+            <div class="notif-card-header">
+              <span class="notif-category-tag tag-dua">🤲 Günün Duası</span>
+              <span class="notif-time-ago">16:30 · Vird</span>
+            </div>
+            <div class="notif-card-title">Huşu ve Şükür Niyazı</div>
+            <div class="notif-card-arabic">اللَّهُمَّ أَعِنِّي عَلَى ذِكْرِكَ وَشُكْرِكَ وَحُسْنِ عِبَادَتِكَ</div>
+            <div class="notif-card-body">
+              "Allah'ım! Seni anmak, Sana şükretmek ve Sana en güzel şekilde ibadet etmek için bana yardım eyle."
+            </div>
+            <div class="notif-card-footer">
+              <span class="notif-source-badge">Ebû Dâvûd, Vitir 26</span>
+              <div class="notif-action-btns">
+                <button class="notif-act-btn" onclick="event.stopPropagation(); copyText('Dua: Allahümme einnî alâ zikrike ve şükrike ve husni ibâdetik. (Allahım Seni anmak, şükretmek ve güzel ibadet etmek için bana yardım et)')">📋 Kopyala</button>
+                <button class="notif-act-btn" onclick="event.stopPropagation(); openDhikrModal()">📿 Zikre Başla</button>
+              </div>
+            </div>
+          </div>
+
+        </div>
+
+        <div style="margin-top: 14px; text-align: center;">
+          <button style="background: #F1F5F9; border: none; padding: 8px 16px; border-radius: 10px; font-size: 11px; font-weight: 700; color: var(--text-muted); cursor: pointer;" onclick="markAllNotificationsRead()">
+            Tümünü Okundu İşaretle ✓
+          </button>
+        </div>
+      </div>
+    </div>
+
+    <!-- Modal 1: Zikirmatik -->
+    <div class="modal-overlay" id="dhikrModal" onclick="closeAllModals(event)">
+      <div class="modal-sheet" onclick="event.stopPropagation()">
+        <div class="modal-handle"></div>
+        <div class="modal-head">
+          <h3>📿 Zikirmatik</h3>
+          <button class="modal-close-btn" onclick="closeAllModals()">✕</button>
+        </div>
+        <div class="dhikr-container">
+          <div class="dhikr-title" id="dhikrName">Sübhanallah</div>
+          <div class="dhikr-counter-display" id="dhikrNumber">33</div>
+          <div class="dhikr-tap-button" onclick="incrementDhikr()">
+            ZİKİR ÇEK
+          </div>
+          <div style="display: flex; justify-content: center; gap: 10px;">
+            <button class="filter-pill" onclick="changeDhikrType('Sübhanallah')">Sübhanallah</button>
+            <button class="filter-pill" onclick="changeDhikrType('Elhamdülillah')">Elhamdülillah</button>
+            <button class="filter-pill" onclick="changeDhikrType('Allahu Ekber')">Allahu Ekber</button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Modal 2: Kıble Pusulası -->
+    <div class="modal-overlay" id="qiblaModal" onclick="closeAllModals(event)">
+      <div class="modal-sheet" onclick="event.stopPropagation()">
+        <div class="modal-handle"></div>
+        <div class="modal-head">
+          <h3>🧭 Kıble Pusulası</h3>
+          <button class="modal-close-btn" onclick="closeAllModals()">✕</button>
+        </div>
+        <div class="qibla-compass-wrap">
+          <div class="compass-dial">
+            <div class="compass-needle" id="compassNeedle"></div>
+            <div class="qibla-kaaba-icon">🕋</div>
+          </div>
+          <div style="font-size: 16px; font-weight: 800; color: var(--primary-dark);">142° Güneydoğu</div>
+          <p style="font-size: 11.5px; color: var(--text-muted); margin-top: 4px;">Kıble açısı hassas olarak hesaplandı. Telefonu düz tutun.</p>
+        </div>
+      </div>
+    </div>
+
+    <!-- Modal 3: AI Danışman Sohbet Ekranı -->
+    <div class="modal-overlay" id="aiChatModal" onclick="closeAllModals(event)">
+      <div class="modal-sheet ai-chat-sheet" onclick="event.stopPropagation()">
+        <div class="modal-handle"></div>
+        <div class="modal-head">
+          <div style="display: flex; align-items: center; gap: 8px;">
+            <span style="font-size: 18px;">✨</span>
+            <div>
+              <h3>Yol AI Asistanı</h3>
+              <div style="font-size: 9.5px; color: #10B981; font-weight: 600;">● Muteber Kaynaklar Aktif</div>
+            </div>
+          </div>
+          <button class="modal-close-btn" onclick="closeAllModals()">✕</button>
+        </div>
+
+        <div class="chat-messages-box" id="chatMessages">
+          <div class="chat-msg bot">
+            Esselamü aleyküm Furkan kardeşim! Ben Xsir Manevi Yol Asistanıyım. Aklına takılan fıkhi, manevi veya ilmi sualleri sorabilirsin.
+          </div>
+        </div>
+
+        <div style="display: flex; gap: 6px; overflow-x: auto; padding: 6px 0;">
+          <span class="filter-pill" style="font-size: 10px;" onclick="sendQuickPrompt('Namazda huşuyu nasıl artırabilirim?')">Huşu nasıl artar?</span>
+          <span class="filter-pill" style="font-size: 10px;" onclick="sendQuickPrompt('Sabah namazına kalkmanın püf noktaları nelerdir?')">Sabah namazı</span>
+          <span class="filter-pill" style="font-size: 10px;" onclick="sendQuickPrompt('Risale-i Nur nasıl okunmalı?')">Risale okuma</span>
+        </div>
+
+        <div class="chat-input-row">
+          <input type="text" id="chatInput" placeholder="Sorunuzu buraya yazın..." onkeydown="if(event.key==='Enter') sendChatMessage()">
+          <button class="chat-send-btn" onclick="sendChatMessage()">➤</button>
+        </div>
+      </div>
+    </div>
+
+    <!-- Modal 4: Kitap Okuma Önizleme Modalı -->
+    <div class="modal-overlay" id="bookModal" onclick="closeAllModals(event)">
+      <div class="modal-sheet" onclick="event.stopPropagation()">
+        <div class="modal-handle"></div>
+        <div class="modal-head">
+          <h3 id="modalBookTitle">Kitap Başlığı</h3>
+          <button class="modal-close-btn" onclick="closeAllModals()">✕</button>
+        </div>
+        <div style="padding: 10px 0;">
+          <div id="modalBookAuthor" style="font-size: 12px; color: var(--text-muted); margin-bottom: 12px;">Müellif</div>
+          <div style="background: #F8F9FA; border-radius: 14px; padding: 16px; font-size: 13px; line-height: 1.6; color: var(--text-main); font-family: 'Amiri', serif; font-size: 15px;">
+            "Bismillâhirrahmânirrahîm. Bismillah her hayrın başıdır. Biz dahi başta ona başlarız. Bil ey nefsim, şu mübarek kelime İslâm nişanı olduğu gibi, bütün mevcudatın lisan-ı haliyle vird-i zebânıdır..."
+          </div>
+          <div style="display: flex; gap: 10px; margin-top: 16px;">
+            <button style="flex: 1; height: 42px; background: var(--primary); color: #FFFFFF; border: none; border-radius: 12px; font-weight: 700; font-size: 12.5px; cursor: pointer;" onclick="showToast('Okuma moduna geçildi. Kaldığınız yer kaydedildi.'); closeAllModals();">Kaldığım Yerden Oku (sf. 45)</button>
+            <button style="width: 42px; height: 42px; background: #F1F5F9; border: none; border-radius: 12px; font-size: 16px; cursor: pointer;" onclick="showToast('Kitap favorilere eklendi.')">🔖</button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+  </div>
+  <!-- /Phone Simulator -->
+
+
+  <!-- ========================================================================
+       APPLICATION LOGIC (VANILLA JAVASCRIPT)
+       ======================================================================== -->
+  <script>
+    // --------------------------------------------------------------------------
+    // 1. Live Clock & Prayer Countdown Simulation
+    // --------------------------------------------------------------------------
+    function updateLiveClock() {
+      const now = new Date();
+      const hours = String(now.getHours()).padStart(2, '0');
+      const mins = String(now.getMinutes()).padStart(2, '0');
+      const timeElem = document.getElementById('liveTime');
+      if (timeElem) timeElem.textContent = `${hours}:${mins}`;
+    }
+    setInterval(updateLiveClock, 1000);
+    updateLiveClock();
+
+    // Namaz Vakti Geri Sayım Canlı Sayacı
+    let countdownSeconds = 2 * 3600 + 44 * 60 + 12; // 02:44:12
+    function tickCountdown() {
+      if (countdownSeconds > 0) {
+        countdownSeconds--;
+        const h = String(Math.floor(countdownSeconds / 3600)).padStart(2, '0');
+        const m = String(Math.floor((countdownSeconds % 3600) / 60)).padStart(2, '0');
+        const s = String(countdownSeconds % 60).padStart(2, '0');
+        const countElem = document.getElementById('prayerCountdown');
+        if (countElem) countElem.textContent = `${h}:${m}:${s}`;
+      }
+    }
+    setInterval(tickCountdown, 1000);
+
+    // Dynamic Island Genişleme / Küçülme
+    function toggleDynamicIsland() {
+      const island = document.getElementById('dynamicIsland');
+      island.classList.toggle('expanded');
+    }
+
+    // --------------------------------------------------------------------------
+    // 2. Notification Data & Push Banner Demo Engine
+    // --------------------------------------------------------------------------
+    const NOTIF_DATA = {
+      tarih: {
+        icon: "🏛️",
+        category: "İSLAMİ TARİHTE BUGÜN",
+        title: "Malazgirt Zaferi & Safer Ayının Hatırası",
+        snippet: "Sultan Alparslan'ın Cuma namazı sonrası beyaz kefeni kuşanarak İslam ordusuyla yaptığı tarihi dua ve zafer...",
+        source: "İslam Tarihi Ansiklopedisi"
+      },
+      ayet: {
+        icon: "📖",
+        category: "GÜNÜN AYET-İ KERİMESİ",
+        title: "Bakara Suresi · 152. Ayet",
+        snippet: "'Öyleyse yalnız beni anın ki ben de sizi anayım. Bana şükredin, sakın nankörlük etmeyin.'",
+        source: "Mushaf-ı Şerif"
+      },
+      hadis: {
+        icon: "📜",
+        category: "GÜNÜN HADİS-İ ŞERİFİ",
+        title: "İki Büyük Nimet: Sıhhat ve Boş Vakit",
+        snippet: "Resûlullah (s.a.v.): 'İki nimet vardır ki, insanların pek çoğu bunda aldanmıştır: Sağlık ve boş vakit.'",
+        source: "Sahih-i Buhârî"
+      },
+      risale: {
+        icon: "📘",
+        category: "RİSALE & SİYER ALINTISI",
+        title: "23. Söz: İmanın Hakiki Kuvveti",
+        snippet: "'İman hem nurdur, hem kuvvettir. Hakikî imanı elde eden adam, kâinata meydan okuyabilir...'",
+        source: "Bediüzzaman Said Nursi · Sözler"
+      },
+      alim: {
+        icon: "✨",
+        category: "İSLAM ÂLİMLERİNDEN HİKMET",
+        title: "İmam Gazâlî (r.a.) · Kalbin Cilası",
+        snippet: "'Kalp bir ayna gibidir; günahlar o aynayı karartır, zikir ve istiğfar ise parlatır...'",
+        source: "İhyâu Ulûmi'd-Dîn"
+      },
+      dua: {
+        icon: "🤲",
+        category: "GÜNÜN DUASI & NİYAZ",
+        title: "Şükür ve Huşu Niyazı",
+        snippet: "'Allahümme einnî alâ zikrike ve şükrike ve husni ibâdetik...' (Bana zikrinde ve güzel ibadetinde yardım et)",
+        source: "Ebû Dâvûd, Vitir 26"
+      }
+    };
+
+    let pushHideTimer = null;
+
+    function triggerNotificationDemo(type) {
+      const data = NOTIF_DATA[type] || NOTIF_DATA.tarih;
+      const banner = document.getElementById('pushNotification');
+      
+      document.getElementById('pushIcon').textContent = data.icon;
+      document.getElementById('pushCategory').textContent = data.category;
+      document.getElementById('pushTitle').textContent = data.title;
+      document.getElementById('pushSnippet').textContent = data.snippet;
+
+      // Animate banner in
+      banner.classList.add('show');
+
+      // Also trigger subtle dynamic island pulse
+      const island = document.getElementById('dynamicIsland');
+      island.style.transform = 'translateX(-50%) scale(1.08)';
+      setTimeout(() => { island.style.transform = 'translateX(-50%) scale(1)'; }, 250);
+
+      // Auto dismiss after 6 seconds
+      if (pushHideTimer) clearTimeout(pushHideTimer);
+      pushHideTimer = setTimeout(() => {
+        banner.classList.remove('show');
+      }, 6000);
+    }
+
+    function openNotifModalFromPush() {
+      const banner = document.getElementById('pushNotification');
+      banner.classList.remove('show');
+      openNotificationCenter();
+    }
+
+    function openNotificationCenter() {
+      document.getElementById('notifCenterModal').classList.add('active');
+    }
+
+    function openNotifCategory(cat) {
+      openNotificationCenter();
+      const chip = document.querySelector(`.notif-tab-chip[onclick*="'${cat}'"]`);
+      if (chip) {
+        filterNotifCategory(cat, chip);
+      }
+    }
+
+    function filterNotifCategory(category, btnElement) {
+      // Set active chip
+      const chips = document.querySelectorAll('.notif-tab-chip');
+      chips.forEach(c => c.classList.remove('active'));
+      if (btnElement) btnElement.classList.add('active');
+
+      const items = document.querySelectorAll('.notif-card-item');
+      items.forEach(item => {
+        if (category === 'all' || item.dataset.cat === category) {
+          item.style.display = 'block';
+        } else {
+          item.style.display = 'none';
+        }
+      });
+    }
+
+    function markAllNotificationsRead() {
+      const items = document.querySelectorAll('.notif-card-item');
+      items.forEach(i => i.classList.remove('unread'));
+      const badge = document.getElementById('notifBadgeCount');
+      if (badge) badge.style.display = 'none';
+      showToast('Tüm bildirimler okundu olarak işaretlendi.');
+    }
+
+    function copyText(text) {
+      navigator.clipboard.writeText(text).then(() => {
+        showToast('Metin panoya kopyalandı ✨');
+      }).catch(() => {
+        showToast('Kopyalandı: ' + text.substring(0, 30) + '...');
+      });
+    }
+
+    // --------------------------------------------------------------------------
+    // 3. Tab Navigation Switching
+    // --------------------------------------------------------------------------
+    function switchTab(tabId) {
+      // Hide all tabs
+      const views = document.querySelectorAll('.tab-view');
+      views.forEach(v => v.classList.remove('active'));
+
+      // Deactivate all nav buttons
+      const navBtns = document.querySelectorAll('.nav-tab-btn');
+      navBtns.forEach(b => b.classList.remove('active'));
+
+      // Show selected tab
+      const targetView = document.getElementById(tabId);
+      if (targetView) targetView.classList.add('active');
+
+      const targetBtn = document.getElementById(`btn-${tabId}`);
+      if (targetBtn) targetBtn.classList.add('active');
+
+      // Scroll phone content to top smoothly
+      const phoneContent = document.getElementById('phoneContent');
+      if (phoneContent) phoneContent.scrollTop = 0;
+
+      // Özel Tema Değişimi: Hizmet / Akademi Sekmesi için Koyu Tema Adaptasyonu
+      const bottomNav = document.getElementById('bottomNav');
+      const statusBar = document.getElementById('statusBar');
+      const homeIndicator = document.getElementById('homeIndicator');
+
+      if (tabId === 'tab-community') {
+        bottomNav.classList.add('akademi-nav');
+        statusBar.classList.add('dark-mode-header');
+        homeIndicator.classList.add('light');
+      } else {
+        bottomNav.classList.remove('akademi-nav');
+        statusBar.classList.remove('dark-mode-header');
+        homeIndicator.classList.remove('light');
+      }
+    }
+
+    // --------------------------------------------------------------------------
+    // 4. Interactive Prayer Checkbox (Namaz Kılındı İşareti)
+    // --------------------------------------------------------------------------
+    function togglePrayer(element, prayerName) {
+      const isCompleted = element.classList.contains('completed');
+      if (isCompleted) {
+        element.classList.remove('completed');
+        element.querySelector('.prayer-check-circle').textContent = '';
+        showToast(`${prayerName} namazı durumu güncellendi.`);
+      } else {
+        element.classList.add('completed');
+        element.querySelector('.prayer-check-circle').textContent = '✓';
+        showToast(`Elhamdülillah! ${prayerName} namazı kaydedildi. 🤲`);
+      }
+    }
+
+    // --------------------------------------------------------------------------
+    // 5. Interactive Zikirmatik Modalı
+    // --------------------------------------------------------------------------
+    let currentDhikrCount = 33;
+    let currentDhikrName = "Sübhanallah";
+
+    function openDhikrModal() {
+      document.getElementById('dhikrModal').classList.add('active');
+    }
+
+    function incrementDhikr() {
+      currentDhikrCount++;
+      document.getElementById('dhikrNumber').textContent = currentDhikrCount;
+      document.getElementById('quickDhikrSub').textContent = `${currentDhikrName} (${currentDhikrCount})`;
+    }
+
+    function changeDhikrType(name) {
+      currentDhikrName = name;
+      currentDhikrCount = 0;
+      document.getElementById('dhikrName').textContent = name;
+      document.getElementById('dhikrNumber').textContent = '0';
+      document.getElementById('quickDhikrSub').textContent = `${name} (0)`;
+      showToast(`${name} zikrine geçildi.`);
+    }
+
+    // --------------------------------------------------------------------------
+    // 6. Kıble Pusulası Modalı
+    // --------------------------------------------------------------------------
+    function openQiblaModal() {
+      document.getElementById('qiblaModal').classList.add('active');
+      const needle = document.getElementById('compassNeedle');
+      if (needle) {
+        needle.style.transform = 'rotate(130deg)';
+        setTimeout(() => { needle.style.transform = 'rotate(145deg)'; }, 400);
+        setTimeout(() => { needle.style.transform = 'rotate(142deg)'; }, 800);
+      }
+    }
+
+    // --------------------------------------------------------------------------
+    // 7. AI Danışman Sohbet Sistemi
+    // --------------------------------------------------------------------------
+    function openAIChatModal() {
+      document.getElementById('aiChatModal').classList.add('active');
+    }
+
+    function sendChatMessage() {
+      const input = document.getElementById('chatInput');
+      const text = input.value.trim();
+      if (!text) return;
+
+      appendChatMessage(text, 'user');
+      input.value = '';
+
+      setTimeout(() => {
+        const sampleReplies = [
+          "Bediüzzaman Hazretleri'nin Sözler eserinde belirttiği üzere; 'Namazın manası, Cenab-ı Hakk'ı tesbih, tazim ve şükürdür.' Kalbin huşusu ise dünyevi meşguliyetleri namazın başında geride bırakmakla başlar.",
+          "Sorunuz gayet mühim. Fıkhi ve manevi kaynaklarımızda bu mesele hakkında istikameti muhafaza etmek ve günlük tesbihatı aksatmamak en tesirli ilaç olarak tavsiye edilmiştir.",
+          "Çınaraltı derslerinde de sıkça vurgulandığı gibi; gençlik ve zaman sermayesini hayırlı amellerde, ilim halkalarında ve cemaatle ibadette değerlendirmek kalbe inşirah verir."
+        ];
+        const reply = sampleReplies[Math.floor(Math.random() * sampleReplies.length)];
+        appendChatMessage(reply, 'bot');
+      }, 700);
+    }
+
+    function sendQuickPrompt(promptText) {
+      appendChatMessage(promptText, 'user');
+      setTimeout(() => {
+        appendChatMessage("Bu güzel sualiniz için kaynaklardan özet hazırlıyorum: 'Sabah namazı günün feyiz ve bereket anahtarıdır. Erken yatmak, abdestli uyumak ve uyanınca hemen teheccüd ve sabah sünnetine niyet etmek manevi zindelik kazandırır.'", 'bot');
+      }, 600);
+    }
+
+    function appendChatMessage(text, sender) {
+      const box = document.getElementById('chatMessages');
+      const msg = document.createElement('div');
+      msg.className = `chat-msg ${sender}`;
+      msg.textContent = text;
+      box.appendChild(msg);
+      box.scrollTop = box.scrollHeight;
+    }
+
+    // --------------------------------------------------------------------------
+    // 8. Kitap Okuma Modalı
+    // --------------------------------------------------------------------------
+    function openBookModal(title, author, type) {
+      document.getElementById('modalBookTitle').textContent = title;
+      document.getElementById('modalBookAuthor').textContent = author;
+      document.getElementById('bookModal').classList.add('active');
+    }
+
+    // --------------------------------------------------------------------------
+    // 9. Görev Tamamlama (Akademi Tab)
+    // --------------------------------------------------------------------------
+    function toggleTask(rowElem) {
+      const isCompleted = rowElem.classList.contains('completed');
+      const box = rowElem.querySelector('.task-check-box');
+      if (isCompleted) {
+        rowElem.classList.remove('completed');
+        box.textContent = '';
+        showToast('Görev tamamlanmadı olarak işaretlendi.');
+      } else {
+        rowElem.classList.add('completed');
+        box.textContent = '✓';
+        showToast('Tebrikler! Hizmet görevi başarıyla tamamlandı. 🎉');
+      }
+    }
+
+    // --------------------------------------------------------------------------
+    // 10. Toast Bildirim & Modal Kapatma
+    // --------------------------------------------------------------------------
+    function showToast(message) {
+      const toast = document.getElementById('toastMsg');
+      if (!toast) return;
+      toast.textContent = message;
+      toast.classList.add('show');
+      setTimeout(() => {
+        toast.classList.remove('show');
+      }, 2500);
+    }
+
+    function closeAllModals(e) {
+      if (e) e.stopPropagation();
+      const overlays = document.querySelectorAll('.modal-overlay');
+      overlays.forEach(m => m.classList.remove('active'));
+    }
+
+    // İlk açılışta 1.5 saniye sonra otomatik bir hoş geldin bildirim demosu göster
+    setTimeout(() => {
+      triggerNotificationDemo('tarih');
+    }, 1200);
+  </script>
+</body>
+</html>
