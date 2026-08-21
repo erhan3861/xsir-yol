@@ -19,7 +19,6 @@
        1. CSS VARIABLES & DESIGN SYSTEM
        ========================================================================== */
     :root {
-      /* Brand Color Tokens */
       --primary-dark: #07211B;
       --primary: #0D382E;
       --primary-light: #165647;
@@ -34,13 +33,11 @@
       --accent-emerald: #10B981;
       --accent-cyan: #0891B2;
       
-      /* Akademi Modülü Ayrı Kimlik Renkleri */
       --akademi-bg: #0F172A;
       --akademi-card: #1E293B;
       --akademi-accent: #38BDF8;
       --akademi-purple: #818CF8;
       
-      /* Neutral & UI Surfaces */
       --bg-canvas: #0B1412;
       --app-bg: #F8F9FA;
       --app-card: #FFFFFF;
@@ -50,7 +47,6 @@
       --border-subtle: #E8ECEB;
       --border-focus: #CBD5E1;
       
-      /* Shadows & Radii */
       --radius-phone: 50px;
       --radius-card: 20px;
       --radius-sm: 12px;
@@ -72,15 +68,13 @@
 
     body {
       font-family: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
-      background: radial-gradient(circle at 50% 20%, #15332C 0%, #071310 60%, #030807 100%);
+      background: radial-gradient(circle at 50% 30%, #153830 0%, #071C17 60%, #030C0A 100%);
       min-height: 100vh;
       display: flex;
-      flex-direction: column;
       align-items: center;
       justify-content: center;
       color: #FFFFFF;
       overflow-x: hidden;
-      padding: 20px 10px;
     }
 
     /* Ambient Background Glow on Desktop */
@@ -97,23 +91,23 @@
     .glow-blob {
       position: absolute;
       border-radius: 50%;
-      filter: blur(90px);
-      opacity: 0.22;
+      filter: blur(100px);
+      opacity: 0.25;
       animation: floatGlow 14s ease-in-out infinite alternate;
     }
     .glow-1 {
-      width: 500px;
-      height: 500px;
+      width: 600px;
+      height: 600px;
       background: #14B8A6;
-      top: -100px;
-      left: 10%;
+      top: -150px;
+      left: 5%;
     }
     .glow-2 {
-      width: 450px;
-      height: 450px;
+      width: 500px;
+      height: 500px;
       background: #D4AF37;
-      bottom: -50px;
-      right: 15%;
+      bottom: -100px;
+      right: 10%;
       animation-delay: -6s;
     }
 
@@ -123,101 +117,185 @@
       100% { transform: translate(-30px, -20px) scale(0.95); }
     }
 
-    /* Header info bar on desktop */
-    .desktop-header {
-      margin-bottom: 12px;
-      text-align: center;
-      z-index: 1;
+    /* ==========================================================================
+       MAIN LAYOUT WRAPPER (CENTERED PHONE + RIGHT FLOATING CONTROL PANEL)
+       ========================================================================== */
+    .main-layout-wrapper {
+      position: relative;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      min-height: 100vh;
+      width: 100%;
+      max-width: 1440px;
+      padding: 24px;
+      box-sizing: border-box;
+      z-index: 10;
+    }
+
+    .phone-simulator-wrapper {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      z-index: 10;
+    }
+
+    /* ==========================================================================
+       RIGHT FLOATING DEMO CONTROL PANEL (SAĞDA ORTALANMIŞ PENCERE)
+       ========================================================================== */
+    .right-demo-panel {
+      position: absolute;
+      right: 32px;
+      top: 50%;
+      transform: translateY(-50%);
+      width: 330px;
+      max-width: calc(100vw - 440px);
+      background: rgba(13, 56, 46, 0.82);
+      border: 1px solid rgba(212, 175, 55, 0.4);
+      backdrop-filter: blur(24px);
+      -webkit-backdrop-filter: blur(24px);
+      border-radius: 24px;
+      padding: 20px 18px;
+      box-shadow: 0 25px 60px rgba(0, 0, 0, 0.5), 0 0 20px rgba(212, 175, 55, 0.15);
+      z-index: 25;
+      display: flex;
+      flex-direction: column;
+      gap: 14px;
+    }
+
+    .panel-header {
+      border-bottom: 1px solid rgba(255, 255, 255, 0.12);
+      padding-bottom: 12px;
     }
     .desktop-badge {
       display: inline-flex;
       align-items: center;
-      gap: 8px;
-      background: rgba(255, 255, 255, 0.08);
-      border: 1px solid rgba(255, 255, 255, 0.15);
-      backdrop-filter: blur(12px);
-      padding: 5px 14px;
+      gap: 6px;
+      background: rgba(255, 255, 255, 0.1);
+      border: 1px solid rgba(255, 255, 255, 0.18);
+      padding: 3px 10px;
       border-radius: 9999px;
-      font-size: 11.5px;
-      letter-spacing: 0.5px;
-      font-weight: 600;
+      font-size: 10.5px;
+      letter-spacing: 0.4px;
+      font-weight: 700;
       color: #A7F3D0;
-      margin-bottom: 4px;
+      margin-bottom: 6px;
     }
     .desktop-badge::before {
       content: "";
-      width: 8px;
-      height: 8px;
+      width: 6px;
+      height: 6px;
       background: #34D399;
       border-radius: 50%;
-      box-shadow: 0 0 10px #34D399;
+      box-shadow: 0 0 8px #34D399;
     }
-    .desktop-title {
-      font-size: 13.5px;
-      color: rgba(255, 255, 255, 0.6);
-      font-weight: 400;
-    }
-    .desktop-title strong {
+    .panel-title {
+      font-size: 17px;
+      font-weight: 800;
       color: #FFFFFF;
-      font-weight: 700;
+      letter-spacing: -0.3px;
+    }
+    .panel-subtitle {
+      font-size: 11px;
+      color: rgba(255, 255, 255, 0.65);
+      margin-top: 2px;
     }
 
-    /* Demo Trigger Panel */
-    .demo-trigger-panel {
+    .panel-section-title {
+      font-size: 11px;
+      font-weight: 800;
+      color: #FCD34D;
+      text-transform: uppercase;
+      letter-spacing: 0.6px;
+      margin-bottom: 8px;
       display: flex;
       align-items: center;
       gap: 6px;
-      background: rgba(13, 56, 46, 0.85);
-      border: 1px solid rgba(212, 175, 55, 0.4);
-      backdrop-filter: blur(14px);
-      padding: 6px 12px;
-      border-radius: 999px;
-      margin-bottom: 14px;
-      z-index: 20;
-      box-shadow: 0 10px 25px rgba(0, 0, 0, 0.4);
-      flex-wrap: wrap;
-      justify-content: center;
-      max-width: 500px;
-    }
-    .demo-trigger-lbl {
-      font-size: 10.5px;
-      font-weight: 700;
-      color: #FCD34D;
-      display: flex;
-      align-items: center;
-      gap: 4px;
-      margin-right: 4px;
-    }
-    .demo-notif-btn {
-      background: rgba(255, 255, 255, 0.12);
-      border: 1px solid rgba(255, 255, 255, 0.2);
-      color: #FFFFFF;
-      font-size: 10.5px;
-      font-weight: 600;
-      padding: 4px 9px;
-      border-radius: 999px;
-      cursor: pointer;
-      display: inline-flex;
-      align-items: center;
-      gap: 4px;
-      transition: all 0.15s ease;
-    }
-    .demo-notif-btn:hover {
-      background: rgba(212, 175, 55, 0.35);
-      border-color: #FCD34D;
-      transform: translateY(-1px);
-    }
-    .demo-notif-btn:active {
-      transform: scale(0.95);
     }
 
-    /* Phone Simulator Container */
+    .panel-btn-grid {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 7px;
+    }
+
+    .side-notif-btn {
+      background: rgba(255, 255, 255, 0.08);
+      border: 1px solid rgba(255, 255, 255, 0.14);
+      border-radius: 12px;
+      padding: 9px 12px;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      color: #FFFFFF;
+      cursor: pointer;
+      text-align: left;
+      transition: all 0.2s cubic-bezier(0.34, 1.56, 0.64, 1);
+    }
+    .side-notif-btn:hover {
+      background: rgba(212, 175, 55, 0.25);
+      border-color: #FCD34D;
+      transform: translateX(4px);
+    }
+    .side-notif-btn:active {
+      transform: scale(0.97);
+    }
+    .snb-icon {
+      font-size: 20px;
+      flex-shrink: 0;
+    }
+    .snb-text {
+      display: flex;
+      flex-direction: column;
+      min-width: 0;
+    }
+    .snb-text strong {
+      font-size: 11.5px;
+      font-weight: 700;
+      color: #FFFFFF;
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+    }
+    .snb-text span {
+      font-size: 10px;
+      color: rgba(255, 255, 255, 0.7);
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+    }
+
+    .panel-quick-actions {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 6px;
+    }
+    .side-quick-btn {
+      background: rgba(255, 255, 255, 0.1);
+      border: 1px solid rgba(255, 255, 255, 0.18);
+      color: #E2E8F0;
+      font-size: 10.5px;
+      font-weight: 600;
+      padding: 5px 10px;
+      border-radius: 8px;
+      cursor: pointer;
+      transition: all 0.15s ease;
+    }
+    .side-quick-btn:hover {
+      background: var(--primary-light);
+      color: #FFFFFF;
+      border-color: #A7F3D0;
+    }
+
+    /* ==========================================================================
+       2. REALISTIC MOBILE PHONE FRAME CONTAINER
+       ========================================================================== */
     .phone-simulator {
       position: relative;
       width: 390px;
       height: 844px;
       max-width: 100vw;
-      max-height: 92vh;
+      max-height: 94vh;
       background: var(--app-bg);
       border-radius: var(--radius-phone);
       box-shadow: var(--shadow-phone);
@@ -1647,7 +1725,7 @@
     }
 
     /* ==========================================================================
-       NOTIFICATION CENTER (BİLDİRİM MERKEZİ)
+       NOTIFICATION CENTER MODAL
        ========================================================================== */
     .notif-modal-sheet {
       height: 85%;
@@ -1874,1301 +1952,1251 @@
     }
     .toast-msg.show { opacity: 1; transform: translateX(-50%) translateY(0); }
 
+    /* Responsive Adaptation for smaller screens */
+    @media (max-width: 1180px) {
+      .main-layout-wrapper {
+        flex-direction: column;
+        align-items: center;
+        padding: 30px 10px;
+        min-height: auto;
+      }
+      .right-demo-panel {
+        position: static;
+        transform: none;
+        width: 390px;
+        max-width: 100%;
+        margin-top: 24px;
+      }
+    }
+
     @media (max-width: 440px) {
       body { padding: 0; background: var(--app-bg); }
+      .main-layout-wrapper { padding: 0; }
       .phone-simulator { width: 100vw; height: 100vh; max-height: 100vh; border-radius: 0; border: none; box-shadow: none; }
-      .desktop-header, .desktop-decor, .demo-trigger-panel { display: none; }
+      .desktop-decor, .right-demo-panel { display: none; }
     }
   </style>
 </head>
 <body>
 
-  <!-- Desktop Ambient Glow & Header -->
+  <!-- Ambient Glow -->
   <div class="desktop-decor">
     <div class="glow-blob glow-1"></div>
     <div class="glow-blob glow-2"></div>
   </div>
 
-  <div class="desktop-header">
-    <div class="desktop-badge">Xsir Manevi Süper-App & Akademi Prototipi</div>
-    <div class="desktop-title"><strong>Xsir Yol</strong> — Canlı Bildirim & Manevi Hatırlatma Demosu</div>
-  </div>
+  <!-- MAIN CONTAINER (CENTERED PHONE SIMULATION + RIGHT CONTROL WINDOW) -->
+  <div class="main-layout-wrapper">
 
-  <!-- Demo Trigger Panel -->
-  <div class="demo-trigger-panel">
-    <div class="demo-trigger-lbl">⚡ Bildirim Tetikle:</div>
-    <button class="demo-notif-btn" onclick="triggerNotificationDemo('tarih')">🏛️ Tarihte Bugün</button>
-    <button class="demo-notif-btn" onclick="triggerNotificationDemo('ayet')">📖 Günün Ayeti</button>
-    <button class="demo-notif-btn" onclick="triggerNotificationDemo('hadis')">📜 Hadis-i Şerif</button>
-    <button class="demo-notif-btn" onclick="triggerNotificationDemo('risale')">📘 Risale Alıntısı</button>
-    <button class="demo-notif-btn" onclick="triggerNotificationDemo('alim')">✨ Âlimlerin Hikmeti</button>
-    <button class="demo-notif-btn" onclick="triggerNotificationDemo('dua')">🤲 Günün Duası</button>
-  </div>
+    <!-- CENTERED PHONE SIMULATOR -->
+    <div class="phone-simulator-wrapper">
+      <div class="phone-simulator" id="phoneContainer">
 
-  <!-- PHONE CONTAINER -->
-  <div class="phone-simulator" id="phoneContainer">
-
-    <!-- Dynamic Island -->
-    <div class="dynamic-island-container" id="dynamicIsland" onclick="toggleDynamicIsland()" title="Dynamic Island: Tıkla ve genişlet">
-      <div class="island-cam"></div>
-      <div class="island-speaker"></div>
-      <div class="island-dot"></div>
-      <div class="island-expanded-content">
-        <div style="display: flex; align-items: center; gap: 8px;">
-          <span style="font-size: 16px;">🕌</span>
-          <div>
-            <div style="font-size: 11px; font-weight: 700;">İkindi Vakti</div>
-            <div style="font-size: 9px; color: #34D399;">02:44:12 kaldı</div>
-          </div>
-        </div>
-        <div style="font-size: 10px; background: rgba(255,255,255,0.2); padding: 3px 8px; border-radius: 6px; font-weight: 700;">
-          İstanbul
-        </div>
-      </div>
-    </div>
-
-    <!-- Push Notification Banner -->
-    <div class="push-notification-banner" id="pushNotification" onclick="openNotifModalFromPush()">
-      <div class="push-app-icon" id="pushIcon">🏛️</div>
-      <div class="push-body">
-        <div class="push-top-row">
-          <span class="push-app-name" id="pushCategory">İSLAMİ TARİHTE BUGÜN</span>
-          <span class="push-time">Şimdi</span>
-        </div>
-        <div class="push-title" id="pushTitle">Malazgirt Zaferi & Safer Ayı Hatırası</div>
-        <div class="push-snippet" id="pushSnippet">Sultan Alparslan'ın Cuma namazı sonrası beyaz kefeni kuşanarak İslam ordusuyla yaptığı tarihi dua ve zafer...</div>
-      </div>
-    </div>
-
-    <!-- Status Bar -->
-    <div class="status-bar" id="statusBar">
-      <span id="liveTime">13:45</span>
-      <div class="icons">
-        <svg viewBox="0 0 24 24"><path d="M12 3c-4.97 0-9 4.03-9 9 0 2.12.74 4.07 1.97 5.61L4.35 18.25c-.22.28-.18.69.1.91.28.22.69.18.91-.1l.66-.82C7.57 19.34 9.68 20 12 20s4.43-.66 5.98-1.76l.66.82c.22.28.63.32.91.1.28-.22.32-.63.1-.91l-.62-.64C20.26 16.07 21 14.12 21 12c0-4.97-4.03-9-9-9z"/></svg>
-        <svg viewBox="0 0 24 24"><path d="M12 4C7.31 4 3.07 5.9 0 8.98L12 21 24 8.98C20.93 5.9 16.69 4 12 4zm0 3.5c3.78 0 7.22 1.5 9.76 3.93L12 19.12 2.24 11.43C4.78 9 8.22 7.5 12 7.5z"/></svg>
-        <svg viewBox="0 0 24 24"><path d="M17 6H7c-1.1 0-2 .9-2 2v8c0 1.1.9 2 2 2h10c1.1 0 2-.9 2-2V8c0-1.1-.9-2-2-2zm-1 9H8V9h8v6zm4-5h1v4h-1v-4z"/></svg>
-      </div>
-    </div>
-
-    <!-- Toast -->
-    <div class="toast-msg" id="toastMsg">İşlem tamamlandı ✨</div>
-
-    <!-- VIEWPORT CONTENT -->
-    <div class="phone-content" id="phoneContent">
-
-      <!-- ====================================================================
-           TAB 1: BUGÜN
-           ==================================================================== -->
-      <div class="tab-view active" id="tab-today">
-        
-        <div class="header-top">
-          <div class="user-greeting-box">
-            <h1>Esselamü aleyküm, Furkan 🌿</h1>
-            <div class="date-str">21 Ağustos 2026 · 8 Safer 1448 Hicri</div>
-          </div>
-          <div class="header-actions">
-            <button class="action-icon-btn" onclick="openNotificationCenter()" title="Bildirim Merkezi">
-              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 8A6 6 0 0 0 6 8c0 7-3 9-3 9h18s-3-2-3-9"></path><path d="M13.73 21a2 2 0 0 1-3.46 0"></path></svg>
-              <div class="badge-count" id="notifBadgeCount">6</div>
-            </button>
-          </div>
-        </div>
-
-        <div class="history-highlight-banner" onclick="openNotifCategory('tarih')">
-          <div class="hh-left">
-            <span class="hh-icon">🏛️</span>
-            <div class="hh-text">
-              <h4>İslami Tarihte Bugün · 8 Safer</h4>
-              <p>Malazgirt Zaferi & İslam Ordusunun Manevi Hazırlığı</p>
-            </div>
-          </div>
-          <span class="hh-arrow">Oku ❯</span>
-        </div>
-
-        <div class="prayer-hero-card">
-          <div class="prayer-hero-top">
-            <div>
-              <div class="prayer-next-label">Sonraki Vakit</div>
-              <div class="prayer-next-name">İkindi Vakti</div>
-              <div style="font-size: 11px; opacity: 0.8; margin-top: 2px;">İstanbul · 16:48</div>
-            </div>
-            <div class="prayer-countdown-badge">
-              <div class="countdown-val" id="prayerCountdown">02:44:12</div>
-              <div class="countdown-sub">kaldı</div>
-            </div>
-          </div>
-
-          <div class="prayer-times-row">
-            <div class="prayer-col completed" onclick="togglePrayer(this, 'İmsak')">
-              <span class="p-name">İmsak</span>
-              <span class="p-time">04:42</span>
-              <div class="prayer-check-circle">✓</div>
-            </div>
-            <div class="prayer-col completed" onclick="togglePrayer(this, 'Güneş')">
-              <span class="p-name">Güneş</span>
-              <span class="p-time">06:14</span>
-              <div class="prayer-check-circle">✓</div>
-            </div>
-            <div class="prayer-col completed" onclick="togglePrayer(this, 'Öğle')">
-              <span class="p-name">Öğle</span>
-              <span class="p-time">13:12</span>
-              <div class="prayer-check-circle">✓</div>
-            </div>
-            <div class="prayer-col current" onclick="togglePrayer(this, 'İkindi')">
-              <span class="p-name">İkindi</span>
-              <span class="p-time">16:48</span>
-              <div class="prayer-check-circle"></div>
-            </div>
-            <div class="prayer-col" onclick="togglePrayer(this, 'Akşam')">
-              <span class="p-name">Akşam</span>
-              <span class="p-time">20:02</span>
-              <div class="prayer-check-circle"></div>
-            </div>
-            <div class="prayer-col" onclick="togglePrayer(this, 'Yatsı')">
-              <span class="p-name">Yatsı</span>
-              <span class="p-time">21:28</span>
-              <div class="prayer-check-circle"></div>
-            </div>
-          </div>
-        </div>
-
-        <div class="quick-helper-row">
-          <div class="quick-btn-card quick-qibla" onclick="openQiblaModal()">
-            <div class="quick-icon">🧭</div>
-            <div class="quick-info">
-              <h4>Kıbleyi Bul</h4>
-              <p>142° Güneydoğu</p>
-            </div>
-          </div>
-          <div class="quick-btn-card quick-dhikr" onclick="openDhikrModal()">
-            <div class="quick-icon">📿</div>
-            <div class="quick-info">
-              <h4>Zikirmatik</h4>
-              <p id="quickDhikrSub">Sübhanallah (33)</p>
-            </div>
-          </div>
-        </div>
-
-        <div class="section-title-row">
-          <h2>Manevi Takip Modülleri</h2>
-          <span class="section-link" onclick="switchTab('tab-journey')">Tüm Raporlar →</span>
-        </div>
-
-        <div class="mosaic-grid">
-          <div class="bento-card bento-namaz" onclick="showToast('Bugün 3/5 vakit kılındı. Harika ilerliyorsun!')">
-            <div class="card-header-line">
-              <span class="tag-badge">GÜNLÜK HEDEF</span>
-              <span style="font-size: 11px; font-weight: 700; color: #064E3B;">3/5 Vakit</span>
-            </div>
-            <div>
-              <h3>Namaz Takip & Huşu</h3>
-              <p>Öğle namazı kılındı · Tesbihat tamam</p>
-            </div>
-            <div class="mini-progress-bar-wrap">
-              <div class="mini-progress-bar-fill" style="width: 60%;"></div>
-            </div>
-          </div>
-
-          <div class="bento-card bento-library" onclick="switchTab('tab-explore')">
-            <div>
-              <div class="icon-box">📖</div>
-              <h3>Kütüphane</h3>
-              <p>Sözler · 45. Sayfa</p>
-            </div>
-            <span class="badge-pill">18 Eser Seni Bekliyor</span>
-          </div>
-
-          <div class="bento-card bento-ai" onclick="openAIChatModal()">
-            <div>
-              <div class="icon-box">✨</div>
-              <h3>AI Asistan</h3>
-              <p>Muteber kaynaklardan ilim rehberi</p>
-            </div>
-            <span class="sparkle-tag">Bir Soru Sor 💬</span>
-          </div>
-
-          <div class="bento-card bento-journey" onclick="switchTab('tab-journey')">
-            <div>
-              <span style="font-size: 10px; font-weight: 700; color: var(--primary);">HAFTALIK SERİ</span>
-              <h3>Yolculuğum</h3>
-              <p>Kesintisiz 5. Gün</p>
-            </div>
-            <div class="journey-stat-ring">
-              <span class="stat-circle-num">%88</span>
-              <span class="stat-circle-lbl">Haftalık<br>Başarı</span>
-            </div>
-          </div>
-
-          <div class="bento-card bento-service" onclick="switchTab('tab-community')">
-            <div>
-              <span style="font-size: 9px; font-weight: 700; color: #38BDF8; letter-spacing: 0.5px;">XSİR AKADEMİ</span>
-              <h3>Hizmet & Gönüllü</h3>
-              <p>2 Açık Görev Seni Bekliyor</p>
-            </div>
-            <span class="service-badge-pill">Giriş Yap →</span>
-          </div>
-        </div>
-
-        <div class="daily-verse-card" onclick="openNotifCategory('ayet')">
-          <div class="verse-tag">☀️ GÜNÜN AYETİ</div>
-          <div class="verse-arabic">أَلَا بِذِكْرِ اللَّهِ تَطْمَئِنُّ الْقُلُوبُ</div>
-          <div class="verse-turkish">"Bilesiniz ki, kalpler ancak Allah'ı anmakla huzur bulur."</div>
-          <div class="verse-ref">Ra'd Suresi, 28. Ayet ❯</div>
-        </div>
-
-        <div class="daily-summary-strip">
-          <span>🕌 3 Vakit Kılındı</span>
-          <span class="dot-sep">·</span>
-          <span>📿 99 Zikir</span>
-          <span class="dot-sep">·</span>
-          <span>📖 10 Sayfa Okundu</span>
-        </div>
-
-      </div>
-
-
-      <!-- ====================================================================
-           TAB 2: KEŞFET (KÜTÜPHANE, AI ASİSTAN, İÇERİK AKIŞI)
-           ==================================================================== -->
-      <div class="tab-view" id="tab-explore">
-        
-        <div class="explore-header">
-          <!-- Canlı Arama Input -->
-          <div class="search-input-wrap">
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="8"></circle><line x1="21" y1="21" x2="16.65" y2="16.65"></line></svg>
-            <input type="text" id="exploreSearchInput" placeholder="Ayet, Hadis, Risale veya konu ara…" oninput="filterBySearch(this.value)">
-          </div>
-
-          <!-- Filtreleme Hap Butonları -->
-          <div class="filter-pills-row" id="exploreFilterChips">
-            <div class="filter-pill active" onclick="filterExplore('all', this)">Tümü</div>
-            <div class="filter-pill" onclick="filterExplore('quran', this)">Kur'an-ı Kerim</div>
-            <div class="filter-pill" onclick="filterExplore('risale', this)">Risale-i Nur</div>
-            <div class="filter-pill" onclick="filterExplore('hadis', this)">Hadis & Siyer</div>
-            <div class="filter-pill" onclick="filterExplore('cevsen', this)">Cevşen & Dua</div>
-            <div class="filter-pill" onclick="filterExplore('sohbet', this)">Sohbetler</div>
-          </div>
-        </div>
-
-        <!-- AI Asistan Banner -->
-        <div class="ai-banner-card" onclick="openAIChatModal()">
-          <span class="ai-badge">✨ YOL AI REHBERİ</span>
-          <h3>Aklındaki Soruyu Sor</h3>
-          <p>İslamiyet, fıkıh, maneviyat ve güncel meseleler hakkında kaynaklı yanıtlar al.</p>
-          <div class="ai-source-note">
-            <span>🛡️ Çınaraltı ve muteber kaynaklar referans alınır</span>
-          </div>
-        </div>
-
-        <!-- Kütüphane Başlığı & TÜMÜ (18) BUTONU -->
-        <div class="section-title-row" style="margin-top: 6px;">
-          <h2>Manevi Kütüphane</h2>
-          <span class="section-link" id="btnAllBooks" onclick="openAllBooksModal()" style="background: var(--primary-soft); color: var(--primary); font-weight: 800;">Tümü (18) ❯</span>
-        </div>
-
-        <!-- Kütüphane Yatay Scroll Kitap Kartları -->
-        <div class="books-scroll-row" id="exploreBooksRow">
-          
-          <div class="book-card" data-category="quran" onclick="openBookModal('Kur\'an-ı Kerim', 'Hafız Osman Hattı · Mealli', 'quran')">
-            <div class="book-cover quran">
-              <div class="icon-lg">📖</div>
-              <h4>Kur'an-ı<br>Kerim</h4>
-            </div>
-            <div class="book-info">
-              <div class="book-title">Mushaf-ı Şerif</div>
-              <div class="book-author">Arapça & Meal</div>
-            </div>
-          </div>
-
-          <div class="book-card" data-category="risale" onclick="openBookModal('Sözler', 'Bediüzzaman Said Nursi', 'risale')">
-            <div class="book-cover risale">
-              <div class="icon-lg">📘</div>
-              <h4>Risale-i Nur<br>Külliyatı</h4>
-            </div>
-            <div class="book-info">
-              <div class="book-title">Sözler</div>
-              <div class="book-author">Said Nursi</div>
-            </div>
-          </div>
-
-          <div class="book-card" data-category="risale" onclick="openBookModal('Lem\'alar', 'Bediüzzaman Said Nursi', 'risale')">
-            <div class="book-cover risale" style="background: linear-gradient(135deg, #1E40AF 0%, #3B82F6 100%);">
-              <div class="icon-lg">✨</div>
-              <h4>Lem'alar<br>Mecmuası</h4>
-            </div>
-            <div class="book-info">
-              <div class="book-title">Lem'alar</div>
-              <div class="book-author">Said Nursi</div>
-            </div>
-          </div>
-
-          <div class="book-card" data-category="hadis" onclick="openBookModal('Riyazü\'s Salihin', 'İmam Nevevi', 'riyaz')">
-            <div class="book-cover riyaz">
-              <div class="icon-lg">📜</div>
-              <h4>Riyazü's<br>Salihin</h4>
-            </div>
-            <div class="book-info">
-              <div class="book-title">Hadis-i Şerifler</div>
-              <div class="book-author">İmam Nevevi</div>
-            </div>
-          </div>
-
-          <div class="book-card" data-category="hadis" onclick="openBookModal('Sahih-i Buhârî Muhtasarı', 'İmam Buhari & Zebidi', 'hadis')">
-            <div class="book-cover hadis">
-              <div class="icon-lg">📚</div>
-              <h4>Sahih-i<br>Buhârî</h4>
-            </div>
-            <div class="book-info">
-              <div class="book-title">Tecrid-i Sarih</div>
-              <div class="book-author">İmam Buhârî</div>
-            </div>
-          </div>
-
-          <div class="book-card" data-category="cevsen" onclick="openBookModal('Cevşen-ül Kebir', 'Büyük Zikir Mecmuası', 'cevsen')">
-            <div class="book-cover cevsen">
-              <div class="icon-lg">📿</div>
-              <h4>Cevşen-ül<br>Kebir</h4>
-            </div>
-            <div class="book-info">
-              <div class="book-title">Cevşen & Dua</div>
-              <div class="book-author">Arapça & Okunuş</div>
-            </div>
-          </div>
-
-        </div>
-
-        <!-- Dersler / Sohbetler Başlığı & POPÜLER BUTONU -->
-        <div class="section-title-row">
-          <h2>Günün Dersleri & Sohbetler</h2>
-          <span class="section-link" id="btnSortFeed" onclick="toggleFeedSort(this)">Popüler ▾</span>
-        </div>
-
-        <!-- İçerik Akışı Listesi -->
-        <div class="content-feed-list" id="exploreFeedList">
-          
-          <div class="feed-card" data-category="sohbet" onclick="showToast('Sohbet kaydı başlatılıyor: Vesveseden Kurtuluş')">
-            <div class="feed-thumb" style="background: #FEF3C7;">
-              🎙️
-              <div class="play-tag">▶</div>
-            </div>
-            <div class="feed-body">
-              <div class="feed-badge-row">
-                <span class="feed-source-tag">ÇINARALTI SOHBET</span>
-                <span class="feed-time">18 dk</span>
-              </div>
-              <h4>Vesveseden Nasıl Kurtulunur?</h4>
-              <p>Kalbe gelen şüphe ve vesveselerin tedavisi üzerine pratik manevi rehber.</p>
-            </div>
-          </div>
-
-          <div class="feed-card" data-category="risale" onclick="openBookModal('23. Söz Tahlili', 'Bediüzzaman Said Nursi', 'risale')">
-            <div class="feed-thumb" style="background: #E0E7FF;">
-              📚
-              <div class="play-tag">📄</div>
-            </div>
-            <div class="feed-body">
-              <div class="feed-badge-row">
-                <span class="feed-source-tag">RİSALE TAHLİLİ</span>
-                <span class="feed-time">6 dk okuma</span>
-              </div>
-              <h4>23. Söz: İnsanın Hakiki Kıymeti</h4>
-              <p>İman insanı insan eder, belki sultan eder hakikatinin derin izahı.</p>
-            </div>
-          </div>
-
-          <div class="feed-card" data-category="sohbet" onclick="showToast('Video ders başlatılıyor: Gençlik Rehberi')">
-            <div class="feed-thumb" style="background: #DCFCE7;">
-              🎥
-              <div class="play-tag">▶</div>
-            </div>
-            <div class="feed-body">
-              <div class="feed-badge-row">
-                <span class="feed-source-tag">GENÇLİK REHBERİ</span>
-                <span class="feed-time">12 dk</span>
-              </div>
-              <h4>Zamanı Bereketlendirmenin 5 Yolu</h4>
-              <p>Günlük koşturmaca içinde namaz, tesbihat ve ilim dengesini kurmak.</p>
-            </div>
-          </div>
-
-          <div class="feed-card" data-category="quran" onclick="openBookModal('Yasin Suresi Tefsiri', 'Müfessir Heyeti', 'quran')">
-            <div class="feed-thumb" style="background: #CFFAFE;">
-              📖
-              <div class="play-tag">🎧</div>
-            </div>
-            <div class="feed-body">
-              <div class="feed-badge-row">
-                <span class="feed-source-tag">KUR'AN TEFSİRİ</span>
-                <span class="feed-time">15 dk</span>
-              </div>
-              <h4>Yasin Suresi Ayet Ayet Tefsir Dersi</h4>
-              <p>Kur'an'ın kalbi Yasin Suresi'nin haşir ve tevhid delilleri üzerine tahlili.</p>
-            </div>
-          </div>
-
-          <div class="feed-card" data-category="hadis" onclick="showToast('Hadis sohbeti dinleniyor: Kırk Hadis')">
-            <div class="feed-thumb" style="background: #FCE7F3;">
-              📜
-              <div class="play-tag">▶</div>
-            </div>
-            <div class="feed-body">
-              <div class="feed-badge-row">
-                <span class="feed-source-tag">HADİS DERSİ</span>
-                <span class="feed-time">9 dk</span>
-              </div>
-              <h4>Kırk Hadis: Ahlak ve İhlas Dersleri</h4>
-              <p>Peygamber Efendimiz'in (s.a.v.) mübarek lisanından güzel ahlak ölçüleri.</p>
-            </div>
-          </div>
-
-        </div>
-
-      </div>
-
-
-      <!-- ====================================================================
-           TAB 3: YOLCULUK
-           ==================================================================== -->
-      <div class="tab-view" id="tab-journey">
-        <div class="journey-view-container">
-
-          <div class="stats-overview-box">
-            <div class="stats-overview-title">Manevi Karnem</div>
-            <div class="stats-overview-head">Haftalık Başarı: %88</div>
-            <div class="stats-metrics-grid">
-              <div class="metric-col">
-                <div class="val">32/35</div>
-                <div class="lbl">Vakit Namaz</div>
-              </div>
-              <div class="metric-col">
-                <div class="val">68 Sayfa</div>
-                <div class="lbl">Kitap Okuma</div>
-              </div>
-              <div class="metric-col">
-                <div class="val">1,240</div>
-                <div class="lbl">Çekilen Zikir</div>
-              </div>
-            </div>
-          </div>
-
-          <div class="chart-card">
-            <div class="chart-header">
-              <h3>Haftalık Namaz & İbadet</h3>
-              <span class="filter-select" onclick="showToast('Haftalık filtre değiştirildi.')">Bu Hafta ▾</span>
-            </div>
-            <div class="bar-chart-container">
-              <div class="bar-col">
-                <div class="bar-track"><div class="bar-fill" style="height: 100%;"></div></div>
-                <span class="day-label">Pzt</span>
-              </div>
-              <div class="bar-col">
-                <div class="bar-track"><div class="bar-fill" style="height: 80%;"></div></div>
-                <span class="day-label">Sal</span>
-              </div>
-              <div class="bar-col">
-                <div class="bar-track"><div class="bar-fill" style="height: 100%;"></div></div>
-                <span class="day-label">Çar</span>
-              </div>
-              <div class="bar-col">
-                <div class="bar-track"><div class="bar-fill" style="height: 60%;"></div></div>
-                <span class="day-label">Per</span>
-              </div>
-              <div class="bar-col today">
-                <div class="bar-track"><div class="bar-fill" style="height: 60%;"></div></div>
-                <span class="day-label">Cum</span>
-              </div>
-              <div class="bar-col">
-                <div class="bar-track"><div class="bar-fill" style="height: 20%;"></div></div>
-                <span class="day-label">Cmt</span>
-              </div>
-              <div class="bar-col">
-                <div class="bar-track"><div class="bar-fill" style="height: 20%;"></div></div>
-                <span class="day-label">Paz</span>
-              </div>
-            </div>
-          </div>
-
-          <div class="section-title-row" style="padding-left: 0; padding-right: 0;">
-            <h2>Manevi Rozetler (4/8)</h2>
-            <span class="section-link" onclick="showToast('Tüm başarı rozetleri gösteriliyor.')">Tümü (8)</span>
-          </div>
-
-          <div class="badges-grid">
-            <div class="badge-item-card" onclick="showToast('Rozet Kazanıldı: 7 Gün 5 Vakit Namaz!')">
-              <div class="badge-icon-box">🌟</div>
-              <div class="badge-meta">
-                <h4>Huşu Neferi</h4>
-                <p>7 Gün 5 Vakit</p>
-              </div>
-            </div>
-
-            <div class="badge-item-card" onclick="showToast('Rozet Kazanıldı: İlk Kitap Hatmi Tamamlandı!')">
-              <div class="badge-icon-box">📖</div>
-              <div class="badge-meta">
-                <h4>İlk Hatim</h4>
-                <p>Küçük Sözler Bitti</p>
-              </div>
-            </div>
-
-            <div class="badge-item-card" onclick="showToast('Rozet Kazanıldı: Sabah Namazı Devamı')">
-              <div class="badge-icon-box">🌅</div>
-              <div class="badge-meta">
-                <h4>Fecr Muhafızı</h4>
-                <p>5 Gün Sabah Namazı</p>
-              </div>
-            </div>
-
-            <div class="badge-item-card locked" onclick="showToast('Bu rozet kilitli. 30 gün düzenli zikir çekmelisin.')">
-              <div class="badge-icon-box">🔒</div>
-              <div class="badge-meta">
-                <h4>Zikir Âşığı</h4>
-                <p>30 Gün Kesintisiz</p>
-              </div>
-            </div>
-          </div>
-
-          <div class="section-title-row" style="padding-left: 0; padding-right: 0;">
-            <h2>Geçmiş Günler</h2>
-          </div>
-
-          <div class="history-list">
-            <div class="history-row">
+        <!-- Dynamic Island -->
+        <div class="dynamic-island-container" id="dynamicIsland" onclick="toggleDynamicIsland()" title="Dynamic Island: Tıkla ve genişlet">
+          <div class="island-cam"></div>
+          <div class="island-speaker"></div>
+          <div class="island-dot"></div>
+          <div class="island-expanded-content">
+            <div style="display: flex; align-items: center; gap: 8px;">
+              <span style="font-size: 16px;">🕌</span>
               <div>
-                <div class="history-date">Dün · 20 Ağustos Perşembe</div>
-                <div class="history-desc">4 vakit namaz · 15 sf Risale · Akşam sohbeti</div>
+                <div style="font-size: 11px; font-weight: 700;">İkindi Vakti</div>
+                <div style="font-size: 9px; color: #34D399;">02:44:12 kaldı</div>
               </div>
-              <div class="history-score">%80</div>
             </div>
-            <div class="history-row">
-              <div>
-                <div class="history-date">19 Ağustos Çarşamba</div>
-                <div class="history-desc">5 vakit tam · Tesbihat · 100 Salavat</div>
-              </div>
-              <div class="history-score">%100</div>
+            <div style="font-size: 10px; background: rgba(255,255,255,0.2); padding: 3px 8px; border-radius: 6px; font-weight: 700;">
+              İstanbul
             </div>
-            <div class="history-row">
-              <div>
-                <div class="history-date">18 Ağustos Salı</div>
-                <div class="history-desc">4 vakit · Hizmet istişaresi · 20 sf Okuma</div>
+          </div>
+        </div>
+
+        <!-- Push Notification Banner -->
+        <div class="push-notification-banner" id="pushNotification" onclick="openNotifModalFromPush()">
+          <div class="push-app-icon" id="pushIcon">🏛️</div>
+          <div class="push-body">
+            <div class="push-top-row">
+              <span class="push-app-name" id="pushCategory">İSLAMİ TARİHTE BUGÜN</span>
+              <span class="push-time">Şimdi</span>
+            </div>
+            <div class="push-title" id="pushTitle">Malazgirt Zaferi & Safer Ayı Hatırası</div>
+            <div class="push-snippet" id="pushSnippet">Sultan Alparslan'ın Cuma namazı sonrası beyaz kefeni kuşanarak İslam ordusuyla yaptığı tarihi dua ve zafer...</div>
+          </div>
+        </div>
+
+        <!-- Status Bar -->
+        <div class="status-bar" id="statusBar">
+          <span id="liveTime">13:45</span>
+          <div class="icons">
+            <svg viewBox="0 0 24 24"><path d="M12 3c-4.97 0-9 4.03-9 9 0 2.12.74 4.07 1.97 5.61L4.35 18.25c-.22.28-.18.69.1.91.28.22.69.18.91-.1l.66-.82C7.57 19.34 9.68 20 12 20s4.43-.66 5.98-1.76l.66.82c.22.28.63.32.91.1.28-.22.32-.63.1-.91l-.62-.64C20.26 16.07 21 14.12 21 12c0-4.97-4.03-9-9-9z"/></svg>
+            <svg viewBox="0 0 24 24"><path d="M12 4C7.31 4 3.07 5.9 0 8.98L12 21 24 8.98C20.93 5.9 16.69 4 12 4zm0 3.5c3.78 0 7.22 1.5 9.76 3.93L12 19.12 2.24 11.43C4.78 9 8.22 7.5 12 7.5z"/></svg>
+            <svg viewBox="0 0 24 24"><path d="M17 6H7c-1.1 0-2 .9-2 2v8c0 1.1.9 2 2 2h10c1.1 0 2-.9 2-2V8c0-1.1-.9-2-2-2zm-1 9H8V9h8v6zm4-5h1v4h-1v-4z"/></svg>
+          </div>
+        </div>
+
+        <!-- Toast -->
+        <div class="toast-msg" id="toastMsg">İşlem tamamlandı ✨</div>
+
+        <!-- VIEWPORT CONTENT -->
+        <div class="phone-content" id="phoneContent">
+
+          <!-- ====================================================================
+               TAB 1: BUGÜN
+               ==================================================================== -->
+          <div class="tab-view active" id="tab-today">
+            
+            <div class="header-top">
+              <div class="user-greeting-box">
+                <h1>Esselamü aleyküm, Furkan 🌿</h1>
+                <div class="date-str">21 Ağustos 2026 · 8 Safer 1448 Hicri</div>
               </div>
-              <div class="history-score">%85</div>
+              <div class="header-actions">
+                <button class="action-icon-btn" onclick="openNotificationCenter()" title="Bildirim Merkezi">
+                  <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 8A6 6 0 0 0 6 8c0 7-3 9-3 9h18s-3-2-3-9"></path><path d="M13.73 21a2 2 0 0 1-3.46 0"></path></svg>
+                  <div class="badge-count" id="notifBadgeCount">6</div>
+                </button>
+              </div>
+            </div>
+
+            <div class="history-highlight-banner" onclick="openNotifCategory('tarih')">
+              <div class="hh-left">
+                <span class="hh-icon">🏛️</span>
+                <div class="hh-text">
+                  <h4>İslami Tarihte Bugün · 8 Safer</h4>
+                  <p>Malazgirt Zaferi & İslam Ordusunun Manevi Hazırlığı</p>
+                </div>
+              </div>
+              <span class="hh-arrow">Oku ❯</span>
+            </div>
+
+            <div class="prayer-hero-card">
+              <div class="prayer-hero-top">
+                <div>
+                  <div class="prayer-next-label">Sonraki Vakit</div>
+                  <div class="prayer-next-name">İkindi Vakti</div>
+                  <div style="font-size: 11px; opacity: 0.8; margin-top: 2px;">İstanbul · 16:48</div>
+                </div>
+                <div class="prayer-countdown-badge">
+                  <div class="countdown-val" id="prayerCountdown">02:44:12</div>
+                  <div class="countdown-sub">kaldı</div>
+                </div>
+              </div>
+
+              <div class="prayer-times-row">
+                <div class="prayer-col completed" onclick="togglePrayer(this, 'İmsak')">
+                  <span class="p-name">İmsak</span>
+                  <span class="p-time">04:42</span>
+                  <div class="prayer-check-circle">✓</div>
+                </div>
+                <div class="prayer-col completed" onclick="togglePrayer(this, 'Güneş')">
+                  <span class="p-name">Güneş</span>
+                  <span class="p-time">06:14</span>
+                  <div class="prayer-check-circle">✓</div>
+                </div>
+                <div class="prayer-col completed" onclick="togglePrayer(this, 'Öğle')">
+                  <span class="p-name">Öğle</span>
+                  <span class="p-time">13:12</span>
+                  <div class="prayer-check-circle">✓</div>
+                </div>
+                <div class="prayer-col current" onclick="togglePrayer(this, 'İkindi')">
+                  <span class="p-name">İkindi</span>
+                  <span class="p-time">16:48</span>
+                  <div class="prayer-check-circle"></div>
+                </div>
+                <div class="prayer-col" onclick="togglePrayer(this, 'Akşam')">
+                  <span class="p-name">Akşam</span>
+                  <span class="p-time">20:02</span>
+                  <div class="prayer-check-circle"></div>
+                </div>
+                <div class="prayer-col" onclick="togglePrayer(this, 'Yatsı')">
+                  <span class="p-name">Yatsı</span>
+                  <span class="p-time">21:28</span>
+                  <div class="prayer-check-circle"></div>
+                </div>
+              </div>
+            </div>
+
+            <div class="quick-helper-row">
+              <div class="quick-btn-card quick-qibla" onclick="openQiblaModal()">
+                <div class="quick-icon">🧭</div>
+                <div class="quick-info">
+                  <h4>Kıbleyi Bul</h4>
+                  <p>142° Güneydoğu</p>
+                </div>
+              </div>
+              <div class="quick-btn-card quick-dhikr" onclick="openDhikrModal()">
+                <div class="quick-icon">📿</div>
+                <div class="quick-info">
+                  <h4>Zikirmatik</h4>
+                  <p id="quickDhikrSub">Sübhanallah (33)</p>
+                </div>
+              </div>
+            </div>
+
+            <div class="section-title-row">
+              <h2>Manevi Takip Modülleri</h2>
+              <span class="section-link" onclick="switchTab('tab-journey')">Tüm Raporlar →</span>
+            </div>
+
+            <div class="mosaic-grid">
+              <div class="bento-card bento-namaz" onclick="showToast('Bugün 3/5 vakit kılındı. Harika ilerliyorsun!')">
+                <div class="card-header-line">
+                  <span class="tag-badge">GÜNLÜK HEDEF</span>
+                  <span style="font-size: 11px; font-weight: 700; color: #064E3B;">3/5 Vakit</span>
+                </div>
+                <div>
+                  <h3>Namaz Takip & Huşu</h3>
+                  <p>Öğle namazı kılındı · Tesbihat tamam</p>
+                </div>
+                <div class="mini-progress-bar-wrap">
+                  <div class="mini-progress-bar-fill" style="width: 60%;"></div>
+                </div>
+              </div>
+
+              <div class="bento-card bento-library" onclick="switchTab('tab-explore')">
+                <div>
+                  <div class="icon-box">📖</div>
+                  <h3>Kütüphane</h3>
+                  <p>Sözler · 45. Sayfa</p>
+                </div>
+                <span class="badge-pill">18 Eser Seni Bekliyor</span>
+              </div>
+
+              <div class="bento-card bento-ai" onclick="openAIChatModal()">
+                <div>
+                  <div class="icon-box">✨</div>
+                  <h3>AI Asistan</h3>
+                  <p>Muteber kaynaklardan ilim rehberi</p>
+                </div>
+                <span class="sparkle-tag">Bir Soru Sor 💬</span>
+              </div>
+
+              <div class="bento-card bento-journey" onclick="switchTab('tab-journey')">
+                <div>
+                  <span style="font-size: 10px; font-weight: 700; color: var(--primary);">HAFTALIK SERİ</span>
+                  <h3>Yolculuğum</h3>
+                  <p>Kesintisiz 5. Gün</p>
+                </div>
+                <div class="journey-stat-ring">
+                  <span class="stat-circle-num">%88</span>
+                  <span class="stat-circle-lbl">Haftalık<br>Başarı</span>
+                </div>
+              </div>
+
+              <div class="bento-card bento-service" onclick="switchTab('tab-community')">
+                <div>
+                  <span style="font-size: 9px; font-weight: 700; color: #38BDF8; letter-spacing: 0.5px;">XSİR AKADEMİ</span>
+                  <h3>Hizmet & Gönüllü</h3>
+                  <p>2 Açık Görev Seni Bekliyor</p>
+                </div>
+                <span class="service-badge-pill">Giriş Yap →</span>
+              </div>
+            </div>
+
+            <div class="daily-verse-card" onclick="openNotifCategory('ayet')">
+              <div class="verse-tag">☀️ GÜNÜN AYETİ</div>
+              <div class="verse-arabic">أَلَا بِذِكْرِ اللَّهِ تَطْمَئِنُّ الْقُلُوبُ</div>
+              <div class="verse-turkish">"Bilesiniz ki, kalpler ancak Allah'ı anmakla huzur bulur."</div>
+              <div class="verse-ref">Ra'd Suresi, 28. Ayet ❯</div>
+            </div>
+
+            <div class="daily-summary-strip">
+              <span>🕌 3 Vakit Kılındı</span>
+              <span class="dot-sep">·</span>
+              <span>📿 99 Zikir</span>
+              <span class="dot-sep">·</span>
+              <span>📖 10 Sayfa Okundu</span>
+            </div>
+
+          </div>
+
+
+          <!-- ====================================================================
+               TAB 2: KEŞFET
+               ==================================================================== -->
+          <div class="tab-view" id="tab-explore">
+            
+            <div class="explore-header">
+              <div class="search-input-wrap">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="8"></circle><line x1="21" y1="21" x2="16.65" y2="16.65"></line></svg>
+                <input type="text" id="exploreSearchInput" placeholder="Ayet, Hadis, Risale veya konu ara…" oninput="filterBySearch(this.value)">
+              </div>
+
+              <div class="filter-pills-row" id="exploreFilterChips">
+                <div class="filter-pill active" onclick="filterExplore('all', this)">Tümü</div>
+                <div class="filter-pill" onclick="filterExplore('quran', this)">Kur'an-ı Kerim</div>
+                <div class="filter-pill" onclick="filterExplore('risale', this)">Risale-i Nur</div>
+                <div class="filter-pill" onclick="filterExplore('hadis', this)">Hadis & Siyer</div>
+                <div class="filter-pill" onclick="filterExplore('cevsen', this)">Cevşen & Dua</div>
+                <div class="filter-pill" onclick="filterExplore('sohbet', this)">Sohbetler</div>
+              </div>
+            </div>
+
+            <div class="ai-banner-card" onclick="openAIChatModal()">
+              <span class="ai-badge">✨ YOL AI REHBERİ</span>
+              <h3>Aklındaki Soruyu Sor</h3>
+              <p>İslamiyet, fıkıh, maneviyat ve güncel meseleler hakkında kaynaklı yanıtlar al.</p>
+              <div class="ai-source-note">
+                <span>🛡️ Çınaraltı ve muteber kaynaklar referans alınır</span>
+              </div>
+            </div>
+
+            <div class="section-title-row" style="margin-top: 6px;">
+              <h2>Manevi Kütüphane</h2>
+              <span class="section-link" id="btnAllBooks" onclick="openAllBooksModal()" style="background: var(--primary-soft); color: var(--primary); font-weight: 800;">Tümü (18) ❯</span>
+            </div>
+
+            <div class="books-scroll-row" id="exploreBooksRow">
+              <div class="book-card" data-category="quran" onclick="openBookModal('Kur\'an-ı Kerim', 'Hafız Osman Hattı · Mealli', 'quran')">
+                <div class="book-cover quran">
+                  <div class="icon-lg">📖</div>
+                  <h4>Kur'an-ı<br>Kerim</h4>
+                </div>
+                <div class="book-info">
+                  <div class="book-title">Mushaf-ı Şerif</div>
+                  <div class="book-author">Arapça & Meal</div>
+                </div>
+              </div>
+
+              <div class="book-card" data-category="risale" onclick="openBookModal('Sözler', 'Bediüzzaman Said Nursi', 'risale')">
+                <div class="book-cover risale">
+                  <div class="icon-lg">📘</div>
+                  <h4>Risale-i Nur<br>Külliyatı</h4>
+                </div>
+                <div class="book-info">
+                  <div class="book-title">Sözler</div>
+                  <div class="book-author">Said Nursi</div>
+                </div>
+              </div>
+
+              <div class="book-card" data-category="risale" onclick="openBookModal('Lem\'alar', 'Bediüzzaman Said Nursi', 'risale')">
+                <div class="book-cover risale" style="background: linear-gradient(135deg, #1E40AF 0%, #3B82F6 100%);">
+                  <div class="icon-lg">✨</div>
+                  <h4>Lem'alar<br>Mecmuası</h4>
+                </div>
+                <div class="book-info">
+                  <div class="book-title">Lem'alar</div>
+                  <div class="book-author">Said Nursi</div>
+                </div>
+              </div>
+
+              <div class="book-card" data-category="hadis" onclick="openBookModal('Riyazü\'s Salihin', 'İmam Nevevi', 'riyaz')">
+                <div class="book-cover riyaz">
+                  <div class="icon-lg">📜</div>
+                  <h4>Riyazü's<br>Salihin</h4>
+                </div>
+                <div class="book-info">
+                  <div class="book-title">Hadis-i Şerifler</div>
+                  <div class="book-author">İmam Nevevi</div>
+                </div>
+              </div>
+
+              <div class="book-card" data-category="hadis" onclick="openBookModal('Sahih-i Buhârî Muhtasarı', 'İmam Buhari & Zebidi', 'hadis')">
+                <div class="book-cover hadis">
+                  <div class="icon-lg">📚</div>
+                  <h4>Sahih-i<br>Buhârî</h4>
+                </div>
+                <div class="book-info">
+                  <div class="book-title">Tecrid-i Sarih</div>
+                  <div class="book-author">İmam Buhârî</div>
+                </div>
+              </div>
+
+              <div class="book-card" data-category="cevsen" onclick="openBookModal('Cevşen-ül Kebir', 'Büyük Zikir Mecmuası', 'cevsen')">
+                <div class="book-cover cevsen">
+                  <div class="icon-lg">📿</div>
+                  <h4>Cevşen-ül<br>Kebir</h4>
+                </div>
+                <div class="book-info">
+                  <div class="book-title">Cevşen & Dua</div>
+                  <div class="book-author">Arapça & Okunuş</div>
+                </div>
+              </div>
+            </div>
+
+            <div class="section-title-row">
+              <h2>Günün Dersleri & Sohbetler</h2>
+              <span class="section-link" id="btnSortFeed" onclick="toggleFeedSort(this)">Popüler ▾</span>
+            </div>
+
+            <div class="content-feed-list" id="exploreFeedList">
+              <div class="feed-card" data-category="sohbet" onclick="showToast('Sohbet kaydı başlatılıyor: Vesveseden Kurtuluş')">
+                <div class="feed-thumb" style="background: #FEF3C7;">
+                  🎙️
+                  <div class="play-tag">▶</div>
+                </div>
+                <div class="feed-body">
+                  <div class="feed-badge-row">
+                    <span class="feed-source-tag">ÇINARALTI SOHBET</span>
+                    <span class="feed-time">18 dk</span>
+                  </div>
+                  <h4>Vesveseden Nasıl Kurtulunur?</h4>
+                  <p>Kalbe gelen şüphe ve vesveselerin tedavisi üzerine pratik manevi rehber.</p>
+                </div>
+              </div>
+
+              <div class="feed-card" data-category="risale" onclick="openBookModal('23. Söz Tahlili', 'Bediüzzaman Said Nursi', 'risale')">
+                <div class="feed-thumb" style="background: #E0E7FF;">
+                  📚
+                  <div class="play-tag">📄</div>
+                </div>
+                <div class="feed-body">
+                  <div class="feed-badge-row">
+                    <span class="feed-source-tag">RİSALE TAHLİLİ</span>
+                    <span class="feed-time">6 dk okuma</span>
+                  </div>
+                  <h4>23. Söz: İnsanın Hakiki Kıymeti</h4>
+                  <p>İman insanı insan eder, belki sultan eder hakikatinin derin izahı.</p>
+                </div>
+              </div>
+
+              <div class="feed-card" data-category="sohbet" onclick="showToast('Video ders başlatılıyor: Gençlik Rehberi')">
+                <div class="feed-thumb" style="background: #DCFCE7;">
+                  🎥
+                  <div class="play-tag">▶</div>
+                </div>
+                <div class="feed-body">
+                  <div class="feed-badge-row">
+                    <span class="feed-source-tag">GENÇLİK REHBERİ</span>
+                    <span class="feed-time">12 dk</span>
+                  </div>
+                  <h4>Zamanı Bereketlendirmenin 5 Yolu</h4>
+                  <p>Günlük koşturmaca içinde namaz, tesbihat ve ilim dengesini kurmak.</p>
+                </div>
+              </div>
+
+              <div class="feed-card" data-category="quran" onclick="openBookModal('Yasin Suresi Tefsiri', 'Müfessir Heyeti', 'quran')">
+                <div class="feed-thumb" style="background: #CFFAFE;">
+                  📖
+                  <div class="play-tag">🎧</div>
+                </div>
+                <div class="feed-body">
+                  <div class="feed-badge-row">
+                    <span class="feed-source-tag">KUR'AN TEFSİRİ</span>
+                    <span class="feed-time">15 dk</span>
+                  </div>
+                  <h4>Yasin Suresi Ayet Ayet Tefsir Dersi</h4>
+                  <p>Kur'an'ın kalbi Yasin Suresi'nin haşir ve tevhid delilleri üzerine tahlili.</p>
+                </div>
+              </div>
+
+              <div class="feed-card" data-category="hadis" onclick="showToast('Hadis sohbeti dinleniyor: Kırk Hadis')">
+                <div class="feed-thumb" style="background: #FCE7F3;">
+                  📜
+                  <div class="play-tag">▶</div>
+                </div>
+                <div class="feed-body">
+                  <div class="feed-badge-row">
+                    <span class="feed-source-tag">HADİS DERSİ</span>
+                    <span class="feed-time">9 dk</span>
+                  </div>
+                  <h4>Kırk Hadis: Ahlak ve İhlas Dersleri</h4>
+                  <p>Peygamber Efendimiz'in (s.a.v.) mübarek lisanından güzel ahlak ölçüleri.</p>
+                </div>
+              </div>
+            </div>
+
+          </div>
+
+
+          <!-- ====================================================================
+               TAB 3: YOLCULUK
+               ==================================================================== -->
+          <div class="tab-view" id="tab-journey">
+            <div class="journey-view-container">
+              <div class="stats-overview-box">
+                <div class="stats-overview-title">Manevi Karnem</div>
+                <div class="stats-overview-head">Haftalık Başarı: %88</div>
+                <div class="stats-metrics-grid">
+                  <div class="metric-col">
+                    <div class="val">32/35</div>
+                    <div class="lbl">Vakit Namaz</div>
+                  </div>
+                  <div class="metric-col">
+                    <div class="val">68 Sayfa</div>
+                    <div class="lbl">Kitap Okuma</div>
+                  </div>
+                  <div class="metric-col">
+                    <div class="val">1,240</div>
+                    <div class="lbl">Çekilen Zikir</div>
+                  </div>
+                </div>
+              </div>
+
+              <div class="chart-card">
+                <div class="chart-header">
+                  <h3>Haftalık Namaz & İbadet</h3>
+                  <span class="filter-select" onclick="showToast('Haftalık filtre değiştirildi.')">Bu Hafta ▾</span>
+                </div>
+                <div class="bar-chart-container">
+                  <div class="bar-col"><div class="bar-track"><div class="bar-fill" style="height: 100%;"></div></div><span class="day-label">Pzt</span></div>
+                  <div class="bar-col"><div class="bar-track"><div class="bar-fill" style="height: 80%;"></div></div><span class="day-label">Sal</span></div>
+                  <div class="bar-col"><div class="bar-track"><div class="bar-fill" style="height: 100%;"></div></div><span class="day-label">Çar</span></div>
+                  <div class="bar-col"><div class="bar-track"><div class="bar-fill" style="height: 60%;"></div></div><span class="day-label">Per</span></div>
+                  <div class="bar-col today"><div class="bar-track"><div class="bar-fill" style="height: 60%;"></div></div><span class="day-label">Cum</span></div>
+                  <div class="bar-col"><div class="bar-track"><div class="bar-fill" style="height: 20%;"></div></div><span class="day-label">Cmt</span></div>
+                  <div class="bar-col"><div class="bar-track"><div class="bar-fill" style="height: 20%;"></div></div><span class="day-label">Paz</span></div>
+                </div>
+              </div>
+
+              <div class="section-title-row" style="padding-left: 0; padding-right: 0;">
+                <h2>Manevi Rozetler (4/8)</h2>
+                <span class="section-link" onclick="showToast('Tüm başarı rozetleri gösteriliyor.')">Tümü (8)</span>
+              </div>
+
+              <div class="badges-grid">
+                <div class="badge-item-card" onclick="showToast('Rozet Kazanıldı: 7 Gün 5 Vakit Namaz!')">
+                  <div class="badge-icon-box">🌟</div>
+                  <div class="badge-meta">
+                    <h4>Huşu Neferi</h4>
+                    <p>7 Gün 5 Vakit</p>
+                  </div>
+                </div>
+
+                <div class="badge-item-card" onclick="showToast('Rozet Kazanıldı: İlk Kitap Hatmi Tamamlandı!')">
+                  <div class="badge-icon-box">📖</div>
+                  <div class="badge-meta">
+                    <h4>İlk Hatim</h4>
+                    <p>Küçük Sözler Bitti</p>
+                  </div>
+                </div>
+
+                <div class="badge-item-card" onclick="showToast('Rozet Kazanıldı: Sabah Namazı Devamı')">
+                  <div class="badge-icon-box">🌅</div>
+                  <div class="badge-meta">
+                    <h4>Fecr Muhafızı</h4>
+                    <p>5 Gün Sabah Namazı</p>
+                  </div>
+                </div>
+
+                <div class="badge-item-card locked" onclick="showToast('Bu rozet kilitli. 30 gün düzenli zikir çekmelisin.')">
+                  <div class="badge-icon-box">🔒</div>
+                  <div class="badge-meta">
+                    <h4>Zikir Âşığı</h4>
+                    <p>30 Gün Kesintisiz</p>
+                  </div>
+                </div>
+              </div>
+
+              <div class="section-title-row" style="padding-left: 0; padding-right: 0;">
+                <h2>Geçmiş Günler</h2>
+              </div>
+
+              <div class="history-list">
+                <div class="history-row">
+                  <div>
+                    <div class="history-date">Dün · 20 Ağustos Perşembe</div>
+                    <div class="history-desc">4 vakit namaz · 15 sf Risale · Akşam sohbeti</div>
+                  </div>
+                  <div class="history-score">%80</div>
+                </div>
+                <div class="history-row">
+                  <div>
+                    <div class="history-date">19 Ağustos Çarşamba</div>
+                    <div class="history-desc">5 vakit tam · Tesbihat · 100 Salavat</div>
+                  </div>
+                  <div class="history-score">%100</div>
+                </div>
+                <div class="history-row">
+                  <div>
+                    <div class="history-date">18 Ağustos Salı</div>
+                    <div class="history-desc">4 vakit · Hizmet istişaresi · 20 sf Okuma</div>
+                  </div>
+                  <div class="history-score">%85</div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+
+          <!-- ====================================================================
+               TAB 4: TOPLULUK / HİZMET
+               ==================================================================== -->
+          <div class="tab-view" id="tab-community">
+            <div class="akademi-theme-bg">
+              <div class="akademi-header">
+                <div class="akademi-logo-box">
+                  <div class="akademi-logo-circle">X</div>
+                  <div class="akademi-title-group">
+                    <h1>Xsir Akademi</h1>
+                    <p>Hizmet & Gönüllü Yönetim Alanı</p>
+                  </div>
+                </div>
+                <div class="volunteer-level-badge">
+                  ⚡ 3. Kademe Gönüllü
+                </div>
+              </div>
+
+              <div class="service-tracker-card">
+                <div class="service-hours-row">
+                  <div>
+                    <div class="service-hours-num">18.5 <span style="font-size: 14px; color: #94A3B8;">Saat</span></div>
+                    <div class="service-hours-lbl">Bu Ay Yapılan Hizmet</div>
+                  </div>
+                  <button class="service-goal-btn" onclick="showToast('Hizmet saati loglama formu açıldı.')">+ Saat Ekle</button>
+                </div>
+                <div class="service-progress-wrap">
+                  <div class="service-progress-fill"></div>
+                </div>
+                <div class="service-progress-note">Aylık 25 saat hedefinin %74'ü tamamlandı</div>
+              </div>
+
+              <div class="tasks-header">
+                <h3>Üzerimdeki Görevler (2)</h3>
+                <span style="font-size: 11px; color: #38BDF8; cursor: pointer;" onclick="showToast('Tüm görevler listelendi.')">Tümü</span>
+              </div>
+
+              <div class="task-item-row" onclick="toggleTask(this)">
+                <div class="task-left">
+                  <div class="task-check-box"></div>
+                  <div class="task-meta">
+                    <h4>Üniversite Gençlik Kitap Dağıtımı</h4>
+                    <p>Teslimat: Yarın 14:00 · Kadıköy Temsilcilik</p>
+                  </div>
+                </div>
+                <span class="task-tag tag-kitap">Dağıtım</span>
+              </div>
+
+              <div class="task-item-row" onclick="toggleTask(this)">
+                <div class="task-left">
+                  <div class="task-check-box"></div>
+                  <div class="task-meta">
+                    <h4>Haftalık Seminer Salonu Hazırlığı</h4>
+                    <p>Pazar 18:30 · Ses ve projeksiyon kontrolü</p>
+                  </div>
+                </div>
+                <span class="task-tag tag-seminer">Lojistik</span>
+              </div>
+
+              <div class="task-item-row completed" onclick="toggleTask(this)">
+                <div class="task-left">
+                  <div class="task-check-box">✓</div>
+                  <div class="task-meta">
+                    <h4>Yeni Kayıt Olan 5 Öğrenci Araması</h4>
+                    <p>Tamamlandı · Rapor sisteme girildi</p>
+                  </div>
+                </div>
+                <span class="task-tag tag-medya">İletişim</span>
+              </div>
+
+              <div class="forum-feed">
+                <div class="tasks-header">
+                  <h3>Gönüllü İstişare & Forum</h3>
+                  <span style="font-size: 11px; color: #38BDF8; cursor: pointer;" onclick="showToast('Yeni istişare başlığı açma ekranı...')">Yeni Başlık</span>
+                </div>
+
+                <div class="forum-item" onclick="showToast('İstişare konusu açılıyor...')">
+                  <h4>2026 Güz Dönemi Üniversite Tanıtım Stantları</h4>
+                  <div class="forum-item-foot">
+                    <span>Ahmet Yılmaz (Koordinatör)</span>
+                    <span>💬 24 Yanıt · 15 dk önce</span>
+                  </div>
+                </div>
+
+                <div class="forum-item" onclick="showToast('İstişare konusu açılıyor...')">
+                  <h4>Lise İlim Halkaları Müfredat Güncellemesi</h4>
+                  <div class="forum-item-foot">
+                    <span>Eğitim Komisyonu</span>
+                    <span>💬 12 Yanıt · 2 saat önce</span>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+
+          <!-- ====================================================================
+               TAB 5: BEN
+               ==================================================================== -->
+          <div class="tab-view" id="tab-profile">
+            <div class="profile-container">
+              <div class="profile-card-top">
+                <div class="profile-avatar-wrap">AF</div>
+                <div class="profile-name-box">
+                  <h2>Ahmet Furkan</h2>
+                  <p>furkan@xsir.org · Katılım: Mart 2024</p>
+                  <div class="profile-role-badge">
+                    🌿 Xsir Yol Yolcusu & Akademi Gönüllüsü
+                  </div>
+                </div>
+              </div>
+
+              <div class="settings-group">
+                <div class="settings-group-title">Manevi Tercihler & Vakitler</div>
+                <div class="settings-row" onclick="showToast('Konum ayarlandı: İstanbul / Türkiye')">
+                  <div class="settings-left"><div class="settings-icon">📍</div><div class="settings-title">Konum & Ezan Vakti Hesabı</div></div>
+                  <div class="settings-right">Diyanet ❯</div>
+                </div>
+                <div class="settings-row" onclick="openNotificationCenter()">
+                  <div class="settings-left"><div class="settings-icon">🔔</div><div class="settings-title">Manevi Hatırlatıcılar & Tarihte Bugün</div></div>
+                  <div class="settings-right">6 Yeni ❯</div>
+                </div>
+                <div class="settings-row" onclick="openQiblaModal()">
+                  <div class="settings-left"><div class="settings-icon">🧭</div><div class="settings-title">Kıble Pusulası Kalibrasyonu</div></div>
+                  <div class="settings-right">142° ❯</div>
+                </div>
+              </div>
+
+              <div class="settings-group">
+                <div class="settings-group-title">Xsir Akademi & Güvenlik</div>
+                <div class="settings-row" onclick="switchTab('tab-community')">
+                  <div class="settings-left"><div class="settings-icon">🎓</div><div class="settings-title">Akademi Gönüllü Kartı</div></div>
+                  <div class="settings-right">3. Kademe ❯</div>
+                </div>
+                <div class="settings-row" onclick="showToast('Verileriniz yerel cihazınızda güvende.')">
+                  <div class="settings-left"><div class="settings-icon">☁️</div><div class="settings-title">Yedekleme & Manevi Günlük Arşivi</div></div>
+                  <div class="settings-right">Güncel ❯</div>
+                </div>
+                <div class="settings-row" onclick="showToast('Uygulama Sürümü: v2.4.0 (Xsir Yol Suite)')">
+                  <div class="settings-left"><div class="settings-icon">ℹ️</div><div class="settings-title">Hakkında & Çınaraltı İletişim</div></div>
+                  <div class="settings-right">v2.4 ❯</div>
+                </div>
+              </div>
             </div>
           </div>
 
         </div>
+        <!-- /Phone Content -->
+
+        <!-- BOTTOM NAVIGATION -->
+        <nav class="bottom-nav" id="bottomNav">
+          <button class="nav-tab-btn active" id="btn-tab-today" onclick="switchTab('tab-today')">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><path d="m3 9 9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"></path><polyline points="9 22 9 12 15 12 15 22"></polyline></svg>
+            <span>Bugün</span>
+          </button>
+          <button class="nav-tab-btn" id="btn-tab-explore" onclick="switchTab('tab-explore')">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><circle cx="12" cy="12" r="10"></circle><polygon points="16.24 7.76 14.12 14.12 7.76 16.24 9.88 9.88 16.24 7.76"></polygon></svg>
+            <span>Keşfet</span>
+          </button>
+          <button class="nav-tab-btn" id="btn-tab-journey" onclick="switchTab('tab-journey')">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><path d="M12 20v-6M6 20V10M18 20V4"></path></svg>
+            <span>Yolculuk</span>
+          </button>
+          <button class="nav-tab-btn" id="btn-tab-community" onclick="switchTab('tab-community')">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"></path><circle cx="9" cy="7" r="4"></circle><path d="M23 21v-2a4 4 0 0 0-3-3.87"></path><path d="M16 3.13a4 4 0 0 1 0 7.75"></path></svg>
+            <span>Hizmet</span>
+          </button>
+          <button class="nav-tab-btn" id="btn-tab-profile" onclick="switchTab('tab-profile')">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"></path><circle cx="12" cy="7" r="4"></circle></svg>
+            <span>Ben</span>
+          </button>
+        </nav>
+
+        <div class="home-indicator" id="homeIndicator"></div>
+
       </div>
-
-
-      <!-- ====================================================================
-           TAB 4: TOPLULUK / HİZMET
-           ==================================================================== -->
-      <div class="tab-view" id="tab-community">
-        <div class="akademi-theme-bg">
-          
-          <div class="akademi-header">
-            <div class="akademi-logo-box">
-              <div class="akademi-logo-circle">X</div>
-              <div class="akademi-title-group">
-                <h1>Xsir Akademi</h1>
-                <p>Hizmet & Gönüllü Yönetim Alanı</p>
-              </div>
-            </div>
-            <div class="volunteer-level-badge">
-              ⚡ 3. Kademe Gönüllü
-            </div>
-          </div>
-
-          <div class="service-tracker-card">
-            <div class="service-hours-row">
-              <div>
-                <div class="service-hours-num">18.5 <span style="font-size: 14px; color: #94A3B8;">Saat</span></div>
-                <div class="service-hours-lbl">Bu Ay Yapılan Hizmet</div>
-              </div>
-              <button class="service-goal-btn" onclick="showToast('Hizmet saati loglama formu açıldı.')">+ Saat Ekle</button>
-            </div>
-            <div class="service-progress-wrap">
-              <div class="service-progress-fill"></div>
-            </div>
-            <div class="service-progress-note">Aylık 25 saat hedefinin %74'ü tamamlandı</div>
-          </div>
-
-          <div class="tasks-header">
-            <h3>Üzerimdeki Görevler (2)</h3>
-            <span style="font-size: 11px; color: #38BDF8; cursor: pointer;" onclick="showToast('Tüm görevler listelendi.')">Tümü</span>
-          </div>
-
-          <div class="task-item-row" onclick="toggleTask(this)">
-            <div class="task-left">
-              <div class="task-check-box"></div>
-              <div class="task-meta">
-                <h4>Üniversite Gençlik Kitap Dağıtımı</h4>
-                <p>Teslimat: Yarın 14:00 · Kadıköy Temsilcilik</p>
-              </div>
-            </div>
-            <span class="task-tag tag-kitap">Dağıtım</span>
-          </div>
-
-          <div class="task-item-row" onclick="toggleTask(this)">
-            <div class="task-left">
-              <div class="task-check-box"></div>
-              <div class="task-meta">
-                <h4>Haftalık Seminer Salonu Hazırlığı</h4>
-                <p>Pazar 18:30 · Ses ve projeksiyon kontrolü</p>
-              </div>
-            </div>
-            <span class="task-tag tag-seminer">Lojistik</span>
-          </div>
-
-          <div class="task-item-row completed" onclick="toggleTask(this)">
-            <div class="task-left">
-              <div class="task-check-box">✓</div>
-              <div class="task-meta">
-                <h4>Yeni Kayıt Olan 5 Öğrenci Araması</h4>
-                <p>Tamamlandı · Rapor sisteme girildi</p>
-              </div>
-            </div>
-            <span class="task-tag tag-medya">İletişim</span>
-          </div>
-
-          <div class="forum-feed">
-            <div class="tasks-header">
-              <h3>Gönüllü İstişare & Forum</h3>
-              <span style="font-size: 11px; color: #38BDF8; cursor: pointer;" onclick="showToast('Yeni istişare başlığı açma ekranı...')">Yeni Başlık</span>
-            </div>
-
-            <div class="forum-item" onclick="showToast('İstişare konusu açılıyor...')">
-              <h4>2026 Güz Dönemi Üniversite Tanıtım Stantları</h4>
-              <div class="forum-item-foot">
-                <span>Ahmet Yılmaz (Koordinatör)</span>
-                <span>💬 24 Yanıt · 15 dk önce</span>
-              </div>
-            </div>
-
-            <div class="forum-item" onclick="showToast('İstişare konusu açılıyor...')">
-              <h4>Lise İlim Halkaları Müfredat Güncellemesi</h4>
-              <div class="forum-item-foot">
-                <span>Eğitim Komisyonu</span>
-                <span>💬 12 Yanıt · 2 saat önce</span>
-              </div>
-            </div>
-          </div>
-
-        </div>
-      </div>
-
-
-      <!-- ====================================================================
-           TAB 5: BEN
-           ==================================================================== -->
-      <div class="tab-view" id="tab-profile">
-        <div class="profile-container">
-
-          <div class="profile-card-top">
-            <div class="profile-avatar-wrap">
-              AF
-            </div>
-            <div class="profile-name-box">
-              <h2>Ahmet Furkan</h2>
-              <p>furkan@xsir.org · Katılım: Mart 2024</p>
-              <div class="profile-role-badge">
-                🌿 Xsir Yol Yolcusu & Akademi Gönüllüsü
-              </div>
-            </div>
-          </div>
-
-          <div class="settings-group">
-            <div class="settings-group-title">Manevi Tercihler & Vakitler</div>
-            <div class="settings-row" onclick="showToast('Konum ayarlandı: İstanbul / Türkiye')">
-              <div class="settings-left">
-                <div class="settings-icon">📍</div>
-                <div class="settings-title">Konum & Ezan Vakti Hesabı</div>
-              </div>
-              <div class="settings-right">Diyanet ❯</div>
-            </div>
-            <div class="settings-row" onclick="openNotificationCenter()">
-              <div class="settings-left">
-                <div class="settings-icon">🔔</div>
-                <div class="settings-title">Manevi Hatırlatıcılar & Tarihte Bugün</div>
-              </div>
-              <div class="settings-right">6 Yeni ❯</div>
-            </div>
-            <div class="settings-row" onclick="openQiblaModal()">
-              <div class="settings-left">
-                <div class="settings-icon">🧭</div>
-                <div class="settings-title">Kıble Pusulası Kalibrasyonu</div>
-              </div>
-              <div class="settings-right">142° ❯</div>
-            </div>
-          </div>
-
-          <div class="settings-group">
-            <div class="settings-group-title">Xsir Akademi & Güvenlik</div>
-            <div class="settings-row" onclick="switchTab('tab-community')">
-              <div class="settings-left">
-                <div class="settings-icon">🎓</div>
-                <div class="settings-title">Akademi Gönüllü Kartı</div>
-              </div>
-              <div class="settings-right">3. Kademe ❯</div>
-            </div>
-            <div class="settings-row" onclick="showToast('Verileriniz yerel cihazınızda güvende.')">
-              <div class="settings-left">
-                <div class="settings-icon">☁️</div>
-                <div class="settings-title">Yedekleme & Manevi Günlük Arşivi</div>
-              </div>
-              <div class="settings-right">Güncel ❯</div>
-            </div>
-            <div class="settings-row" onclick="showToast('Uygulama Sürümü: v2.4.0 (Xsir Yol Suite)')">
-              <div class="settings-left">
-                <div class="settings-icon">ℹ️</div>
-                <div class="settings-title">Hakkında & Çınaraltı İletişim</div>
-              </div>
-              <div class="settings-right">v2.4 ❯</div>
-            </div>
-          </div>
-
-        </div>
-      </div>
-
+      <!-- /Phone Simulator -->
     </div>
-    <!-- /Phone Content -->
+    <!-- /Phone Simulator Wrapper -->
 
 
     <!-- ======================================================================
-         BOTTOM NAVIGATION
+         RIGHT FLOATING CONTROL WINDOW (SAĞDA ORTALANMIŞ DEMO PANELİ)
          ====================================================================== -->
-    <nav class="bottom-nav" id="bottomNav">
-      <button class="nav-tab-btn active" id="btn-tab-today" onclick="switchTab('tab-today')">
-        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><path d="m3 9 9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"></path><polyline points="9 22 9 12 15 12 15 22"></polyline></svg>
-        <span>Bugün</span>
-      </button>
+    <aside class="right-demo-panel" id="rightDemoPanel">
+      <div class="panel-header">
+        <div class="desktop-badge">Xsir Manevi Süper-App</div>
+        <h2 class="panel-title">Xsir Yol</h2>
+        <p class="panel-subtitle">Canlı Bildirim & Manevi Hatırlatma Demosu</p>
+      </div>
 
-      <button class="nav-tab-btn" id="btn-tab-explore" onclick="switchTab('tab-explore')">
-        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><circle cx="12" cy="12" r="10"></circle><polygon points="16.24 7.76 14.12 14.12 7.76 16.24 9.88 9.88 16.24 7.76"></polygon></svg>
-        <span>Keşfet</span>
-      </button>
+      <!-- Bildirim Tetikleme Butonları -->
+      <div>
+        <div class="panel-section-title">⚡ Bildirim Tetikle (Push)</div>
+        <div class="panel-btn-grid">
+          <button class="side-notif-btn" onclick="triggerNotificationDemo('tarih')">
+            <span class="snb-icon">🏛️</span>
+            <div class="snb-text">
+              <strong>Tarihte Bugün</strong>
+              <span>8 Safer · Malazgirt Zaferi</span>
+            </div>
+          </button>
 
-      <button class="nav-tab-btn" id="btn-tab-journey" onclick="switchTab('tab-journey')">
-        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><path d="M12 20v-6M6 20V10M18 20V4"></path></svg>
-        <span>Yolculuk</span>
-      </button>
+          <button class="side-notif-btn" onclick="triggerNotificationDemo('ayet')">
+            <span class="snb-icon">📖</span>
+            <div class="snb-text">
+              <strong>Günün Ayeti</strong>
+              <span>Bakara Suresi 152. Ayet</span>
+            </div>
+          </button>
 
-      <button class="nav-tab-btn" id="btn-tab-community" onclick="switchTab('tab-community')">
-        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"></path><circle cx="9" cy="7" r="4"></circle><path d="M23 21v-2a4 4 0 0 0-3-3.87"></path><path d="M16 3.13a4 4 0 0 1 0 7.75"></path></svg>
-        <span>Hizmet</span>
-      </button>
+          <button class="side-notif-btn" onclick="triggerNotificationDemo('hadis')">
+            <span class="snb-icon">📜</span>
+            <div class="snb-text">
+              <strong>Hadis-i Şerif</strong>
+              <span>Sağlık ve Boş Vakit Nimetleri</span>
+            </div>
+          </button>
 
-      <button class="nav-tab-btn" id="btn-tab-profile" onclick="switchTab('tab-profile')">
-        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"></path><circle cx="12" cy="7" r="4"></circle></svg>
-        <span>Ben</span>
-      </button>
-    </nav>
+          <button class="side-notif-btn" onclick="triggerNotificationDemo('risale')">
+            <span class="snb-icon">📘</span>
+            <div class="snb-text">
+              <strong>Risale Alıntısı</strong>
+              <span>23. Söz: İman Kuvvettir</span>
+            </div>
+          </button>
 
-    <div class="home-indicator" id="homeIndicator"></div>
+          <button class="side-notif-btn" onclick="triggerNotificationDemo('alim')">
+            <span class="snb-icon">✨</span>
+            <div class="snb-text">
+              <strong>Âlimlerin Hikmeti</strong>
+              <span>İmam Gazâlî · Kalbin Cilası</span>
+            </div>
+          </button>
 
-    <!-- ======================================================================
-         MODALS & OVERLAYS
-         ====================================================================== -->
-
-    <!-- MODAL 0: BİLDİRİM MERKEZİ -->
-    <div class="modal-overlay" id="notifCenterModal" onclick="closeAllModals(event)">
-      <div class="modal-sheet notif-modal-sheet" onclick="event.stopPropagation()">
-        <div class="modal-handle"></div>
-        <div class="modal-head">
-          <div style="display: flex; align-items: center; gap: 8px;">
-            <span style="font-size: 20px;">🔔</span>
-            <div>
-              <h3>Bildirim Merkezi & Damlalar</h3>
-              <div style="font-size: 10px; color: var(--text-muted);">Günün manevi paylaşımları ve hatıraları</div>
+          <button class="side-notif-btn" onclick="triggerNotificationDemo('dua')">
+            <span class="snb-icon">🤲</span>
+            <div class="snb-text">
+              <strong>Günün Duası</strong>
+              <span>Huşu ve Şükür Niyazı</span>
             </div>
-          </div>
-          <button class="modal-close-btn" onclick="closeAllModals()">✕</button>
-        </div>
-
-        <div class="notif-tabs-filter" id="notifFilterChips">
-          <button class="notif-tab-chip active" onclick="filterNotifCategory('all', this)">Tümü (6)</button>
-          <button class="notif-tab-chip" onclick="filterNotifCategory('tarih', this)">🏛️ Tarihte Bugün</button>
-          <button class="notif-tab-chip" onclick="filterNotifCategory('ayet', this)">📖 Ayet-i Kerime</button>
-          <button class="notif-tab-chip" onclick="filterNotifCategory('hadis', this)">📜 Hadis-i Şerif</button>
-          <button class="notif-tab-chip" onclick="filterNotifCategory('risale', this)">📘 Risale & Siyer</button>
-          <button class="notif-tab-chip" onclick="filterNotifCategory('alim', this)">✨ Âlimlerin Sözü</button>
-          <button class="notif-tab-chip" onclick="filterNotifCategory('dua', this)">🤲 Günün Duası</button>
-        </div>
-
-        <div class="notif-list-box" id="notifListBox">
-
-          <div class="notif-card-item unread" data-cat="tarih" onclick="triggerNotificationDemo('tarih')">
-            <div class="notif-card-header">
-              <span class="notif-category-tag tag-tarih">🏛️ İslami Tarihte Bugün</span>
-              <span class="notif-time-ago">08:15 · 8 Safer</span>
-            </div>
-            <div class="notif-card-title">Malazgirt Zaferi & Safer Ayının Manevi Hazırlığı</div>
-            <div class="notif-card-body">
-              Sultan Alparslan, 26 Ağustos 1071 Cuma günü ordusuyla birlikte gözyaşları içinde namaz kılmış, "Ya Rabbi! Seni kendime vekil yapıyorum..." diyerek beyaz kefenini kuşanmış ve Anadolu'nun kapılarını İslam'a açan kutlu zaferi kazanmıştır.
-            </div>
-            <div class="notif-card-footer">
-              <span class="notif-source-badge">İslam Tarihi Ansiklopedisi</span>
-              <div class="notif-action-btns">
-                <button class="notif-act-btn" onclick="event.stopPropagation(); copyText('Malazgirt Zaferi: Sultan Alparslan Cuma namazı sonrası beyaz kefeni kuşanarak Anadolu kapılarını İslamiyete açmıştır.')">📋 Kopyala</button>
-                <button class="notif-act-btn" onclick="event.stopPropagation(); showToast('Tarihi hatıra paylaşıldı.')">↗ Paylaş</button>
-              </div>
-            </div>
-          </div>
-
-          <div class="notif-card-item unread" data-cat="ayet" onclick="triggerNotificationDemo('ayet')">
-            <div class="notif-card-header">
-              <span class="notif-category-tag tag-ayet">📖 Günün Ayeti</span>
-              <span class="notif-time-ago">06:00 · Fecr</span>
-            </div>
-            <div class="notif-card-title">Bakara Suresi · 152. Ayet</div>
-            <div class="notif-card-arabic">فَاذْكُرُونِي أَذْكُرْكُمْ وَاشْكُرُوا لِي وَلَا تَكْفُرُونِ</div>
-            <div class="notif-card-body">
-              "Öyleyse yalnız beni anın ki ben de sizi anayım. Bana şükredin, sakın nankörlük etmeyin."
-            </div>
-            <div class="notif-card-footer">
-              <span class="notif-source-badge">Mushaf-ı Şerif</span>
-              <div class="notif-action-btns">
-                <button class="notif-act-btn" onclick="event.stopPropagation(); copyText('Bakara 152: Öyleyse yalnız beni anın ki ben de sizi anayım. Bana şükredin, sakın nankörlük etmeyin.')">📋 Kopyala</button>
-                <button class="notif-act-btn" onclick="event.stopPropagation(); showToast('Ayet panoya kopyalandı.')">❤️ Kaydet</button>
-              </div>
-            </div>
-          </div>
-
-          <div class="notif-card-item unread" data-cat="hadis" onclick="triggerNotificationDemo('hadis')">
-            <div class="notif-card-header">
-              <span class="notif-category-tag tag-hadis">📜 Hadis-i Şerif</span>
-              <span class="notif-time-ago">10:30 · Kuşluk</span>
-            </div>
-            <div class="notif-card-title">İki Büyük Nimet: Sıhhat ve Boş Vakit</div>
-            <div class="notif-card-body">
-              Resûlullah (sallallahu aleyhi ve sellem) şöyle buyurdu: "İki nimet vardır ki, insanların pek çoğu bu ikisinde aldanmış, zarara uğramıştır: Sağlık ve boş vakit."
-            </div>
-            <div class="notif-card-footer">
-              <span class="notif-source-badge">Sahih-i Buhârî, Rikâk 1</span>
-              <div class="notif-action-btns">
-                <button class="notif-act-btn" onclick="event.stopPropagation(); copyText('Hadis: İki nimet vardır ki insanların çoğu bunda aldanmıştır: Sağlık ve boş vakit. (Buhari)')">📋 Kopyala</button>
-                <button class="notif-act-btn" onclick="event.stopPropagation(); showToast('Hadis-i Şerif paylaşıldı.')">↗ Paylaş</button>
-              </div>
-            </div>
-          </div>
-
-          <div class="notif-card-item unread" data-cat="risale" onclick="triggerNotificationDemo('risale')">
-            <div class="notif-card-header">
-              <span class="notif-category-tag tag-risale">📘 Risale & Siyer</span>
-              <span class="notif-time-ago">12:15 · Öğle</span>
-            </div>
-            <div class="notif-card-title">23. Söz: İmanın Hakiki Kuvveti</div>
-            <div class="notif-card-body">
-              "İman hem nurdur, hem kuvvettir. Evet, hakikî imanı elde eden adam, kâinata meydan okuyabilir ve imanın kuvvetine göre, hâdisatın tazyikatından kurtulabilir."
-            </div>
-            <div class="notif-card-footer">
-              <span class="notif-source-badge">Bediüzzaman Said Nursi · Sözler</span>
-              <div class="notif-action-btns">
-                <button class="notif-act-btn" onclick="event.stopPropagation(); copyText('İman hem nurdur, hem kuvvettir. Hakiki imanı elde eden adam kâinata meydan okuyabilir. (Sözler)')">📋 Kopyala</button>
-                <button class="notif-act-btn" onclick="event.stopPropagation(); openBookModal('Sözler', 'Bediüzzaman Said Nursi', 'risale')">📖 Kitapta Aç</button>
-              </div>
-            </div>
-          </div>
-
-          <div class="notif-card-item unread" data-cat="alim" onclick="triggerNotificationDemo('alim')">
-            <div class="notif-card-header">
-              <span class="notif-category-tag tag-alim">✨ Âlimlerin Hikmeti</span>
-              <span class="notif-time-ago">14:00 · İkindi</span>
-            </div>
-            <div class="notif-card-title">İmam Gazâlî (r.a.) · Kalbin Cilası</div>
-            <div class="notif-card-body">
-              "Kalp bir ayna gibidir. Günahlar ve dünya sevgisi o aynayı paslandırıp karartır. Allah'ın zikri, tövbe ve ihlaslı ibadet ise o aynayı parlatarak hakikat nurlarının yansımasını sağlar."
-            </div>
-            <div class="notif-card-footer">
-              <span class="notif-source-badge">İhyâu Ulûmi'd-Dîn</span>
-              <div class="notif-action-btns">
-                <button class="notif-act-btn" onclick="event.stopPropagation(); copyText('İmam Gazali: Kalp bir ayna gibidir; günahlar karartır, zikir parlatır.')">📋 Kopyala</button>
-                <button class="notif-act-btn" onclick="event.stopPropagation(); showToast('Hikmetli söz kaydedildi.')">❤️ Kaydet</button>
-              </div>
-            </div>
-          </div>
-
-          <div class="notif-card-item unread" data-cat="dua" onclick="triggerNotificationDemo('dua')">
-            <div class="notif-card-header">
-              <span class="notif-category-tag tag-dua">🤲 Günün Duası</span>
-              <span class="notif-time-ago">16:30 · Vird</span>
-            </div>
-            <div class="notif-card-title">Huşu ve Şükür Niyazı</div>
-            <div class="notif-card-arabic">اللَّهُمَّ أَعِنِّİ عَلَى ذِكْرِكَ وَشُكْرِكَ وَحُسْنِ عِبَادَتِكَ</div>
-            <div class="notif-card-body">
-              "Allah'ım! Seni anmak, Sana şükretmek ve Sana en güzel şekilde ibadet etmek için bana yardım eyle."
-            </div>
-            <div class="notif-card-footer">
-              <span class="notif-source-badge">Ebû Dâvûd, Vitir 26</span>
-              <div class="notif-action-btns">
-                <button class="notif-act-btn" onclick="event.stopPropagation(); copyText('Dua: Allahümme einnî alâ zikrike ve şükrike ve husni ibâdetik.')">📋 Kopyala</button>
-                <button class="notif-act-btn" onclick="event.stopPropagation(); openDhikrModal()">📿 Zikre Başla</button>
-              </div>
-            </div>
-          </div>
-
-        </div>
-
-        <div style="margin-top: 14px; text-align: center;">
-          <button style="background: #F1F5F9; border: none; padding: 8px 16px; border-radius: 10px; font-size: 11px; font-weight: 700; color: var(--text-muted); cursor: pointer;" onclick="markAllNotificationsRead()">
-            Tümünü Okundu İşaretle ✓
           </button>
         </div>
       </div>
-    </div>
 
-    <!-- MODAL: TÜM MANEVİ KÜTÜPHANE (18 ESER) MODALI -->
-    <div class="modal-overlay" id="allBooksModal" onclick="closeAllModals(event)">
-      <div class="modal-sheet" onclick="event.stopPropagation()" style="height: 90%;">
-        <div class="modal-handle"></div>
-        <div class="modal-head">
-          <div style="display: flex; align-items: center; gap: 8px;">
-            <span style="font-size: 22px;">📚</span>
-            <div>
-              <h3>Manevi Kütüphane (18 Eser)</h3>
-              <div style="font-size: 10px; color: var(--text-muted);">Kur'an, Hadis, Risale-i Nur ve Dua Mecmuaları</div>
-            </div>
-          </div>
-          <button class="modal-close-btn" onclick="closeAllModals()">✕</button>
-        </div>
-
-        <!-- Kitap Kategorileri Grid -->
-        <div class="all-books-grid" id="allBooksGridContainer">
-          <!-- 1. Kur'an-ı Kerim -->
-          <div class="all-book-item" onclick="openBookModal('Kur\'an-ı Kerim', 'Hafız Osman Hattı · Mealli', 'quran')">
-            <div class="all-book-cover quran">📖 Kur'an-ı Kerim</div>
-            <div class="all-book-body">
-              <h4>Mushaf-ı Şerif</h4>
-              <p>Arapça Metin & Türkçe Meal</p>
-              <div class="all-book-foot">
-                <span class="all-book-pages">604 Sayfa</span>
-                <button class="all-book-read-btn">Oku →</button>
-              </div>
-            </div>
-          </div>
-
-          <!-- 2. Sözler -->
-          <div class="all-book-item" onclick="openBookModal('Sözler', 'Bediüzzaman Said Nursi', 'risale')">
-            <div class="all-book-cover risale">📘 Sözler</div>
-            <div class="all-book-body">
-              <h4>Sözler Mecmuası</h4>
-              <p>Bediüzzaman Said Nursi</p>
-              <div class="all-book-foot">
-                <span class="all-book-pages">780 Sayfa · sf. 45</span>
-                <button class="all-book-read-btn">Oku →</button>
-              </div>
-            </div>
-          </div>
-
-          <!-- 3. Mektubat -->
-          <div class="all-book-item" onclick="openBookModal('Mektubat', 'Bediüzzaman Said Nursi', 'risale')">
-            <div class="all-book-cover risale" style="background: linear-gradient(135deg, #1D4ED8 0%, #3B82F6 100%);">✉️ Mektubat</div>
-            <div class="all-book-body">
-              <h4>Mektubat</h4>
-              <p>Hakikat Mektupları</p>
-              <div class="all-book-foot">
-                <span class="all-book-pages">540 Sayfa</span>
-                <button class="all-book-read-btn">Oku →</button>
-              </div>
-            </div>
-          </div>
-
-          <!-- 4. Lem'alar -->
-          <div class="all-book-item" onclick="openBookModal('Lem\'alar', 'Bediüzzaman Said Nursi', 'risale')">
-            <div class="all-book-cover risale" style="background: linear-gradient(135deg, #0369A1 0%, #0EA5E9 100%);">✨ Lem'alar</div>
-            <div class="all-book-body">
-              <h4>Lem'alar</h4>
-              <p>İhlas, Uhuvvet & İnayet</p>
-              <div class="all-book-foot">
-                <span class="all-book-pages">460 Sayfa</span>
-                <button class="all-book-read-btn">Oku →</button>
-              </div>
-            </div>
-          </div>
-
-          <!-- 5. Şualar -->
-          <div class="all-book-item" onclick="openBookModal('Şualar', 'Bediüzzaman Said Nursi', 'risale')">
-            <div class="all-book-cover risale" style="background: linear-gradient(135deg, #4338CA 0%, #6366F1 100%);">⚡ Şualar</div>
-            <div class="all-book-body">
-              <h4>Şualar</h4>
-              <p>Ayetü'l-Kübra & Meyve Risalesi</p>
-              <div class="all-book-foot">
-                <span class="all-book-pages">690 Sayfa</span>
-                <button class="all-book-read-btn">Oku →</button>
-              </div>
-            </div>
-          </div>
-
-          <!-- 6. Asa-yı Musa -->
-          <div class="all-book-item" onclick="openBookModal('Asa-yı Musa', 'Bediüzzaman Said Nursi', 'risale')">
-            <div class="all-book-cover risale" style="background: linear-gradient(135deg, #6D28D9 0%, #8B5CF6 100%);">🪄 Asa-yı Musa</div>
-            <div class="all-book-body">
-              <h4>Asa-yı Musa</h4>
-              <p>İman ve Hüccet Delilleri</p>
-              <div class="all-book-foot">
-                <span class="all-book-pages">280 Sayfa</span>
-                <button class="all-book-read-btn">Oku →</button>
-              </div>
-            </div>
-          </div>
-
-          <!-- 7. Tarihçe-i Hayat -->
-          <div class="all-book-item" onclick="openBookModal('Tarihçe-i Hayat', 'Bediüzzaman Said Nursi', 'risale')">
-            <div class="all-book-cover risale" style="background: linear-gradient(135deg, #0F766E 0%, #14B8A6 100%);">⏳ Tarihçe-i Hayat</div>
-            <div class="all-book-body">
-              <h4>Tarihçe-i Hayat</h4>
-              <p>Manevi Mücadele & Biyografi</p>
-              <div class="all-book-foot">
-                <span class="all-book-pages">720 Sayfa</span>
-                <button class="all-book-read-btn">Oku →</button>
-              </div>
-            </div>
-          </div>
-
-          <!-- 8. Mesnevi-i Nuriye -->
-          <div class="all-book-item" onclick="openBookModal('Mesnevi-i Nuriye', 'Bediüzzaman Said Nursi', 'risale')">
-            <div class="all-book-cover risale" style="background: linear-gradient(135deg, #047857 0%, #10B981 100%);">🌱 Mesnevi-i Nuriye</div>
-            <div class="all-book-body">
-              <h4>Mesnevi-i Nuriye</h4>
-              <p>Arapça Fidanlık Eseri</p>
-              <div class="all-book-foot">
-                <span class="all-book-pages">310 Sayfa</span>
-                <button class="all-book-read-btn">Oku →</button>
-              </div>
-            </div>
-          </div>
-
-          <!-- 9. İşaratü'l-İ'caz -->
-          <div class="all-book-item" onclick="openBookModal('İşaratü\'l-İ\'caz', 'Bediüzzaman Said Nursi', 'risale')">
-            <div class="all-book-cover quran">🌟 İşaratü'l-İ'caz</div>
-            <div class="all-book-body">
-              <h4>İşaratü'l-İ'caz</h4>
-              <p>Kur'an'ın İ'cazı ve Tefsiri</p>
-              <div class="all-book-foot">
-                <span class="all-book-pages">290 Sayfa</span>
-                <button class="all-book-read-btn">Oku →</button>
-              </div>
-            </div>
-          </div>
-
-          <!-- 10. Sikke-i Tasdik-i Gaybi -->
-          <div class="all-book-item" onclick="openBookModal('Sikke-i Tasdik-i Gaybi', 'Bediüzzaman Said Nursi', 'risale')">
-            <div class="all-book-cover risale" style="background: linear-gradient(135deg, #B45309 0%, #F59E0B 100%);">🏷️ Sikke-i Tasdik</div>
-            <div class="all-book-body">
-              <h4>Sikke-i Tasdik-i Gaybi</h4>
-              <p>Gaybi İşaretler & Müjdeler</p>
-              <div class="all-book-foot">
-                <span class="all-book-pages">320 Sayfa</span>
-                <button class="all-book-read-btn">Oku →</button>
-              </div>
-            </div>
-          </div>
-
-          <!-- 11. Barla Lahikası -->
-          <div class="all-book-item" onclick="openBookModal('Barla Lahikası', 'Bediüzzaman Said Nursi', 'risale')">
-            <div class="all-book-cover risale" style="background: linear-gradient(135deg, #0284C7 0%, #38BDF8 100%);">🏡 Barla Lahikası</div>
-            <div class="all-book-body">
-              <h4>Barla Lahikası</h4>
-              <p>İlk Talebeler & Mektuplar</p>
-              <div class="all-book-foot">
-                <span class="all-book-pages">410 Sayfa</span>
-                <button class="all-book-read-btn">Oku →</button>
-              </div>
-            </div>
-          </div>
-
-          <!-- 12. Kastamonu Lahikası -->
-          <div class="all-book-item" onclick="openBookModal('Kastamonu Lahikası', 'Bediüzzaman Said Nursi', 'risale')">
-            <div class="all-book-cover risale" style="background: linear-gradient(135deg, #374151 0%, #6B7280 100%);">🌲 Kastamonu</div>
-            <div class="all-book-body">
-              <h4>Kastamonu Lahikası</h4>
-              <p>Hizmet Rehberi ve İrşad</p>
-              <div class="all-book-foot">
-                <span class="all-book-pages">350 Sayfa</span>
-                <button class="all-book-read-btn">Oku →</button>
-              </div>
-            </div>
-          </div>
-
-          <!-- 13. Emirdağ Lahikası -->
-          <div class="all-book-item" onclick="openBookModal('Emirdağ Lahikası', 'Bediüzzaman Said Nursi', 'risale')">
-            <div class="all-book-cover risale" style="background: linear-gradient(135deg, #78350F 0%, #B45309 100%);">📜 Emirdağ Lahikası</div>
-            <div class="all-book-body">
-              <h4>Emirdağ Lahikası</h4>
-              <p>Son Dönem Mektupları</p>
-              <div class="all-book-foot">
-                <span class="all-book-pages">480 Sayfa</span>
-                <button class="all-book-read-btn">Oku →</button>
-              </div>
-            </div>
-          </div>
-
-          <!-- 14. Riyazü's Salihin -->
-          <div class="all-book-item" onclick="openBookModal('Riyazü\'s Salihin', 'İmam Nevevi', 'riyaz')">
-            <div class="all-book-cover riyaz">📜 Riyazü's Salihin</div>
-            <div class="all-book-body">
-              <h4>Riyazü's Salihin</h4>
-              <p>İmam Nevevi Hadis Külliyatı</p>
-              <div class="all-book-foot">
-                <span class="all-book-pages">850 Sayfa</span>
-                <button class="all-book-read-btn">Oku →</button>
-              </div>
-            </div>
-          </div>
-
-          <!-- 15. Sahih-i Buhârî -->
-          <div class="all-book-item" onclick="openBookModal('Sahih-i Buhârî', 'İmam Buhârî', 'hadis')">
-            <div class="all-book-cover hadis">📚 Sahih-i Buhârî</div>
-            <div class="all-book-body">
-              <h4>Sahih-i Buhârî</h4>
-              <p>En Sahih Hadis Külliyatı</p>
-              <div class="all-book-foot">
-                <span class="all-book-pages">1,200 Sayfa</span>
-                <button class="all-book-read-btn">Oku →</button>
-              </div>
-            </div>
-          </div>
-
-          <!-- 16. Şifa-i Şerif -->
-          <div class="all-book-item" onclick="openBookModal('Şifâ-i Şerîf', 'Kadı İyâz', 'hadis')">
-            <div class="all-book-cover hadis" style="background: linear-gradient(135deg, #9D174D 0%, #EC4899 100%);">🌹 Şifâ-i Şerîf</div>
-            <div class="all-book-body">
-              <h4>Şifâ-i Şerîf</h4>
-              <p>Peygamberimiz'in Şemail ve Hakları</p>
-              <div class="all-book-foot">
-                <span class="all-book-pages">560 Sayfa</span>
-                <button class="all-book-read-btn">Oku →</button>
-              </div>
-            </div>
-          </div>
-
-          <!-- 17. Cevşen-ül Kebir -->
-          <div class="all-book-item" onclick="openBookModal('Cevşen-ül Kebir', 'Büyük Zikir Mecmuası', 'cevsen')">
-            <div class="all-book-cover cevsen">📿 Cevşen-ül Kebir</div>
-            <div class="all-book-body">
-              <h4>Cevşen-ül Kebir</h4>
-              <p>100 Bab Esma-i Hüsna Zikri</p>
-              <div class="all-book-foot">
-                <span class="all-book-pages">100 Bab</span>
-                <button class="all-book-read-btn">Oku →</button>
-              </div>
-            </div>
-          </div>
-
-          <!-- 18. Hizb-ül Hakaik & Celcelutiye -->
-          <div class="all-book-item" onclick="openBookModal('Hizb-ül Hakaik & Celcelutiye', 'Hz. Ali & Said Nursi', 'cevsen')">
-            <div class="all-book-cover cevsen" style="background: linear-gradient(135deg, #3B0764 0%, #7E22CE 100%);">🛡️ Hizb-ül Hakaik</div>
-            <div class="all-book-body">
-              <h4>Hizb-ül Hakaik & Dua</h4>
-              <p>Büyük Dua ve Evrad Mecmuası</p>
-              <div class="all-book-foot">
-                <span class="all-book-pages">240 Sayfa</span>
-                <button class="all-book-read-btn">Oku →</button>
-              </div>
-            </div>
-          </div>
+      <!-- Hızlı Erişim Kısayolları -->
+      <div>
+        <div class="panel-section-title">🚀 Hızlı Modüller</div>
+        <div class="panel-quick-actions">
+          <button class="side-quick-btn" onclick="openNotificationCenter()">🔔 Bildirim Merkezi</button>
+          <button class="side-quick-btn" onclick="openAllBooksModal()">📚 18 Kitap Külliyatı</button>
+          <button class="side-quick-btn" onclick="openAIChatModal()">✨ AI Danışman</button>
+          <button class="side-quick-btn" onclick="openQiblaModal()">🧭 Kıbleyi Bul</button>
+          <button class="side-quick-btn" onclick="openDhikrModal()">📿 Zikirmatik</button>
         </div>
       </div>
-    </div>
-
-    <!-- MODAL 1: ZİKİRMATİK -->
-    <div class="modal-overlay" id="dhikrModal" onclick="closeAllModals(event)">
-      <div class="modal-sheet" onclick="event.stopPropagation()">
-        <div class="modal-handle"></div>
-        <div class="modal-head">
-          <h3>📿 Zikirmatik</h3>
-          <button class="modal-close-btn" onclick="closeAllModals()">✕</button>
-        </div>
-        <div class="dhikr-container">
-          <div class="dhikr-title" id="dhikrName">Sübhanallah</div>
-          <div class="dhikr-counter-display" id="dhikrNumber">33</div>
-          <div class="dhikr-tap-button" onclick="incrementDhikr()">
-            ZİKİR ÇEK
-          </div>
-          <div style="display: flex; justify-content: center; gap: 10px;">
-            <button class="filter-pill" onclick="changeDhikrType('Sübhanallah')">Sübhanallah</button>
-            <button class="filter-pill" onclick="changeDhikrType('Elhamdülillah')">Elhamdülillah</button>
-            <button class="filter-pill" onclick="changeDhikrType('Allahu Ekber')">Allahu Ekber</button>
-          </div>
-        </div>
-      </div>
-    </div>
-
-    <!-- MODAL 2: KIBLE PUSULASI -->
-    <div class="modal-overlay" id="qiblaModal" onclick="closeAllModals(event)">
-      <div class="modal-sheet" onclick="event.stopPropagation()">
-        <div class="modal-handle"></div>
-        <div class="modal-head">
-          <h3>🧭 Kıble Pusulası</h3>
-          <button class="modal-close-btn" onclick="closeAllModals()">✕</button>
-        </div>
-        <div class="qibla-compass-wrap">
-          <div class="compass-dial">
-            <div class="compass-needle" id="compassNeedle"></div>
-            <div class="qibla-kaaba-icon">🕋</div>
-          </div>
-          <div style="font-size: 16px; font-weight: 800; color: var(--primary-dark);">142° Güneydoğu</div>
-          <p style="font-size: 11.5px; color: var(--text-muted); margin-top: 4px;">Kıble açısı hassas olarak hesaplandı. Telefonu düz tutun.</p>
-        </div>
-      </div>
-    </div>
-
-    <!-- MODAL 3: AI DANIŞMAN SOHBETİ -->
-    <div class="modal-overlay" id="aiChatModal" onclick="closeAllModals(event)">
-      <div class="modal-sheet ai-chat-sheet" onclick="event.stopPropagation()">
-        <div class="modal-handle"></div>
-        <div class="modal-head">
-          <div style="display: flex; align-items: center; gap: 8px;">
-            <span style="font-size: 18px;">✨</span>
-            <div>
-              <h3>Yol AI Asistanı</h3>
-              <div style="font-size: 9.5px; color: #10B981; font-weight: 600;">● Muteber Kaynaklar Aktif</div>
-            </div>
-          </div>
-          <button class="modal-close-btn" onclick="closeAllModals()">✕</button>
-        </div>
-
-        <div class="chat-messages-box" id="chatMessages">
-          <div class="chat-msg bot">
-            Esselamü aleyküm Furkan kardeşim! Ben Xsir Manevi Yol Asistanıyım. Aklına takılan fıkhi, manevi veya ilmi sualleri sorabilirsin.
-          </div>
-        </div>
-
-        <div style="display: flex; gap: 6px; overflow-x: auto; padding: 6px 0;">
-          <span class="filter-pill" style="font-size: 10px;" onclick="sendQuickPrompt('Namazda huşuyu nasıl artırabilirim?')">Huşu nasıl artar?</span>
-          <span class="filter-pill" style="font-size: 10px;" onclick="sendQuickPrompt('Sabah namazına kalkmanın püf noktaları nelerdir?')">Sabah namazı</span>
-          <span class="filter-pill" style="font-size: 10px;" onclick="sendQuickPrompt('Risale-i Nur nasıl okunmalı?')">Risale okuma</span>
-        </div>
-
-        <div class="chat-input-row">
-          <input type="text" id="chatInput" placeholder="Sorunuzu buraya yazın..." onkeydown="if(event.key==='Enter') sendChatMessage()">
-          <button class="chat-send-btn" onclick="sendChatMessage()">➤</button>
-        </div>
-      </div>
-    </div>
-
-    <!-- MODAL 4: KİTAP OKUMA ÖNİZLEME MODALI -->
-    <div class="modal-overlay" id="bookModal" onclick="closeAllModals(event)">
-      <div class="modal-sheet" onclick="event.stopPropagation()">
-        <div class="modal-handle"></div>
-        <div class="modal-head">
-          <h3 id="modalBookTitle">Kitap Başlığı</h3>
-          <button class="modal-close-btn" onclick="closeAllModals()">✕</button>
-        </div>
-        <div style="padding: 10px 0;">
-          <div id="modalBookAuthor" style="font-size: 12px; color: var(--text-muted); margin-bottom: 12px;">Müellif</div>
-          <div id="modalBookContent" style="background: #F8F9FA; border-radius: 14px; padding: 16px; font-size: 13px; line-height: 1.65; color: var(--text-main); font-family: 'Amiri', serif; font-size: 15px;">
-            "Bismillâhirrahmânirrahîm. Bismillah her hayrın başıdır. Biz dahi başta ona başlarız. Bil ey nefsim, şu mübarek kelime İslâm nişanı olduğu gibi, bütün mevcudatın lisan-ı haliyle vird-i zebânıdır..."
-          </div>
-          <div style="display: flex; gap: 10px; margin-top: 16px;">
-            <button style="flex: 1; height: 42px; background: var(--primary); color: #FFFFFF; border: none; border-radius: 12px; font-weight: 700; font-size: 12.5px; cursor: pointer;" onclick="showToast('Okuma moduna geçildi. Kaldığınız yer kaydedildi.'); closeAllModals();">Kaldığım Yerden Oku (sf. 45)</button>
-            <button style="width: 42px; height: 42px; background: #F1F5F9; border: none; border-radius: 12px; font-size: 16px; cursor: pointer;" onclick="showToast('Kitap favorilere eklendi.')">🔖</button>
-          </div>
-        </div>
-      </div>
-    </div>
+    </aside>
 
   </div>
-  <!-- /Phone Simulator -->
+  <!-- /Main Layout Wrapper -->
+
+
+  <!-- ======================================================================
+       MODALS & OVERLAYS
+       ====================================================================== -->
+
+  <!-- MODAL 0: BİLDİRİM MERKEZİ -->
+  <div class="modal-overlay" id="notifCenterModal" onclick="closeAllModals(event)">
+    <div class="modal-sheet notif-modal-sheet" onclick="event.stopPropagation()">
+      <div class="modal-handle"></div>
+      <div class="modal-head">
+        <div style="display: flex; align-items: center; gap: 8px;">
+          <span style="font-size: 20px;">🔔</span>
+          <div>
+            <h3>Bildirim Merkezi & Damlalar</h3>
+            <div style="font-size: 10px; color: var(--text-muted);">Günün manevi paylaşımları ve hatıraları</div>
+          </div>
+        </div>
+        <button class="modal-close-btn" onclick="closeAllModals()">✕</button>
+      </div>
+
+      <div class="notif-tabs-filter" id="notifFilterChips">
+        <button class="notif-tab-chip active" onclick="filterNotifCategory('all', this)">Tümü (6)</button>
+        <button class="notif-tab-chip" onclick="filterNotifCategory('tarih', this)">🏛️ Tarihte Bugün</button>
+        <button class="notif-tab-chip" onclick="filterNotifCategory('ayet', this)">📖 Ayet-i Kerime</button>
+        <button class="notif-tab-chip" onclick="filterNotifCategory('hadis', this)">📜 Hadis-i Şerif</button>
+        <button class="notif-tab-chip" onclick="filterNotifCategory('risale', this)">📘 Risale & Siyer</button>
+        <button class="notif-tab-chip" onclick="filterNotifCategory('alim', this)">✨ Âlimlerin Sözü</button>
+        <button class="notif-tab-chip" onclick="filterNotifCategory('dua', this)">🤲 Günün Duası</button>
+      </div>
+
+      <div class="notif-list-box" id="notifListBox">
+        <div class="notif-card-item unread" data-cat="tarih" onclick="triggerNotificationDemo('tarih')">
+          <div class="notif-card-header">
+            <span class="notif-category-tag tag-tarih">🏛️ İslami Tarihte Bugün</span>
+            <span class="notif-time-ago">08:15 · 8 Safer</span>
+          </div>
+          <div class="notif-card-title">Malazgirt Zaferi & Safer Ayının Manevi Hazırlığı</div>
+          <div class="notif-card-body">
+            Sultan Alparslan, 26 Ağustos 1071 Cuma günü ordusuyla birlikte gözyaşları içinde namaz kılmış, "Ya Rabbi! Seni kendime vekil yapıyorum..." diyerek beyaz kefenini kuşanmış ve Anadolu'nun kapılarını İslam'a açan kutlu zaferi kazanmıştır.
+          </div>
+          <div class="notif-card-footer">
+            <span class="notif-source-badge">İslam Tarihi Ansiklopedisi</span>
+            <div class="notif-action-btns">
+              <button class="notif-act-btn" onclick="event.stopPropagation(); copyText('Malazgirt Zaferi: Sultan Alparslan Cuma namazı sonrası beyaz kefeni kuşanarak Anadolu kapılarını İslamiyete açmıştır.')">📋 Kopyala</button>
+              <button class="notif-act-btn" onclick="event.stopPropagation(); showToast('Tarihi hatıra paylaşıldı.')">↗ Paylaş</button>
+            </div>
+          </div>
+        </div>
+
+        <div class="notif-card-item unread" data-cat="ayet" onclick="triggerNotificationDemo('ayet')">
+          <div class="notif-card-header">
+            <span class="notif-category-tag tag-ayet">📖 Günün Ayeti</span>
+            <span class="notif-time-ago">06:00 · Fecr</span>
+          </div>
+          <div class="notif-card-title">Bakara Suresi · 152. Ayet</div>
+          <div class="notif-card-arabic">فَاذْكُرُونِي أَذْكُرْكُمْ وَاشْكُرُوا لِي وَلَا تَكْفُرُونِ</div>
+          <div class="notif-card-body">
+            "Öyleyse yalnız beni anın ki ben de sizi anayım. Bana şükredin, sakın nankörlük etmeyin."
+          </div>
+          <div class="notif-card-footer">
+            <span class="notif-source-badge">Mushaf-ı Şerif</span>
+            <div class="notif-action-btns">
+              <button class="notif-act-btn" onclick="event.stopPropagation(); copyText('Bakara 152: Öyleyse yalnız beni anın ki ben de sizi anayım. Bana şükredin, sakın nankörlük etmeyin.')">📋 Kopyala</button>
+              <button class="notif-act-btn" onclick="event.stopPropagation(); showToast('Ayet panoya kopyalandı.')">❤️ Kaydet</button>
+            </div>
+          </div>
+        </div>
+
+        <div class="notif-card-item unread" data-cat="hadis" onclick="triggerNotificationDemo('hadis')">
+          <div class="notif-card-header">
+            <span class="notif-category-tag tag-hadis">📜 Hadis-i Şerif</span>
+            <span class="notif-time-ago">10:30 · Kuşluk</span>
+          </div>
+          <div class="notif-card-title">İki Büyük Nimet: Sıhhat ve Boş Vakit</div>
+          <div class="notif-card-body">
+            Resûlullah (sallallahu aleyhi ve sellem) şöyle buyurdu: "İki nimet vardır ki, insanların pek çoğu bu ikisinde aldanmış, zarara uğramıştır: Sağlık ve boş vakit."
+          </div>
+          <div class="notif-card-footer">
+            <span class="notif-source-badge">Sahih-i Buhârî, Rikâk 1</span>
+            <div class="notif-action-btns">
+              <button class="notif-act-btn" onclick="event.stopPropagation(); copyText('Hadis: İki nimet vardır ki insanların çoğu bunda aldanmıştır: Sağlık ve boş vakit. (Buhari)')">📋 Kopyala</button>
+              <button class="notif-act-btn" onclick="event.stopPropagation(); showToast('Hadis-i Şerif paylaşıldı.')">↗ Paylaş</button>
+            </div>
+          </div>
+        </div>
+
+        <div class="notif-card-item unread" data-cat="risale" onclick="triggerNotificationDemo('risale')">
+          <div class="notif-card-header">
+            <span class="notif-category-tag tag-risale">📘 Risale & Siyer</span>
+            <span class="notif-time-ago">12:15 · Öğle</span>
+          </div>
+          <div class="notif-card-title">23. Söz: İmanın Hakiki Kuvveti</div>
+          <div class="notif-card-body">
+            "İman hem nurdur, hem kuvvettir. Evet, hakikî imanı elde eden adam, kâinata meydan okuyabilir ve imanın kuvvetine göre, hâdisatın tazyikatından kurtulabilir."
+          </div>
+          <div class="notif-card-footer">
+            <span class="notif-source-badge">Bediüzzaman Said Nursi · Sözler</span>
+            <div class="notif-action-btns">
+              <button class="notif-act-btn" onclick="event.stopPropagation(); copyText('İman hem nurdur, hem kuvvettir. Hakiki imanı elde eden adam kâinata meydan okuyabilir. (Sözler)')">📋 Kopyala</button>
+              <button class="notif-act-btn" onclick="event.stopPropagation(); openBookModal('Sözler', 'Bediüzzaman Said Nursi', 'risale')">📖 Kitapta Aç</button>
+            </div>
+          </div>
+        </div>
+
+        <div class="notif-card-item unread" data-cat="alim" onclick="triggerNotificationDemo('alim')">
+          <div class="notif-card-header">
+            <span class="notif-category-tag tag-alim">✨ Âlimlerin Hikmeti</span>
+            <span class="notif-time-ago">14:00 · İkindi</span>
+          </div>
+          <div class="notif-card-title">İmam Gazâlî (r.a.) · Kalbin Cilası</div>
+          <div class="notif-card-body">
+            "Kalp bir ayna gibidir. Günahlar ve dünya sevgisi o aynayı paslandırıp karartır. Allah'ın zikri, tövbe ve ihlaslı ibadet ise o aynayı parlatarak hakikat nurlarının yansımasını sağlar."
+          </div>
+          <div class="notif-card-footer">
+            <span class="notif-source-badge">İhyâu Ulûmi'd-Dîn</span>
+            <div class="notif-action-btns">
+              <button class="notif-act-btn" onclick="event.stopPropagation(); copyText('İmam Gazali: Kalp bir ayna gibidir; günahlar karartır, zikir parlatır.')">📋 Kopyala</button>
+              <button class="notif-act-btn" onclick="event.stopPropagation(); showToast('Hikmetli söz kaydedildi.')">❤️ Kaydet</button>
+            </div>
+          </div>
+        </div>
+
+        <div class="notif-card-item unread" data-cat="dua" onclick="triggerNotificationDemo('dua')">
+          <div class="notif-card-header">
+            <span class="notif-category-tag tag-dua">🤲 Günün Duası</span>
+            <span class="notif-time-ago">16:30 · Vird</span>
+          </div>
+          <div class="notif-card-title">Huşu ve Şükür Niyazı</div>
+          <div class="notif-card-arabic">اللَّهُمَّ أَعِنِّي عَلَى ذِكْرِكَ وَشُكْرِكَ وَحُسْنِ عِبَادَتِكَ</div>
+          <div class="notif-card-body">
+            "Allah'ım! Seni anmak, Sana şükretmek ve Sana en güzel şekilde ibadet etmek için bana yardım eyle."
+          </div>
+          <div class="notif-card-footer">
+            <span class="notif-source-badge">Ebû Dâvûd, Vitir 26</span>
+            <div class="notif-action-btns">
+              <button class="notif-act-btn" onclick="event.stopPropagation(); copyText('Dua: Allahümme einnî alâ zikrike ve şükrike ve husni ibâdetik.')">📋 Kopyala</button>
+              <button class="notif-act-btn" onclick="event.stopPropagation(); openDhikrModal()">📿 Zikre Başla</button>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div style="margin-top: 14px; text-align: center;">
+        <button style="background: #F1F5F9; border: none; padding: 8px 16px; border-radius: 10px; font-size: 11px; font-weight: 700; color: var(--text-muted); cursor: pointer;" onclick="markAllNotificationsRead()">
+          Tümünü Okundu İşaretle ✓
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <!-- MODAL: TÜM MANEVİ KÜTÜPHANE (18 ESER) MODALI -->
+  <div class="modal-overlay" id="allBooksModal" onclick="closeAllModals(event)">
+    <div class="modal-sheet" onclick="event.stopPropagation()" style="height: 90%;">
+      <div class="modal-handle"></div>
+      <div class="modal-head">
+        <div style="display: flex; align-items: center; gap: 8px;">
+          <span style="font-size: 22px;">📚</span>
+          <div>
+            <h3>Manevi Kütüphane (18 Eser)</h3>
+            <div style="font-size: 10px; color: var(--text-muted);">Kur'an, Hadis, Risale-i Nur ve Dua Mecmuaları</div>
+          </div>
+        </div>
+        <button class="modal-close-btn" onclick="closeAllModals()">✕</button>
+      </div>
+
+      <div class="all-books-grid" id="allBooksGridContainer">
+        <div class="all-book-item" onclick="openBookModal('Kur\'an-ı Kerim', 'Hafız Osman Hattı · Mealli', 'quran')">
+          <div class="all-book-cover quran">📖 Kur'an-ı Kerim</div>
+          <div class="all-book-body">
+            <h4>Mushaf-ı Şerif</h4>
+            <p>Arapça Metin & Türkçe Meal</p>
+            <div class="all-book-foot"><span class="all-book-pages">604 Sayfa</span><button class="all-book-read-btn">Oku →</button></div>
+          </div>
+        </div>
+
+        <div class="all-book-item" onclick="openBookModal('Sözler', 'Bediüzzaman Said Nursi', 'risale')">
+          <div class="all-book-cover risale">📘 Sözler</div>
+          <div class="all-book-body">
+            <h4>Sözler Mecmuası</h4>
+            <p>Bediüzzaman Said Nursi</p>
+            <div class="all-book-foot"><span class="all-book-pages">780 Sayfa · sf. 45</span><button class="all-book-read-btn">Oku →</button></div>
+          </div>
+        </div>
+
+        <div class="all-book-item" onclick="openBookModal('Mektubat', 'Bediüzzaman Said Nursi', 'risale')">
+          <div class="all-book-cover risale" style="background: linear-gradient(135deg, #1D4ED8 0%, #3B82F6 100%);">✉️ Mektubat</div>
+          <div class="all-book-body">
+            <h4>Mektubat</h4>
+            <p>Hakikat Mektupları</p>
+            <div class="all-book-foot"><span class="all-book-pages">540 Sayfa</span><button class="all-book-read-btn">Oku →</button></div>
+          </div>
+        </div>
+
+        <div class="all-book-item" onclick="openBookModal('Lem\'alar', 'Bediüzzaman Said Nursi', 'risale')">
+          <div class="all-book-cover risale" style="background: linear-gradient(135deg, #0369A1 0%, #0EA5E9 100%);">✨ Lem'alar</div>
+          <div class="all-book-body">
+            <h4>Lem'alar</h4>
+            <p>İhlas, Uhuvvet & İnayet</p>
+            <div class="all-book-foot"><span class="all-book-pages">460 Sayfa</span><button class="all-book-read-btn">Oku →</button></div>
+          </div>
+        </div>
+
+        <div class="all-book-item" onclick="openBookModal('Şualar', 'Bediüzzaman Said Nursi', 'risale')">
+          <div class="all-book-cover risale" style="background: linear-gradient(135deg, #4338CA 0%, #6366F1 100%);">⚡ Şualar</div>
+          <div class="all-book-body">
+            <h4>Şualar</h4>
+            <p>Ayetü'l-Kübra & Meyve Risalesi</p>
+            <div class="all-book-foot"><span class="all-book-pages">690 Sayfa</span><button class="all-book-read-btn">Oku →</button></div>
+          </div>
+        </div>
+
+        <div class="all-book-item" onclick="openBookModal('Asa-yı Musa', 'Bediüzzaman Said Nursi', 'risale')">
+          <div class="all-book-cover risale" style="background: linear-gradient(135deg, #6D28D9 0%, #8B5CF6 100%);">🪄 Asa-yı Musa</div>
+          <div class="all-book-body">
+            <h4>Asa-yı Musa</h4>
+            <p>İman ve Hüccet Delilleri</p>
+            <div class="all-book-foot"><span class="all-book-pages">280 Sayfa</span><button class="all-book-read-btn">Oku →</button></div>
+          </div>
+        </div>
+
+        <div class="all-book-item" onclick="openBookModal('Tarihçe-i Hayat', 'Bediüzzaman Said Nursi', 'risale')">
+          <div class="all-book-cover risale" style="background: linear-gradient(135deg, #0F766E 0%, #14B8A6 100%);">⏳ Tarihçe-i Hayat</div>
+          <div class="all-book-body">
+            <h4>Tarihçe-i Hayat</h4>
+            <p>Manevi Mücadele & Biyografi</p>
+            <div class="all-book-foot"><span class="all-book-pages">720 Sayfa</span><button class="all-book-read-btn">Oku →</button></div>
+          </div>
+        </div>
+
+        <div class="all-book-item" onclick="openBookModal('Mesnevi-i Nuriye', 'Bediüzzaman Said Nursi', 'risale')">
+          <div class="all-book-cover risale" style="background: linear-gradient(135deg, #047857 0%, #10B981 100%);">🌱 Mesnevi-i Nuriye</div>
+          <div class="all-book-body">
+            <h4>Mesnevi-i Nuriye</h4>
+            <p>Arapça Fidanlık Eseri</p>
+            <div class="all-book-foot"><span class="all-book-pages">310 Sayfa</span><button class="all-book-read-btn">Oku →</button></div>
+          </div>
+        </div>
+
+        <div class="all-book-item" onclick="openBookModal('İşaratü\'l-İ\'caz', 'Bediüzzaman Said Nursi', 'risale')">
+          <div class="all-book-cover quran">🌟 İşaratü'l-İ'caz</div>
+          <div class="all-book-body">
+            <h4>İşaratü'l-İ'caz</h4>
+            <p>Kur'an'ın İ'cazı ve Tefsiri</p>
+            <div class="all-book-foot"><span class="all-book-pages">290 Sayfa</span><button class="all-book-read-btn">Oku →</button></div>
+          </div>
+        </div>
+
+        <div class="all-book-item" onclick="openBookModal('Sikke-i Tasdik-i Gaybi', 'Bediüzzaman Said Nursi', 'risale')">
+          <div class="all-book-cover risale" style="background: linear-gradient(135deg, #B45309 0%, #F59E0B 100%);">🏷️ Sikke-i Tasdik</div>
+          <div class="all-book-body">
+            <h4>Sikke-i Tasdik-i Gaybi</h4>
+            <p>Gaybi İşaretler & Müjdeler</p>
+            <div class="all-book-foot"><span class="all-book-pages">320 Sayfa</span><button class="all-book-read-btn">Oku →</button></div>
+          </div>
+        </div>
+
+        <div class="all-book-item" onclick="openBookModal('Barla Lahikası', 'Bediüzzaman Said Nursi', 'risale')">
+          <div class="all-book-cover risale" style="background: linear-gradient(135deg, #0284C7 0%, #38BDF8 100%);">🏡 Barla Lahikası</div>
+          <div class="all-book-body">
+            <h4>Barla Lahikası</h4>
+            <p>İlk Talebeler & Mektuplar</p>
+            <div class="all-book-foot"><span class="all-book-pages">410 Sayfa</span><button class="all-book-read-btn">Oku →</button></div>
+          </div>
+        </div>
+
+        <div class="all-book-item" onclick="openBookModal('Kastamonu Lahikası', 'Bediüzzaman Said Nursi', 'risale')">
+          <div class="all-book-cover risale" style="background: linear-gradient(135deg, #374151 0%, #6B7280 100%);">🌲 Kastamonu</div>
+          <div class="all-book-body">
+            <h4>Kastamonu Lahikası</h4>
+            <p>Hizmet Rehberi ve İrşad</p>
+            <div class="all-book-foot"><span class="all-book-pages">350 Sayfa</span><button class="all-book-read-btn">Oku →</button></div>
+          </div>
+        </div>
+
+        <div class="all-book-item" onclick="openBookModal('Emirdağ Lahikası', 'Bediüzzaman Said Nursi', 'risale')">
+          <div class="all-book-cover risale" style="background: linear-gradient(135deg, #78350F 0%, #B45309 100%);">📜 Emirdağ Lahikası</div>
+          <div class="all-book-body">
+            <h4>Emirdağ Lahikası</h4>
+            <p>Son Dönem Mektupları</p>
+            <div class="all-book-foot"><span class="all-book-pages">480 Sayfa</span><button class="all-book-read-btn">Oku →</button></div>
+          </div>
+        </div>
+
+        <div class="all-book-item" onclick="openBookModal('Riyazü\'s Salihin', 'İmam Nevevi', 'riyaz')">
+          <div class="all-book-cover riyaz">📜 Riyazü's Salihin</div>
+          <div class="all-book-body">
+            <h4>Riyazü's Salihin</h4>
+            <p>İmam Nevevi Hadis Külliyatı</p>
+            <div class="all-book-foot"><span class="all-book-pages">850 Sayfa</span><button class="all-book-read-btn">Oku →</button></div>
+          </div>
+        </div>
+
+        <div class="all-book-item" onclick="openBookModal('Sahih-i Buhârî', 'İmam Buhârî', 'hadis')">
+          <div class="all-book-cover hadis">📚 Sahih-i Buhârî</div>
+          <div class="all-book-body">
+            <h4>Sahih-i Buhârî</h4>
+            <p>En Sahih Hadis Külliyatı</p>
+            <div class="all-book-foot"><span class="all-book-pages">1,200 Sayfa</span><button class="all-book-read-btn">Oku →</button></div>
+          </div>
+        </div>
+
+        <div class="all-book-item" onclick="openBookModal('Şifâ-i Şerîf', 'Kadı İyâz', 'hadis')">
+          <div class="all-book-cover hadis" style="background: linear-gradient(135deg, #9D174D 0%, #EC4899 100%);">🌹 Şifâ-i Şerîf</div>
+          <div class="all-book-body">
+            <h4>Şifâ-i Şerîf</h4>
+            <p>Peygamberimiz'in Şemail ve Hakları</p>
+            <div class="all-book-foot"><span class="all-book-pages">560 Sayfa</span><button class="all-book-read-btn">Oku →</button></div>
+          </div>
+        </div>
+
+        <div class="all-book-item" onclick="openBookModal('Cevşen-ül Kebir', 'Büyük Zikir Mecmuası', 'cevsen')">
+          <div class="all-book-cover cevsen">📿 Cevşen-ül Kebir</div>
+          <div class="all-book-body">
+            <h4>Cevşen-ül Kebir</h4>
+            <p>100 Bab Esma-i Hüsna Zikri</p>
+            <div class="all-book-foot"><span class="all-book-pages">100 Bab</span><button class="all-book-read-btn">Oku →</button></div>
+          </div>
+        </div>
+
+        <div class="all-book-item" onclick="openBookModal('Hizb-ül Hakaik & Celcelutiye', 'Hz. Ali & Said Nursi', 'cevsen')">
+          <div class="all-book-cover cevsen" style="background: linear-gradient(135deg, #3B0764 0%, #7E22CE 100%);">🛡️ Hizb-ül Hakaik</div>
+          <div class="all-book-body">
+            <h4>Hizb-ül Hakaik & Dua</h4>
+            <p>Büyük Dua ve Evrad Mecmuası</p>
+            <div class="all-book-foot"><span class="all-book-pages">240 Sayfa</span><button class="all-book-read-btn">Oku →</button></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- MODAL 1: ZİKİRMATİK -->
+  <div class="modal-overlay" id="dhikrModal" onclick="closeAllModals(event)">
+    <div class="modal-sheet" onclick="event.stopPropagation()">
+      <div class="modal-handle"></div>
+      <div class="modal-head">
+        <h3>📿 Zikirmatik</h3>
+        <button class="modal-close-btn" onclick="closeAllModals()">✕</button>
+      </div>
+      <div class="dhikr-container">
+        <div class="dhikr-title" id="dhikrName">Sübhanallah</div>
+        <div class="dhikr-counter-display" id="dhikrNumber">33</div>
+        <div class="dhikr-tap-button" onclick="incrementDhikr()">
+          ZİKİR ÇEK
+        </div>
+        <div style="display: flex; justify-content: center; gap: 10px;">
+          <button class="filter-pill" onclick="changeDhikrType('Sübhanallah')">Sübhanallah</button>
+          <button class="filter-pill" onclick="changeDhikrType('Elhamdülillah')">Elhamdülillah</button>
+          <button class="filter-pill" onclick="changeDhikrType('Allahu Ekber')">Allahu Ekber</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- MODAL 2: KIBLE PUSULASI -->
+  <div class="modal-overlay" id="qiblaModal" onclick="closeAllModals(event)">
+    <div class="modal-sheet" onclick="event.stopPropagation()">
+      <div class="modal-handle"></div>
+      <div class="modal-head">
+        <h3>🧭 Kıble Pusulası</h3>
+        <button class="modal-close-btn" onclick="closeAllModals()">✕</button>
+      </div>
+      <div class="qibla-compass-wrap">
+        <div class="compass-dial">
+          <div class="compass-needle" id="compassNeedle"></div>
+          <div class="qibla-kaaba-icon">🕋</div>
+        </div>
+        <div style="font-size: 16px; font-weight: 800; color: var(--primary-dark);">142° Güneydoğu</div>
+        <p style="font-size: 11.5px; color: var(--text-muted); margin-top: 4px;">Kıble açısı hassas olarak hesaplandı. Telefonu düz tutun.</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- MODAL 3: AI DANIŞMAN SOHBETİ -->
+  <div class="modal-overlay" id="aiChatModal" onclick="closeAllModals(event)">
+    <div class="modal-sheet ai-chat-sheet" onclick="event.stopPropagation()">
+      <div class="modal-handle"></div>
+      <div class="modal-head">
+        <div style="display: flex; align-items: center; gap: 8px;">
+          <span style="font-size: 18px;">✨</span>
+          <div>
+            <h3>Yol AI Asistanı</h3>
+            <div style="font-size: 9.5px; color: #10B981; font-weight: 600;">● Muteber Kaynaklar Aktif</div>
+          </div>
+        </div>
+        <button class="modal-close-btn" onclick="closeAllModals()">✕</button>
+      </div>
+
+      <div class="chat-messages-box" id="chatMessages">
+        <div class="chat-msg bot">
+          Esselamü aleyküm Furkan kardeşim! Ben Xsir Manevi Yol Asistanıyım. Aklına takılan fıkhi, manevi veya ilmi sualleri sorabilirsin.
+        </div>
+      </div>
+
+      <div style="display: flex; gap: 6px; overflow-x: auto; padding: 6px 0;">
+        <span class="filter-pill" style="font-size: 10px;" onclick="sendQuickPrompt('Namazda huşuyu nasıl artırabilirim?')">Huşu nasıl artar?</span>
+        <span class="filter-pill" style="font-size: 10px;" onclick="sendQuickPrompt('Sabah namazına kalkmanın püf noktaları nelerdir?')">Sabah namazı</span>
+        <span class="filter-pill" style="font-size: 10px;" onclick="sendQuickPrompt('Risale-i Nur nasıl okunmalı?')">Risale okuma</span>
+      </div>
+
+      <div class="chat-input-row">
+        <input type="text" id="chatInput" placeholder="Sorunuzu buraya yazın..." onkeydown="if(event.key==='Enter') sendChatMessage()">
+        <button class="chat-send-btn" onclick="sendChatMessage()">➤</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- MODAL 4: KİTAP OKUMA ÖNİZLEME MODALI -->
+  <div class="modal-overlay" id="bookModal" onclick="closeAllModals(event)">
+    <div class="modal-sheet" onclick="event.stopPropagation()">
+      <div class="modal-handle"></div>
+      <div class="modal-head">
+        <h3 id="modalBookTitle">Kitap Başlığı</h3>
+        <button class="modal-close-btn" onclick="closeAllModals()">✕</button>
+      </div>
+      <div style="padding: 10px 0;">
+        <div id="modalBookAuthor" style="font-size: 12px; color: var(--text-muted); margin-bottom: 12px;">Müellif</div>
+        <div id="modalBookContent" style="background: #F8F9FA; border-radius: 14px; padding: 16px; font-size: 13px; line-height: 1.65; color: var(--text-main); font-family: 'Amiri', serif; font-size: 15px;">
+          "Bismillâhirrahmânirrahîm. Bismillah her hayrın başıdır. Biz dahi başta ona başlarız. Bil ey nefsim, şu mübarek kelime İslâm nişanı olduğu gibi, bütün mevcudatın lisan-ı haliyle vird-i zebânıdır..."
+        </div>
+        <div style="display: flex; gap: 10px; margin-top: 16px;">
+          <button style="flex: 1; height: 42px; background: var(--primary); color: #FFFFFF; border: none; border-radius: 12px; font-weight: 700; font-size: 12.5px; cursor: pointer;" onclick="showToast('Okuma moduna geçildi. Kaldığınız yer kaydedildi.'); closeAllModals();">Kaldığım Yerden Oku (sf. 45)</button>
+          <button style="width: 42px; height: 42px; background: #F1F5F9; border: none; border-radius: 12px; font-size: 16px; cursor: pointer;" onclick="showToast('Kitap favorilere eklendi.')">🔖</button>
+        </div>
+      </div>
+    </div>
+  </div>
 
 
   <!-- ========================================================================
@@ -3214,32 +3242,25 @@
     }
 
     function filterExplore(category, btnElement) {
-      // 1. Update active state on filter pills
       const chips = document.querySelectorAll('#exploreFilterChips .filter-pill');
       chips.forEach(c => c.classList.remove('active'));
       if (btnElement) btnElement.classList.add('active');
 
-      // 2. Filter horizontal books
       const bookCards = document.querySelectorAll('#exploreBooksRow .book-card');
-      let visibleBooks = 0;
       bookCards.forEach(card => {
         const cat = card.dataset.category;
-        if (category === 'all' || cat === category || (category === 'risale' && cat === 'risale') || (category === 'hadis' && cat === 'hadis') || (category === 'quran' && cat === 'quran') || (category === 'cevsen' && cat === 'cevsen')) {
+        if (category === 'all' || cat === category) {
           card.style.display = 'block';
-          visibleBooks++;
         } else {
           card.style.display = 'none';
         }
       });
 
-      // 3. Filter feed content list
       const feedCards = document.querySelectorAll('#exploreFeedList .feed-card');
-      let visibleFeeds = 0;
       feedCards.forEach(card => {
         const cat = card.dataset.category;
-        if (category === 'all' || cat === category || (category === 'sohbet' && cat === 'sohbet') || (category === 'risale' && cat === 'risale') || (category === 'quran' && cat === 'quran') || (category === 'hadis' && cat === 'hadis')) {
+        if (category === 'all' || cat === category) {
           card.style.display = 'flex';
-          visibleFeeds++;
         } else {
           card.style.display = 'none';
         }
@@ -3547,7 +3568,6 @@
       const content = BOOK_PREVIEWS[title] || `"Bismillâhirrahmânirrahîm. ${title} eserinden seçilmiş nurlu hikmetler ve manevi dersler. Bu kutlu ilim hazinesini okurken kalbinize inşirah, fikrinize istikamet dileriz..."`;
       document.getElementById('modalBookContent').textContent = content;
       
-      // Close all-books modal if open, then open reading modal
       document.getElementById('allBooksModal').classList.remove('active');
       document.getElementById('bookModal').classList.add('active');
     }
